@@ -3,7 +3,8 @@
 
 #include <stddef.h>
 
-struct GameStatus {
+struct GameStatus
+{
     size_t max_val;
     size_t score;
 };
