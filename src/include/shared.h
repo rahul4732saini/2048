@@ -2,6 +2,9 @@
 #define _SHARED_H
 
 #include <stddef.h>
+#include <stdint.h>
+
+typedef uint16_t cell_t;
 
 struct GameStatus
 {
