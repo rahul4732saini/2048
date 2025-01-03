@@ -13,10 +13,10 @@ cell_t **create_board(size_t size)
     return board;
 }
 
-void free_board(cell_t **board, size_t size)
+void free_board(struct Game *game)
 {
-    for (size_t i = 0; i < size; ++i)
-        free(board[i]);
+    for (size_t i = 0; i < game->bsize; ++i)
+        free(game->board[i]);
 
-    free(board);
+    free(game->board);
 }
