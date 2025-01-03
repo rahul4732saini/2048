@@ -53,7 +53,7 @@ void add_horizontal(struct Game *game, bool left)
 
             game->score += game->board[i][last];
 
-            last = -1;
+            last = game->bsize;
         }
     }
 }
@@ -93,7 +93,7 @@ void move_horizontal(struct Game *game, bool left)
             game->board[i][zindex] = game->board[i][j];
             game->board[i][j] = 0;
 
-            j = (zindex += dir) + dir;
+            j = (zindex += dir);
         }
     }
 }
