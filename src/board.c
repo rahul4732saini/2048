@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "shared.h"
 
@@ -13,6 +14,46 @@ cell_t **create_board(size_t size)
     }
 
     return board;
+}
+
+void move_horizontal(struct Game *game, bool left)
+{
+    size_t start, end, zindex;
+    int8_t dir = left ? 1 : -1;
+
+    if (left)
+    {
+        start = 0, end = game->bsize;
+    }
+    else
+    {
+        start = game->bsize - 1, end = -1;
+    }
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        zindex = end - dir;
+
+        for (size_t j = start; j != end; j += dir)
+        {
+            if (!game->board[i][j])
+            {
+                zindex = j;
+                break;
+            }
+        }
+
+        for (size_t j = zindex + dir; j != end; j += dir)
+        {
+            if (!game->board[i][j])
+                continue;
+
+            game->board[i][zindex] = game->board[i][j];
+            game->board[i][j] = 0;
+
+            j = (zindex += dir) + dir;
+        }
+    }
 }
 
 bool place_random(struct Game *game)
