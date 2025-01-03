@@ -6,8 +6,10 @@
 
 typedef uint16_t cell_t;
 
-struct GameStatus
+struct Game
 {
+    cell_t **board;
+    size_t bsize;
     size_t max_val;
     size_t score;
 };
