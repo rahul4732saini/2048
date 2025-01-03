@@ -98,6 +98,46 @@ void move_horizontal(struct Game *game, bool left)
     }
 }
 
+void move_vertical(struct Game *game, bool up)
+{
+    size_t start, end, zindex;
+    int8_t dir = up ? 1 : -1;
+
+    if (up)
+    {
+        start = 0, end = game->bsize;
+    }
+    else
+    {
+        start = game->bsize - 1, end = -1;
+    }
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        zindex = end - dir;
+
+        for (size_t j = start; j != end; j += dir)
+        {
+            if (!game->board[j][i])
+            {
+                zindex = j;
+                break;
+            }
+        }
+
+        for (size_t j = zindex + dir; j != end; j += dir)
+        {
+            if (!game->board[j][i])
+                continue;
+
+            game->board[zindex][i] = game->board[j][i];
+            game->board[j][i] = 0;
+
+            j = (zindex += dir);
+        }
+    }
+}
+
 bool place_random(struct Game *game)
 {
     size_t positions[game->bsize * game->bsize];
