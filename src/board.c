@@ -16,6 +16,43 @@ cell_t **create_board(size_t size)
     return board;
 }
 
+void add_horizontal(struct Game *game, bool left)
+{
+    size_t start, end, last;
+    int8_t dir = left ? 1 : -1;
+
+    if (left)
+    {
+        start = 0, end = game->bsize;
+    }
+    else
+    {
+        start = game->bsize - 1, end = -1;
+    }
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        last = game->bsize;
+
+        for (size_t j = start; j != end; j += dir)
+        {
+            if (!game->board[i][j])
+                continue;
+
+            else if (last == game->bsize)
+            {
+                last = j;
+                continue;
+            }
+
+            game->board[i][last] *= 2;
+            game->board[i][j] = 0;
+
+            last = -1;
+        }
+    }
+}
+
 void move_horizontal(struct Game *game, bool left)
 {
     size_t start, end, zindex;
