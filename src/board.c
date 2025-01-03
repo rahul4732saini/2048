@@ -58,6 +58,48 @@ void add_horizontal(struct Game *game, bool left)
     }
 }
 
+void add_vertical(struct Game *game, bool up)
+{
+    size_t start, end, last;
+    int8_t dir = up ? 1 : -1;
+
+    if (up)
+    {
+        start = 0, end = game->bsize;
+    }
+    else
+    {
+        start = game->bsize - 1, end = -1;
+    }
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        last = game->bsize;
+
+        for (size_t j = start; j != end; j += dir)
+        {
+            if (!game->board[j][i])
+                continue;
+
+            else if (last == game->bsize || game->board[j][i] != game->board[last][i])
+            {
+                last = j;
+                continue;
+            }
+
+            game->board[last][i] *= 2;
+            game->board[j][i] = 0;
+
+            if (game->board[last][i] > game->max_val)
+                game->max_val = game->board[last][i];
+
+            game->score += game->board[last][i];
+
+            last = game->bsize;
+        }
+    }
+}
+
 void move_horizontal(struct Game *game, bool left)
 {
     size_t start, end, zindex;
