@@ -48,6 +48,11 @@ void add_horizontal(struct Game *game, bool left)
             game->board[i][last] *= 2;
             game->board[i][j] = 0;
 
+            if (game->board[i][last] > game->max_val)
+                game->max_val = game->board[i][last];
+
+            game->score += game->board[i][last];
+
             last = -1;
         }
     }
