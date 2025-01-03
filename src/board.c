@@ -39,7 +39,7 @@ void add_horizontal(struct Game *game, bool left)
             if (!game->board[i][j])
                 continue;
 
-            else if (last == game->bsize)
+            else if (last == game->bsize || game->board[i][j] != game->board[i][last])
             {
                 last = j;
                 continue;
