@@ -14,8 +14,13 @@ void initialize_screen(void)
 
 void display_header_footer(struct Screen *screen)
 {
-    size_t st_pos = (screen->width - strlen(header)) / 2;
-    mvprintw(1, st_pos, "%s", header);
+    size_t st_pos;
+
+    for (size_t i = 0; i < headers_size; ++i)
+    {
+        st_pos = (screen->width - strlen(headers[i])) / 2;
+        mvprintw(1 + i, st_pos, "%s", headers[i]);
+    }
 
     for (size_t i = 0; i < footers_size; ++i)
     {
