@@ -14,4 +14,10 @@ struct Game
     size_t score;
 };
 
+struct Screen
+{
+    size_t width;
+    size_t height;
+};
+
 #endif
