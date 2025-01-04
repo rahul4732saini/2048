@@ -11,3 +11,6 @@ const char *footers[] = {
 
 const size_t headers_size = 1;
 const size_t footers_size = 2;
+
+const size_t win_vertical_margins = headers_size + footers_size + 4;
+const size_t win_horizontal_margins = 0;
