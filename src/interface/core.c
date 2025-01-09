@@ -14,6 +14,25 @@ void init_screen(void)
     keypad(stdscr, TRUE);
 }
 
+void init_game_win(WINDOW **window, struct Screen *screen)
+{
+    size_t height = screen->height - win_vertical_margins;
+    size_t width = screen->width - win_horizontal_margins;
+
+    *window = newwin(
+        height,
+        width,
+        win_vertical_margins / 2,
+        win_horizontal_margins / 2);
+
+    refresh();
+
+    keypad(*window, TRUE);
+
+    box(*window, 0, 0);
+    wrefresh(*window);
+}
+
 void display_header_footer(struct Screen *screen)
 {
     size_t st_pos;
