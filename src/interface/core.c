@@ -10,6 +10,8 @@ void initialize_screen(void)
 
     cbreak();
     noecho();
+
+    keypad(stdscr, TRUE);
 }
 
 void display_header_footer(struct Screen *screen)
