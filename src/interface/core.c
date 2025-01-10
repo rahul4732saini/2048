@@ -57,8 +57,8 @@ void show_game_win(WINDOW *window)
 
 void show_window_title(WINDOW *window, Screen *screen, const char *title)
 {
-    size_t start_x = (screen->width - strlen(main_menu_title)) / 2;
+    size_t start_x = (screen->width - strlen(title)) / 2;
 
-    mvwprintw(window, 2, start_x, "%s", main_menu_title);
+    mvwprintw(window, 2, start_x, "%s", title);
     wrefresh(window);
 }
