@@ -22,3 +22,30 @@ void init_main_menu(WINDOW **window, Screen *screen)
 
     keypad(*window, TRUE);
 }
+
+void show_main_menu(WINDOW *window, size_t select, int select_color)
+{
+    box(window, 0, 0);
+
+    size_t width = main_menu_width - 2;
+    size_t length, left_cut, right_cut;
+
+    for (size_t i = 0; i < main_menu_items_size; ++i)
+    {
+        length = strlen(main_menu_items[i]);
+
+        left_cut = (width - length) / 2;
+        right_cut = width - length - left_cut;
+
+        if (i == select)
+            wattron(window, COLOR_PAIR(select_color));
+
+        wmove(window, i + 1, 1);
+        wprintw(window, "%*s%s%*s", left_cut, "", main_menu_items[i], right_cut, "");
+
+        if (i == select)
+            wattroff(window, COLOR_PAIR(select_color));
+    }
+
+    wrefresh(window);
+}
