@@ -20,3 +20,13 @@ const char *main_menu_items[] = {"Play", "Quit"};
 
 const size_t main_menu_items_size = 2;
 const size_t main_menu_width = 20;
+
+const char *pause_menu_title = "Pause Menu";
+const char *pause_menu_items[] = {
+    "Resume",
+    "Quit to Main Menu",
+    "Quit Game",
+};
+
+const size_t pause_menu_items_size = 3;
+const size_t pause_menu_width = 20;
