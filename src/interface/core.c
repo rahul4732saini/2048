@@ -14,7 +14,7 @@ void init_screen(void)
     keypad(stdscr, TRUE);
 }
 
-void init_game_win(WINDOW **window, struct Screen *screen)
+void init_game_win(WINDOW **window, Screen *screen)
 {
     size_t height = screen->height - win_vertical_margins;
     size_t width = screen->width - win_horizontal_margins;
@@ -33,7 +33,7 @@ void init_game_win(WINDOW **window, struct Screen *screen)
     wrefresh(*window);
 }
 
-void display_header_footer(struct Screen *screen)
+void display_header_footer(Screen *screen)
 {
     size_t st_pos;
 
