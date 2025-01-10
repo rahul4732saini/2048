@@ -10,7 +10,9 @@ void init_screen(void)
 
     cbreak();
     noecho();
+    start_color();
 
+    curs_set(0);
     keypad(stdscr, TRUE);
 }
 
