@@ -35,7 +35,7 @@ void init_game_win(WINDOW **window, Screen *screen)
     wrefresh(*window);
 }
 
-void display_header_footer(Screen *screen)
+void show_header_footer(Screen *screen)
 {
     size_t st_pos;
 
