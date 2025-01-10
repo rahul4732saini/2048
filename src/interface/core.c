@@ -30,9 +30,6 @@ void init_game_win(WINDOW **window, Screen *screen)
     refresh();
 
     keypad(*window, TRUE);
-
-    box(*window, 0, 0);
-    wrefresh(*window);
 }
 
 void show_header_footer(Screen *screen)
@@ -50,6 +47,12 @@ void show_header_footer(Screen *screen)
         st_pos = (screen->width - strlen(footers[i])) / 2;
         mvprintw(screen->height - footers_size + i - 1, st_pos, "%s", footers[i]);
     }
+}
+
+void show_game_win(WINDOW *window)
+{
+    box(window, 0, 0);
+    wrefresh(window);
 }
 
 void show_window_title(WINDOW *window, Screen *screen, const char *title)
