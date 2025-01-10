@@ -29,4 +29,4 @@ const char *pause_menu_items[] = {
 };
 
 const size_t pause_menu_items_size = 3;
-const size_t pause_menu_width = 20;
+const size_t pause_menu_width = 25;
