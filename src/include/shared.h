@@ -6,18 +6,18 @@
 
 typedef uint16_t cell_t;
 
-struct Game
+typedef struct
 {
     cell_t **board;
     size_t bsize;
     size_t max_val;
     size_t score;
-};
+} Game;
 
-struct Screen
+typedef struct
 {
     size_t width;
     size_t height;
-};
+} Screen;
 
 #endif
