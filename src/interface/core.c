@@ -51,3 +51,11 @@ void display_header_footer(Screen *screen)
         mvprintw(screen->height - footers_size + i - 1, st_pos, "%s", footers[i]);
     }
 }
+
+void show_window_title(WINDOW *window, Screen *screen, const char *title)
+{
+    size_t start_x = (screen->width - strlen(main_menu_title)) / 2;
+
+    mvwprintw(window, 2, start_x, "%s", main_menu_title);
+    wrefresh(window);
+}
