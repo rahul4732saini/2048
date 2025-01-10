@@ -16,7 +16,7 @@ cell_t **create_board(size_t size)
     return board;
 }
 
-void add_horizontal(struct Game *game, bool left)
+void add_horizontal(Game *game, bool left)
 {
     size_t start, end, last;
     int8_t dir = left ? 1 : -1;
@@ -58,7 +58,7 @@ void add_horizontal(struct Game *game, bool left)
     }
 }
 
-void add_vertical(struct Game *game, bool up)
+void add_vertical(Game *game, bool up)
 {
     size_t start, end, last;
     int8_t dir = up ? 1 : -1;
@@ -100,7 +100,7 @@ void add_vertical(struct Game *game, bool up)
     }
 }
 
-void move_horizontal(struct Game *game, bool left)
+void move_horizontal(Game *game, bool left)
 {
     size_t start, end, zindex;
     int8_t dir = left ? 1 : -1;
@@ -140,7 +140,7 @@ void move_horizontal(struct Game *game, bool left)
     }
 }
 
-void move_vertical(struct Game *game, bool up)
+void move_vertical(Game *game, bool up)
 {
     size_t start, end, zindex;
     int8_t dir = up ? 1 : -1;
@@ -180,7 +180,7 @@ void move_vertical(struct Game *game, bool up)
     }
 }
 
-bool place_random(struct Game *game)
+bool place_random(Game *game)
 {
     size_t positions[game->bsize * game->bsize];
     size_t ctr = 0;
@@ -205,7 +205,7 @@ bool place_random(struct Game *game)
     return true;
 }
 
-void free_board(struct Game *game)
+void free_board(Game *game)
 {
     for (size_t i = 0; i < game->bsize; ++i)
         free(game->board[i]);
