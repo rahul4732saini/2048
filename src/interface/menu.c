@@ -42,7 +42,7 @@ void show_main_menu(WINDOW *window, size_t select, int select_color)
 
         wmove(window, i + 1, 1);
 
-        wprintw(window, "%*.*s", left_cut, "");
+        wprintw(window, "%*s", left_cut, "");
         wprintw(window, "%s", main_menu_items[i]);
         wprintw(window, "%*s", right_cut, "");
 
