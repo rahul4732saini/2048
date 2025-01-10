@@ -18,4 +18,10 @@ extern const char *main_menu_items[];
 extern const size_t main_menu_items_size;
 extern const size_t main_menu_width;
 
+extern const char *pause_menu_title;
+extern const char *pause_menu_items[];
+
+extern const size_t pause_menu_items_size;
+extern const size_t pause_menu_width;
+
 #endif
