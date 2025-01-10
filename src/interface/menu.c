@@ -49,3 +49,22 @@ void show_main_menu(WINDOW *window, size_t select, int select_color)
 
     wrefresh(window);
 }
+
+void init_pause_menu(WINDOW **window, Screen *screen)
+{
+    size_t height = pause_menu_items_size + 2;
+    size_t width = pause_menu_width;
+
+    size_t start_y = (screen->height - height) / 2;
+    size_t start_x = (screen->width - width) / 2;
+
+    *window = newwin(
+        height,
+        width,
+        screen->start_y + start_y,
+        screen->start_x + start_x);
+
+    refresh();
+
+    keypad(*window, TRUE);
+}
