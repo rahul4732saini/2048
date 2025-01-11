@@ -1,5 +1,8 @@
 #include <stdlib.h>
 
+const size_t cell_width = 8;
+const size_t cell_height = 3;
+
 const char *headers[] = {
     "2048 Game",
 };
