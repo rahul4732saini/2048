@@ -65,3 +65,22 @@ static void draw_edges(WINDOW *window, size_t bsize)
         mvwaddch(window, (cell_height + 1) * i, width - 1, ACS_RTEE);
     }
 }
+
+static void draw_grid(WINDOW *window, size_t bsize)
+{
+    draw_edges(window, bsize);
+
+    for (size_t i = 0; i < bsize; ++i)
+    {
+        wmove(window, (cell_height + 1) * i + 1, 1);
+        draw_vlines(window, bsize);
+
+        if (i == bsize - 1)
+            continue;
+
+        wmove(window, (i + 1) * (cell_height + 1), 1);
+        draw_hlines(window, bsize);
+    }
+
+    wrefresh(window);
+}
