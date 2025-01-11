@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 
+extern const size_t cell_width;
+extern const size_t cell_height;
+
 extern const char *headers[];
 extern const char *footers[];
 
