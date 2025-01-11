@@ -50,3 +50,18 @@ static void draw_hlines(WINDOW *window, size_t bsize)
             waddch(window, ACS_PLUS);
     }
 }
+
+static void draw_edges(WINDOW *window, size_t bsize)
+{
+    size_t height = bsize * (cell_height + 1) - 1 + 2;
+    size_t width = bsize * (cell_width + 1) - 1 + 2;
+
+    for (size_t i = 1; i < bsize; ++i)
+    {
+        mvwaddch(window, 0, (cell_width + 1) * i, ACS_TTEE);
+        mvwaddch(window, height - 1, (cell_width + 1) * i, ACS_BTEE);
+
+        mvwaddch(window, (cell_height + 1) * i, 0, ACS_LTEE);
+        mvwaddch(window, (cell_height + 1) * i, width - 1, ACS_RTEE);
+    }
+}
