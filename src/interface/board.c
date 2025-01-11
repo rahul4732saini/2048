@@ -38,3 +38,15 @@ static void draw_vlines(WINDOW *window, size_t bsize)
         }
     }
 }
+
+static void draw_hlines(WINDOW *window, size_t bsize)
+{
+    for (size_t i = 0; i < bsize; ++i)
+    {
+        for (size_t j = 0; j < cell_width; ++j)
+            waddch(window, ACS_HLINE);
+
+        if (i != bsize - 1)
+            waddch(window, ACS_PLUS);
+    }
+}
