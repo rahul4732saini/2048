@@ -7,6 +7,7 @@
 cell_t **create_board(size_t size);
 void free_board(Game *game);
 
+bool game_over(Game *game, bool cell_empty);
 bool place_random(Game *game);
 
 void add_horizontal(Game *game, bool left);
