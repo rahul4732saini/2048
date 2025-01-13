@@ -202,7 +202,7 @@ bool place_random(Game *game)
     size_t position = positions[rand() % ctr];
     game->board[position / game->bsize][position % game->bsize] = 2;
 
-    return true;
+    return ctr > 1;
 }
 
 bool game_over(Game *game, bool cell_empty)
