@@ -205,6 +205,24 @@ bool place_random(Game *game)
     return true;
 }
 
+bool game_over(Game *game, bool cell_empty)
+{
+    if (cell_empty)
+        return false;
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        for (size_t j = 0; j < game->bsize - 1; ++j)
+        {
+            if (game->board[i][j] == game->board[i][j + 1] ||
+                game->board[j][i] == game->board[j + 1][i])
+                return false;
+        }
+    }
+
+    return true;
+}
+
 void free_board(Game *game)
 {
     for (size_t i = 0; i < game->bsize; ++i)
