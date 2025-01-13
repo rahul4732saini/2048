@@ -24,8 +24,7 @@ void init_board(WINDOW **window, Screen *screen, size_t bsize)
 
 static void draw_vlines(WINDOW *window, size_t bsize)
 {
-    size_t y, _;
-    getyx(window, y, _);
+    size_t y = getcury(window);
 
     for (size_t i = 0; i < cell_height; ++i)
     {
