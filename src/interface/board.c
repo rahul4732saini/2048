@@ -108,3 +108,15 @@ static void populate_cells(WINDOW *window, Game *game)
 
     wrefresh(window);
 }
+
+void show_board(WINDOW *window, Game *game)
+{
+    size_t height = game->bsize * (cell_height + 1) + 1;
+    size_t width = game->bsize * (cell_width + 1) + 1;
+
+    box(window, 0, 0);
+    wrefresh(window);
+
+    draw_grid(window, game->bsize);
+    populate_cells(window, game);
+}
