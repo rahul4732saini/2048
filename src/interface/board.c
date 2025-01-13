@@ -1,3 +1,4 @@
+#include <math.h>
 #include <ncurses.h>
 
 #include "shared.h"
@@ -79,6 +80,30 @@ static void draw_grid(WINDOW *window, size_t bsize)
 
         wmove(window, (i + 1) * (cell_height + 1), 1);
         draw_hlines(window, bsize);
+    }
+
+    wrefresh(window);
+}
+
+static void populate_cells(WINDOW *window, Game *game)
+{
+    size_t pos_x, pos_y, num_len;
+
+    for (size_t i = 0; i < game->bsize; ++i)
+    {
+        for (size_t j = 0; j < game->bsize; ++j)
+        {
+            if (!game->board[i][j])
+                continue;
+
+            num_len = floor(log10(game->board[i][j])) + 1;
+
+            pos_x = j * (cell_width + 1) + (cell_width - num_len) / 2 + 1;
+            pos_y = i * (cell_height + 1) + cell_height / 2 + 1;
+
+            wmove(window, pos_y, pos_x);
+            wprintw(window, "%d", game->board[i][j]);
+        }
     }
 
     wrefresh(window);
