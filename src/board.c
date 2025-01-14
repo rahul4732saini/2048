@@ -114,26 +114,20 @@ void move_horizontal(Game *game, bool left)
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
-        zindex = end - dir;
+        zindex = game->bsize;
 
         for (size_t j = start; j != end; j += dir)
         {
-            if (!game->board[i][j])
+            if (game->board[i][j] && zindex != game->bsize)
             {
-                zindex = j;
-                break;
+                game->board[i][zindex] = game->board[i][j];
+                game->board[i][j] = 0;
+
+                j = (zindex += dir);
             }
-        }
 
-        for (size_t j = zindex + dir; j != end; j += dir)
-        {
-            if (!game->board[i][j])
-                continue;
-
-            game->board[i][zindex] = game->board[i][j];
-            game->board[i][j] = 0;
-
-            j = (zindex += dir);
+            else if (zindex == game->bsize)
+                zindex = j;
         }
     }
 }
@@ -154,26 +148,21 @@ void move_vertical(Game *game, bool up)
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
-        zindex = end - dir;
-
-        for (size_t j = start; j != end; j += dir)
-        {
-            if (!game->board[j][i])
-            {
-                zindex = j;
-                break;
-            }
-        }
+        zindex = game->bsize;
 
         for (size_t j = zindex + dir; j != end; j += dir)
         {
-            if (!game->board[j][i])
-                continue;
+            if (game->board[j][i] && zindex != game->bsize)
+            {
 
-            game->board[zindex][i] = game->board[j][i];
-            game->board[j][i] = 0;
+                game->board[zindex][i] = game->board[j][i];
+                game->board[j][i] = 0;
 
-            j = (zindex += dir);
+                j = (zindex += dir);
+            }
+
+            else if (zindex == game->bsize)
+                zindex = j;
         }
     }
 }
