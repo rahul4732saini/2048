@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <ncurses.h>
+
 typedef uint16_t cell_t;
 
 typedef struct
@@ -21,5 +23,11 @@ typedef struct
     size_t start_x;
     size_t start_y;
 } Dimension;
+
+typedef struct
+{
+    WINDOW *window;
+    Dimension *dimension;
+} Screen;
 
 #endif
