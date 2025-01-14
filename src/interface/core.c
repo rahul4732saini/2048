@@ -16,12 +16,14 @@ void init_screen(void)
     keypad(stdscr, TRUE);
 }
 
-void init_game_win(WINDOW **window, Screen *screen)
+void init_game_win(Screen *scr)
 {
-    size_t height = screen->height - win_vertical_margins;
-    size_t width = screen->width - win_horizontal_margins;
+    Dimension *dim = scr->dimension;
 
-    *window = newwin(
+    size_t height = dim->height - win_vertical_margins;
+    size_t width = dim->width - win_horizontal_margins;
+
+    scr->window = newwin(
         height,
         width,
         win_vertical_margins / 2,
@@ -29,23 +31,23 @@ void init_game_win(WINDOW **window, Screen *screen)
 
     refresh();
 
-    keypad(*window, TRUE);
+    keypad(scr->window, TRUE);
 }
 
-void show_header_footer(Screen *screen)
+void show_header_footer(Dimension *dim)
 {
     size_t st_pos;
 
     for (size_t i = 0; i < headers_size; ++i)
     {
-        st_pos = (screen->width - strlen(headers[i])) / 2;
+        st_pos = (dim->width - strlen(headers[i])) / 2;
         mvprintw(1 + i, st_pos, "%s", headers[i]);
     }
 
     for (size_t i = 0; i < footers_size; ++i)
     {
-        st_pos = (screen->width - strlen(footers[i])) / 2;
-        mvprintw(screen->height - footers_size + i - 1, st_pos, "%s", footers[i]);
+        st_pos = (dim->width - strlen(footers[i])) / 2;
+        mvprintw(dim->height - footers_size + i - 1, st_pos, "%s", footers[i]);
     }
 }
 
@@ -55,10 +57,10 @@ void show_game_win(WINDOW *window)
     wrefresh(window);
 }
 
-void show_window_title(WINDOW *window, Screen *screen, const char *title)
+void show_window_title(Screen *screen, const char *title)
 {
-    size_t start_x = (screen->width - strlen(title)) / 2;
+    size_t start_x = (screen->dimension->width - strlen(title)) / 2;
 
-    mvwprintw(window, 2, start_x, "%s", title);
-    wrefresh(window);
+    mvwprintw(screen->window, 2, start_x, "%s", title);
+    wrefresh(screen->window);
 }
