@@ -52,7 +52,6 @@ void add_horizontal(Game *game, bool left)
                 game->max_val = game->board[i][last];
 
             game->score += game->board[i][last];
-
             last = game->bsize;
         }
     }
@@ -94,7 +93,6 @@ void add_vertical(Game *game, bool up)
                 game->max_val = game->board[last][i];
 
             game->score += game->board[last][i];
-
             last = game->bsize;
         }
     }
