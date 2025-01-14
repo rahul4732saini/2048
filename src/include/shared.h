@@ -20,6 +20,6 @@ typedef struct
     size_t height;
     size_t start_x;
     size_t start_y;
-} Screen;
+} Dimension;
 
 #endif
