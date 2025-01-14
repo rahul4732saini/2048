@@ -11,9 +11,9 @@ bool game_over(Game *game, bool cell_empty);
 bool place_random(Game *game);
 
 void add_horizontal(Game *game, bool left);
-void add_vertical(Game *game, bool left);
+void add_vertical(Game *game, bool up);
 
 void move_horizontal(Game *game, bool left);
-void move_vertical(Game *game, bool left);
+void move_vertical(Game *game, bool up);
 
 #endif
