@@ -37,8 +37,9 @@ void init_game_win(Screen *scr, Screen *parent)
     keypad(scr->window, TRUE);
 }
 
-void show_header_footer(Dimension *dim)
+void show_header_footer(Screen *scr)
 {
+    Dimension *dim = scr->dimension;
     size_t st_pos;
 
     for (size_t i = 0; i < headers_size; ++i)
@@ -52,6 +53,8 @@ void show_header_footer(Dimension *dim)
         st_pos = (dim->width - strlen(footers[i])) / 2;
         mvprintw(dim->height - footers_size + i - 1, st_pos, "%s", footers[i]);
     }
+
+    wrefresh(scr->window);
 }
 
 void show_game_win(WINDOW *window)
