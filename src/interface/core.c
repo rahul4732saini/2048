@@ -4,6 +4,8 @@
 #include "consts.h"
 #include "shared.h"
 
+#include "interface/shared.h"
+
 void init_screen(void)
 {
     initscr();
@@ -26,15 +28,7 @@ void init_game_win(Screen *scr, Screen *parent)
     dim_scr->start_x = win_horizontal_margins / 2;
     dim_scr->start_y = win_vertical_margins / 2;
 
-    scr->window = newwin(
-        scr->dimension->height,
-        scr->dimension->width,
-        win_vertical_margins / 2,
-        win_horizontal_margins / 2);
-
-    refresh();
-
-    keypad(scr->window, TRUE);
+    scr->window = init_window(dim_scr);
 }
 
 void show_header_footer(Screen *scr)
