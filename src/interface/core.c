@@ -57,16 +57,16 @@ void show_header_footer(Screen *scr)
     wrefresh(scr->window);
 }
 
-void show_game_win(WINDOW *window)
+void show_game_win(Screen *scr)
 {
-    box(window, 0, 0);
-    wrefresh(window);
+    box(scr->window, 0, 0);
+    wrefresh(scr->window);
 }
 
-void show_window_title(Screen *screen, const char *title)
+void show_window_title(Screen *scr, const char *title)
 {
-    size_t start_x = (screen->dimension->width - strlen(title)) / 2;
+    size_t start_x = (scr->dimension->width - strlen(title)) / 2;
 
-    mvwprintw(screen->window, 2, start_x, "%s", title);
-    wrefresh(screen->window);
+    mvwprintw(scr->window, 2, start_x, "%s", title);
+    wrefresh(scr->window);
 }
