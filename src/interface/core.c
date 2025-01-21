@@ -16,16 +16,19 @@ void init_screen(void)
     keypad(stdscr, TRUE);
 }
 
-void init_game_win(Screen *scr)
+void init_game_win(Screen *scr, Screen *parent)
 {
-    Dimension *dim = scr->dimension;
+    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
-    size_t height = dim->height - win_vertical_margins;
-    size_t width = dim->width - win_horizontal_margins;
+    dim_scr->width = dim_parent->width - win_horizontal_margins;
+    dim_scr->height = dim_parent->height - win_vertical_margins;
+
+    dim_scr->start_x = win_horizontal_margins / 2;
+    dim_scr->start_y = win_vertical_margins / 2;
 
     scr->window = newwin(
-        height,
-        width,
+        scr->dimension->height,
+        scr->dimension->width,
         win_vertical_margins / 2,
         win_horizontal_margins / 2);
 
