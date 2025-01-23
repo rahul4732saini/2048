@@ -63,9 +63,10 @@ void init_pause_menu(Screen *scr, Screen *parent)
     scr->window = init_window(dim_scr);
 }
 
-void show_pause_menu(WINDOW *window, size_t select, int select_color)
+void show_pause_menu(Screen *scr, size_t select, int select_color)
 {
-    box(window, 0, 0);
+    WINDOW *win = scr->window;
+    box(win, 0, 0);
 
     size_t width = pause_menu_width - 2;
     size_t length, left_cut, right_cut;
@@ -78,17 +79,17 @@ void show_pause_menu(WINDOW *window, size_t select, int select_color)
         right_cut = width - length - left_cut;
 
         if (i == select)
-            wattron(window, COLOR_PAIR(select_color));
+            wattron(win, COLOR_PAIR(select_color));
 
-        wmove(window, i + 1, 1);
+        wmove(win, i + 1, 1);
 
-        wprintw(window, "%*s", left_cut, "");
-        wprintw(window, "%s", pause_menu_items[i]);
-        wprintw(window, "%*s", right_cut, "");
+        wprintw(win, "%*s", left_cut, "");
+        wprintw(win, "%s", pause_menu_items[i]);
+        wprintw(win, "%*s", right_cut, "");
 
         if (i == select)
-            wattroff(window, COLOR_PAIR(select_color));
+            wattroff(win, COLOR_PAIR(select_color));
     }
 
-    wrefresh(window);
+    wrefresh(win);
 }
