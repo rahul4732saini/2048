@@ -4,23 +4,19 @@
 #include "shared.h"
 #include "consts.h"
 
-void init_board(WINDOW **window, Screen *screen, size_t bsize)
+#include "interface/shared.h"
+
+void init_board(Screen *scr, Screen *parent, size_t bsize)
 {
-    size_t height = bsize * 4 - 1 + 2;
-    size_t width = bsize * 9 - 1 + 2;
+    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
-    size_t start_y = (screen->height - height) / 2;
-    size_t start_x = (screen->width - width) / 2;
+    dim_scr->height = bsize * (cell_height + 1) + 1;
+    dim_scr->width = bsize * (cell_width + 1) + 1;
 
-    *window = newwin(
-        height,
-        width,
-        screen->start_y + start_y,
-        screen->start_x + start_x);
+    dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
+    dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
 
-    refresh();
-
-    keypad(*window, TRUE);
+    scr->window = init_window(dim_scr);
 }
 
 static void draw_vlines(WINDOW *window, size_t bsize)
