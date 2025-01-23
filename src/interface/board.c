@@ -53,8 +53,8 @@ static void draw_hlines(WINDOW *window, size_t bsize)
 
 static void draw_edges(WINDOW *window, size_t bsize)
 {
-    size_t height = bsize * (cell_height + 1) - 1 + 2;
-    size_t width = bsize * (cell_width + 1) - 1 + 2;
+    size_t height = bsize * (cell_height + 1) + 1;
+    size_t width = bsize * (cell_width + 1) + 1;
 
     for (size_t i = 1; i < bsize; ++i)
     {
