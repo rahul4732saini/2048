@@ -49,23 +49,17 @@ void show_main_menu(WINDOW *window, size_t select, int select_color)
     wrefresh(window);
 }
 
-void init_pause_menu(WINDOW **window, Screen *screen)
+void init_pause_menu(Screen *scr, Screen *parent)
 {
-    size_t height = pause_menu_items_size + 2;
-    size_t width = pause_menu_width;
+    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
-    size_t start_y = (screen->height - height) / 2;
-    size_t start_x = (screen->width - width) / 2;
+    dim_scr->height = pause_menu_items_size + 2;
+    dim_scr->width = pause_menu_width;
 
-    *window = newwin(
-        height,
-        width,
-        screen->start_y + start_y,
-        screen->start_x + start_x);
+    dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
+    dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
 
-    refresh();
-
-    keypad(*window, TRUE);
+    scr->window = init_window(dim_scr);
 }
 
 void show_pause_menu(WINDOW *window, size_t select, int select_color)
