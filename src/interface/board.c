@@ -105,14 +105,13 @@ static void populate_cells(WINDOW *window, Game *game)
     wrefresh(window);
 }
 
-void show_board(WINDOW *window, Game *game)
+void show_board(Screen *scr, Game *game)
 {
-    size_t height = game->bsize * (cell_height + 1) + 1;
-    size_t width = game->bsize * (cell_width + 1) + 1;
+    WINDOW *win = scr->window;
 
-    box(window, 0, 0);
-    wrefresh(window);
+    box(win, 0, 0);
+    wrefresh(win);
 
-    draw_grid(window, game->bsize);
-    populate_cells(window, game);
+    draw_grid(win, game->bsize);
+    populate_cells(win, game);
 }
