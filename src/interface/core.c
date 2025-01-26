@@ -6,7 +6,7 @@
 
 #include "interface/common.h"
 
-void init_screen(void)
+void init_screen(Screen *scr)
 {
     initscr();
 
@@ -16,6 +16,12 @@ void init_screen(void)
 
     curs_set(0);
     keypad(stdscr, TRUE);
+
+    scr->window = stdscr;
+    Dimension *dim = scr->dimension;
+
+    dim->start_x = dim->start_y = 0;
+    getmaxyx(stdscr, dim->height, dim->width);
 }
 
 void init_game_win(Screen *scr, Screen *parent)
