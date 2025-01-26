@@ -4,7 +4,7 @@
 #include "shared.h"
 #include "consts.h"
 
-#include "interface/shared.h"
+#include "interface/common.h"
 
 void init_main_menu(Screen *scr, Screen *parent)
 {

@@ -5,6 +5,6 @@
 #include "shared.h"
 
 void init_board(Screen *scr, Screen *parent, size_t bsize);
-void show_board(screen *scr, Game *game);
+void show_board(Screen *scr, Game *game);
 
 #endif
