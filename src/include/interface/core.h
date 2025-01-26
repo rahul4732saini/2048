@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include "shared.h"
 
-void init_screen(void);
+void init_screen(Screen *scr);
 void init_game_win(Screen *scr, Screen *parent);
 
 void show_header_footer(Screen *scr);
