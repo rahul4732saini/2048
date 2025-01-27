@@ -5,6 +5,7 @@
 #include "shared.h"
 
 void init_screen(Screen *scr);
+void get_screen_dimension(Screen *scr);
 void place_game_win(Screen *scr, Screen *parent);
 
 void show_header_footer(Screen *scr);
