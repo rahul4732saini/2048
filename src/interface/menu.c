@@ -6,7 +6,7 @@
 
 #include "interface/common.h"
 
-void init_main_menu(Screen *scr, Screen *parent)
+void place_main_menu(Screen *scr, Screen *parent)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
@@ -16,7 +16,7 @@ void init_main_menu(Screen *scr, Screen *parent)
     dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
     dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
 
-    scr->window = init_window(dim_scr);
+    place_window(scr);
 }
 
 void show_main_menu(Screen *scr, size_t select, int select_color)
@@ -50,7 +50,7 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
     wrefresh(win);
 }
 
-void init_pause_menu(Screen *scr, Screen *parent)
+void place_pause_menu(Screen *scr, Screen *parent)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
@@ -60,7 +60,7 @@ void init_pause_menu(Screen *scr, Screen *parent)
     dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
     dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
 
-    scr->window = init_window(dim_scr);
+    place_window(scr);
 }
 
 void show_pause_menu(Screen *scr, size_t select, int select_color)
