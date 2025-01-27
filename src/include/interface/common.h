@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include "shared.h"
 
-WINDOW *init_window(Dimension *dim);
+WINDOW *init_window(void);
 void place_window(Screen *scr);
 
 #endif
