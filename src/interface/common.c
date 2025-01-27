@@ -1,13 +1,9 @@
 #include <ncurses.h>
 #include "shared.h"
 
-WINDOW *init_window(Dimension *dim)
+WINDOW *init_window(void)
 {
-    WINDOW *win = newwin(
-        dim->height,
-        dim->width,
-        dim->start_y,
-        dim->start_x);
+    WINDOW *win = newwin(0, 0, 0, 0);
 
     refresh();
     keypad(win, TRUE);
