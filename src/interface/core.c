@@ -24,7 +24,7 @@ void init_screen(Screen *scr)
     getmaxyx(stdscr, dim->height, dim->width);
 }
 
-void init_game_win(Screen *scr, Screen *parent)
+void place_game_win(Screen *scr, Screen *parent)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
@@ -34,7 +34,7 @@ void init_game_win(Screen *scr, Screen *parent)
     dim_scr->start_x = win_horizontal_margins / 2;
     dim_scr->start_y = win_vertical_margins / 2;
 
-    scr->window = init_window(dim_scr);
+    place_window(scr);
 }
 
 void show_header_footer(Screen *scr)
