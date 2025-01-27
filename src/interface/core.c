@@ -74,3 +74,17 @@ void show_window_title(Screen *scr, const char *title)
     mvwprintw(scr->window, 2, start_x, "%s", title);
     wrefresh(scr->window);
 }
+
+void refresh_game_win(Screen *game_scr, Screen *core_scr, const char *title)
+{
+    clear();
+    refresh();
+
+    get_screen_dimension(core_scr);
+    place_game_win(game_scr, core_scr);
+
+    show_game_win(game_scr);
+
+    show_header_footer(core_scr);
+    show_window_title(game_scr, title);
+}
