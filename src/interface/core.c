@@ -16,7 +16,10 @@ void init_screen(Screen *scr)
 
     curs_set(0);
     keypad(stdscr, TRUE);
+}
 
+void get_screen_dimension(Screen *scr)
+{
     scr->window = stdscr;
     Dimension *dim = scr->dimension;
 
