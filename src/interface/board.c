@@ -6,7 +6,7 @@
 
 #include "interface/common.h"
 
-void init_board(Screen *scr, Screen *parent, size_t bsize)
+void place_board(Screen *scr, Screen *parent, size_t bsize)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
 
@@ -16,7 +16,7 @@ void init_board(Screen *scr, Screen *parent, size_t bsize)
     dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
     dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
 
-    scr->window = init_window(dim_scr);
+    place_window(scr);
 }
 
 static void draw_vlines(WINDOW *win, size_t bsize)
