@@ -12,4 +12,6 @@ void show_header_footer(Screen *scr);
 void show_game_win(Screen *scr);
 void show_window_title(Screen *scr, const char *title);
 
+void refresh_game_win(Screen *game_scr, Screen *core_scr, const char *title);
+
 #endif
