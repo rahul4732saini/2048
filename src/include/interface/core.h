@@ -1,5 +1,5 @@
-#ifndef _CORE_H
-#define _CORE_H
+#ifndef _INTERFACE_CORE_H
+#define _INTERFACE_CORE_H
 
 #include <ncurses.h>
 #include "shared.h"
