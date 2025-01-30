@@ -13,8 +13,8 @@ void place_main_menu(Screen *scr, Screen *parent)
     dim_scr->height = main_menu_items_size + 2;
     dim_scr->width = main_menu_width;
 
-    dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
-    dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
+    dim_scr->start_y = dim_parent->start_y + (dim_parent->height - dim_scr->height) / 2;
+    dim_scr->start_x = dim_parent->start_x + (dim_parent->width - dim_scr->width) / 2;
 
     place_window(scr);
 }
