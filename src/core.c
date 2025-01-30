@@ -30,7 +30,7 @@ int8_t handle_main_menu(Screen *scrs)
             return -1;
         }
 
-        select %= main_menu_items_size;
+        select = (select + main_menu_items_size) % main_menu_items_size;
         show_main_menu(scrs + 2, select, 1);
     }
 
