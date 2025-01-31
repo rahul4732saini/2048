@@ -22,13 +22,10 @@ void add_horizontal(Game *game, bool left)
     int8_t dir = left ? 1 : -1;
 
     if (left)
-    {
         start = 0, end = game->bsize;
-    }
+
     else
-    {
         start = game->bsize - 1, end = -1;
-    }
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
@@ -63,13 +60,10 @@ void add_vertical(Game *game, bool up)
     int8_t dir = up ? 1 : -1;
 
     if (up)
-    {
         start = 0, end = game->bsize;
-    }
+
     else
-    {
         start = game->bsize - 1, end = -1;
-    }
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
@@ -104,13 +98,10 @@ void move_horizontal(Game *game, bool left)
     int8_t dir = left ? 1 : -1;
 
     if (left)
-    {
         start = 0, end = game->bsize;
-    }
+
     else
-    {
         start = game->bsize - 1, end = -1;
-    }
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
@@ -138,13 +129,10 @@ void move_vertical(Game *game, bool up)
     int8_t dir = up ? 1 : -1;
 
     if (up)
-    {
         start = 0, end = game->bsize;
-    }
+
     else
-    {
         start = game->bsize - 1, end = -1;
-    }
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
