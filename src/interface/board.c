@@ -109,6 +109,8 @@ void show_board(Screen *scr, Game *game)
 {
     WINDOW *win = scr->window;
 
+    wclear(win);
+
     box(win, 0, 0);
     wrefresh(win);
 
