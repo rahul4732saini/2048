@@ -16,9 +16,9 @@ cell_t **create_board(size_t size)
     return board;
 }
 
-void add_horizontal(Game *game, bool left)
+size_t add_horizontal(Game *game, bool left)
 {
-    size_t start, end, last;
+    size_t start, end, last, operations = 0;
     int8_t dir = left ? 1 : -1;
 
     if (left)
@@ -50,13 +50,17 @@ void add_horizontal(Game *game, bool left)
 
             game->score += game->board[i][last];
             last = game->bsize;
+
+            ++operations;
         }
     }
+
+    return operations;
 }
 
-void add_vertical(Game *game, bool up)
+size_t add_vertical(Game *game, bool up)
 {
-    size_t start, end, last;
+    size_t start, end, last, operations = 0;
     int8_t dir = up ? 1 : -1;
 
     if (up)
@@ -88,13 +92,17 @@ void add_vertical(Game *game, bool up)
 
             game->score += game->board[last][i];
             last = game->bsize;
+
+            ++operations;
         }
     }
+
+    return operations;
 }
 
-void move_horizontal(Game *game, bool left)
+size_t move_horizontal(Game *game, bool left)
 {
-    size_t start, end, zindex;
+    size_t start, end, zindex, operations = 0;
     int8_t dir = left ? 1 : -1;
 
     if (left)
@@ -115,17 +123,20 @@ void move_horizontal(Game *game, bool left)
                 game->board[i][j] = 0;
 
                 zindex += dir;
+                ++operations;
             }
 
             else if (!game->board[i][j] && zindex == game->bsize)
                 zindex = j;
         }
     }
+
+    return operations;
 }
 
-void move_vertical(Game *game, bool up)
+size_t move_vertical(Game *game, bool up)
 {
-    size_t start, end, zindex;
+    size_t start, end, zindex, operations = 0;
     int8_t dir = up ? 1 : -1;
 
     if (up)
@@ -146,12 +157,15 @@ void move_vertical(Game *game, bool up)
                 game->board[j][i] = 0;
 
                 zindex += dir;
+                ++operations;
             }
 
             else if (!game->board[j][i] && zindex == game->bsize)
                 zindex = j;
         }
     }
+
+    return operations;
 }
 
 bool place_random(Game *game)
