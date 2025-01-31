@@ -123,7 +123,7 @@ void move_horizontal(Game *game, bool left)
                 game->board[i][zindex] = game->board[i][j];
                 game->board[i][j] = 0;
 
-                j = (zindex += dir);
+                zindex += dir;
             }
 
             else if (!game->board[i][j] && zindex == game->bsize)
@@ -157,7 +157,7 @@ void move_vertical(Game *game, bool up)
                 game->board[zindex][i] = game->board[j][i];
                 game->board[j][i] = 0;
 
-                j = (zindex += dir);
+                zindex += dir;
             }
 
             else if (!game->board[j][i] && zindex == game->bsize)
