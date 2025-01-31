@@ -6,6 +6,7 @@
 #include "shared.h"
 #include "consts.h"
 
+#include "interface/core.h"
 #include "interface/board.h"
 #include "interface/menu.h"
 
@@ -76,6 +77,8 @@ int8_t handle_game_board(Screen *scrs, Game *game)
     int16_t input, operations;
     bool iskey, isempty;
 
+    static char score[20];
+
     place_board(scrs + 2, scrs, game->bsize);
     show_board(scrs + 2, game);
 
@@ -112,6 +115,9 @@ int8_t handle_game_board(Screen *scrs, Game *game)
         if (game_over(game, isempty) || game->max_val == 2048)
             return 0;
 
+        sprintf("Score: %d", game->score);
+
+        show_window_title(scrs + 2, score);
         show_board(scrs + 2, game);
     }
 
