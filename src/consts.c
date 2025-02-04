@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+const size_t target = 2048;
+
 const size_t cell_width = 8;
 const size_t cell_height = 3;
 
