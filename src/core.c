@@ -115,9 +115,9 @@ int8_t handle_game_board(Screen *scrs, Game *game)
         if (game_over(game, isempty) || game->max_val == 2048)
             return 0;
 
-        sprintf("Score: %d", game->score);
+        sprintf(score, "Score: %d", game->score);
 
-        show_window_title(scrs + 2, score);
+        show_window_title(scrs + 1, score);
         show_board(scrs + 2, game);
     }
 
