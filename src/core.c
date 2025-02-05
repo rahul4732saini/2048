@@ -79,7 +79,7 @@ int8_t handle_game_board(Screen *scrs, Game *game)
 
     static char score[20];
 
-    place_board(scrs + 2, scrs, game->bsize);
+    place_board(scrs + 2, scrs + 1, game->bsize);
     show_board(scrs + 2, game);
 
     while ((input = getch()) != KEY_EXIT)
