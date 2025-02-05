@@ -8,13 +8,13 @@
 
 void place_board(Screen *scr, Screen *parent, size_t bsize)
 {
-    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
+    Dimension *dim_scr = scr->dimension, *dim_pr = parent->dimension;
 
     dim_scr->height = bsize * (cell_height + 1) + 1;
     dim_scr->width = bsize * (cell_width + 1) + 1;
 
-    dim_scr->start_y = (dim_parent->height - dim_scr->height) / 2;
-    dim_scr->start_x = (dim_parent->width - dim_scr->width) / 2;
+    dim_scr->start_y = dim_pr->start_y + (dim_pr->height - dim_scr->height) / 2;
+    dim_scr->start_x = dim_pr->start_x + (dim_pr->width - dim_scr->width) / 2;
 
     place_window(scr);
 }
