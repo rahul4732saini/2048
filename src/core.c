@@ -85,22 +85,20 @@ int8_t handle_game_board(Screen *scrs, Game *game)
     while ((input = getch()) != KEY_EXIT)
     {
         operations = 0;
+
         isempty = true;
+        iskey = input == KEY_UP || input == KEY_LEFT;
 
         switch (input)
         {
         case KEY_UP:
         case KEY_DOWN:
-            iskey = input == KEY_UP;
-
             operations += add_vertical(game, iskey);
             operations += move_vertical(game, iskey);
             break;
 
         case KEY_LEFT:
         case KEY_RIGHT:
-            iskey = input == KEY_LEFT;
-
             operations += add_horizontal(game, iskey);
             operations += move_horizontal(game, iskey);
             break;
@@ -112,7 +110,7 @@ int8_t handle_game_board(Screen *scrs, Game *game)
         if (operations)
             isempty = place_random(game);
 
-        if (game_over(game, isempty) || game->max_val == 2048)
+        if (game_over(game, isempty) || game->max_val == target)
             return 0;
 
         sprintf(score, "Score: %d", game->score);
