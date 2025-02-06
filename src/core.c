@@ -121,3 +121,16 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
 
     return 1;
 }
+
+static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_len, int select_color)
+{
+    show_dialog(game_win, mesg, mesg_len, select_color);
+
+    int16_t input;
+
+    while ((input = getch()) != 10)
+        if (input == KEY_RESIZE)
+            return -1;
+
+    return 0;
+}
