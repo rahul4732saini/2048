@@ -75,6 +75,35 @@ void show_window_title(Screen *scr, const char *title)
     wrefresh(scr->window);
 }
 
+void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_color)
+{
+    Dimension *dim = scr->dimension;
+    WINDOW *win = scr->window;
+
+    size_t cur_x, cur_y = (dim->height - mesg_len - 2) / 2;
+
+    for (size_t i = 0; i < mesg_len; ++i)
+    {
+        cur_x = (dim->width - strlen(mesg[i])) / 2;
+
+        wmove(win, cur_y++, cur_x);
+        wprintw(win, "%s", mesg[i]);
+    }
+
+    cur_x = (dim->width - dialog_bt_width) / 2;
+    size_t left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
+
+    wmove(win, ++cur_y, cur_x);
+    wattron(win, COLOR_PAIR(select_color));
+
+    wprintw(win, "%*s", left_cutoff, "");
+    wprintw(win, "%s", dialog_bt_txt);
+    wprintw(win, "%*s", dialog_bt_width - left_cutoff - strlen(dialog_bt_txt), "");
+
+    wattroff(win, COLOR_PAIR(select_color));
+    wrefresh(win);
+}
+
 void refresh_game_win(Screen *game_scr, Screen *core_scr, const char *title)
 {
     clear();
