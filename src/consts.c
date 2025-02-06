@@ -35,3 +35,12 @@ const char *pause_menu_items[] = {
 
 const size_t pause_menu_items_size = 3;
 const size_t pause_menu_width = 25;
+
+const size_t dialog_bt_width = 10;
+const char *dialog_bt_txt = "OK";
+
+const char *win_dialog_txt[] = {"You won the game!"};
+const size_t win_dialog_txt_len = 1;
+
+const char *lost_dialog_txt[] = {"You lost the game!", "Better luck next time..."};
+const size_t lost_dialog_txt_len = 2;
