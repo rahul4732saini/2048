@@ -29,4 +29,13 @@ extern const char *pause_menu_items[];
 extern const size_t pause_menu_items_size;
 extern const size_t pause_menu_width;
 
+extern const size_t dialog_bt_width;
+extern const char *dialog_bt_txt;
+
+extern const char *win_dialog_txt[];
+extern const size_t win_dialog_txt_len;
+
+extern const char *lost_dialog_txt[];
+extern const size_t lost_dialog_txt_len;
+
 #endif
