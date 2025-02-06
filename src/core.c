@@ -134,3 +134,17 @@ static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_le
 
     return 0;
 }
+
+static Game setup_game(void)
+{
+    Game game;
+
+    game.board = create_board(4);
+    game.bsize = 4;
+    game.max_val = game.score = 0;
+
+    place_random(&game);
+    place_random(&game);
+
+    return game;
+}
