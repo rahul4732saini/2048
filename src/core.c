@@ -10,7 +10,7 @@
 #include "interface/board.h"
 #include "interface/menu.h"
 
-int8_t handle_main_menu(Screen *scrs)
+static int8_t handle_main_menu(Screen *scrs)
 {
     int16_t input = 0;
     int8_t select = 0;
@@ -41,7 +41,7 @@ int8_t handle_main_menu(Screen *scrs)
     return select;
 }
 
-int8_t handle_pause_menu(Screen *scrs)
+static int8_t handle_pause_menu(Screen *scrs)
 {
     int16_t input = 0;
     int8_t select = 0;
@@ -72,7 +72,7 @@ int8_t handle_pause_menu(Screen *scrs)
     return select;
 }
 
-int8_t handle_game_board(Screen *scrs, Game *game)
+static int8_t handle_game_board(Screen *scrs, Game *game)
 {
     int16_t input, operations;
     bool iskey, isempty;
