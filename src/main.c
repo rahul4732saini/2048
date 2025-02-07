@@ -22,3 +22,14 @@ Screen *setup(void)
 
     return scrs;
 }
+
+void clean(Screen *scrs)
+{
+    for (size_t i = 0; i < 3; ++i)
+    {
+        delwin(scrs[i].window);
+        free(scrs[i].dimension);
+    }
+
+    free(scrs);
+}
