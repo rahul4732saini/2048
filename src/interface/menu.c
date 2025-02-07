@@ -25,23 +25,21 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
     box(win, 0, 0);
 
     size_t width = main_menu_width - 2;
-    size_t length, left_cut, right_cut;
+    size_t length, left_cutoff;
 
     for (size_t i = 0; i < main_menu_items_size; ++i)
     {
         length = strlen(main_menu_items[i]);
-
-        left_cut = (width - length) / 2;
-        right_cut = width - length - left_cut;
+        left_cutoff = (width - length) / 2;
 
         if (i == select)
             wattron(win, COLOR_PAIR(select_color));
 
         wmove(win, i + 1, 1);
 
-        wprintw(win, "%*s", left_cut, "");
+        wprintw(win, "%*s", left_cutoff, "");
         wprintw(win, "%s", main_menu_items[i]);
-        wprintw(win, "%*s", right_cut, "");
+        wprintw(win, "%*s", width - length - left_cutoff, "");
 
         if (i == select)
             wattroff(win, COLOR_PAIR(select_color));
