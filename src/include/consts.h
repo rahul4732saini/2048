@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 
+extern const size_t screen_count;
 extern const size_t target;
 
 extern const size_t cell_width;
