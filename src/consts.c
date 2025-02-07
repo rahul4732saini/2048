@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+const size_t screen_count = 3;
 const size_t target = 2048;
 
 const size_t cell_width = 8;
