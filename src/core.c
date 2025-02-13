@@ -151,3 +151,52 @@ static Game setup_game(void)
 
     return game;
 }
+
+int8_t handle_game(Screen *scrs)
+{
+    int8_t status;
+
+    do
+        refresh_game_win(scrs + 1, scrs, main_menu_title);
+    while ((status = handle_main_menu(scrs)) < 0);
+
+    if (status == 1)
+        return 0;
+
+    Game game = setup_game();
+    refresh_game_win(scrs + 1, scrs, "");
+
+    while ((status = handle_game_board(scrs, &game)))
+    {
+        if (status < 0)
+        {
+            refresh_game_win(scrs + 1, scrs, "");
+            continue;
+        }
+
+        do
+            refresh_game_win(scrs + 1, scrs, pause_menu_title);
+        while ((status = handle_pause_menu(scrs)) < 0);
+
+        if (status == 1)
+            return 1;
+
+        else if (status == 2)
+            return 0;
+
+        refresh_game_win(scrs + 1, scrs, "");
+    }
+
+    refresh_game_win(scrs + 1, scrs, "");
+
+    if (game.max_val == target)
+        show_dialog(scrs + 1, win_dialog_txt, win_dialog_txt_len, 1);
+
+    else
+        show_dialog(scrs + 1, lost_dialog_txt, lost_dialog_txt_len, 1);
+
+    while ((status = getch()) != 10)
+        ;
+
+    return 1;
+}
