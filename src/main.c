@@ -34,3 +34,17 @@ void clean(Screen *scrs)
 
     free(scrs);
 }
+
+int main()
+{
+    Screen *scrs = setup();
+    init_pair(1, COLOR_BLACK, COLOR_WHITE);
+
+    while (handle_game(scrs))
+        ;
+
+    clean(scrs);
+    endwin();
+
+    return EXIT_SUCCESS;
+}
