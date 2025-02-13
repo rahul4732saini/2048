@@ -3,5 +3,6 @@
 
 #include "shared.h"
 
+int8_t handle_game(Screen *scrs);
 
 #endif
