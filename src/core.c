@@ -82,7 +82,10 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
     place_board(scrs + 2, scrs + 1, game->bsize);
     show_board(scrs + 2, game);
 
-    while ((input = getch()) != KEY_EXIT)
+    sprintf(score, "Score: %d", game->score);
+    show_window_title(scrs + 1, score);
+
+    while ((input = getch()) != 27)
     {
         operations = 0;
 
