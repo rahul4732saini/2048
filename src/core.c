@@ -82,7 +82,7 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
     place_board(scrs + 2, scrs + 1, game->bsize);
     show_board(scrs + 2, game);
 
-    sprintf(score, "Score: %d", game->score);
+    sprintf(score, "Score: %zu", game->score);
     show_window_title(scrs + 1, score);
 
     while ((input = getch()) != 27)
@@ -116,7 +116,7 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
         if (game_over(game, isempty) || game->max_val == target)
             return 0;
 
-        sprintf(score, "Score: %d", game->score);
+        sprintf(score, "Score: %zu", game->score);
 
         show_window_title(scrs + 1, score);
         show_board(scrs + 2, game);
