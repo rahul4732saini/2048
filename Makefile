@@ -4,7 +4,7 @@ CFLAGS = -Wall -O2
 LIBS = -lncurses -lm -ltinfo
 INCLUDE = -Isrc/include
 
-INTERFACE_OBJS = objs/interface/core.o objs/interface/common.o\
+INTERFACE_OBJS = objs/interface/core.o objs/interface/shared.o\
 				 objs/interface/menu.o objs/interface/board.o
 
 OBJS = objs/main.o objs/core.o objs/logic.o objs/consts.o
