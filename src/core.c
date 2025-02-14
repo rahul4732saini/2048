@@ -190,13 +190,10 @@ int8_t handle_game(Screen *scrs)
     refresh_game_win(scrs + 1, scrs, "");
 
     if (game.max_val == target)
-        show_dialog(scrs + 1, win_dialog_txt, win_dialog_txt_len, 1);
+        handle_dialog(scrs + 1, win_dialog_txt, win_dialog_txt_len, 1);
 
     else
-        show_dialog(scrs + 1, lost_dialog_txt, lost_dialog_txt_len, 1);
-
-    while ((status = getch()) != 10)
-        ;
+        handle_dialog(scrs + 1, lost_dialog_txt, lost_dialog_txt_len, 1);
 
     return 1;
 }
