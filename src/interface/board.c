@@ -4,7 +4,7 @@
 #include "shared.h"
 #include "consts.h"
 
-#include "interface/common.h"
+#include "interface/shared.h"
 
 void place_board(Screen *scr, Screen *parent, size_t bsize)
 {

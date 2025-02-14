@@ -4,7 +4,7 @@
 #include "consts.h"
 #include "shared.h"
 
-#include "interface/common.h"
+#include "interface/shared.h"
 
 void init_screen(Screen *scr)
 {

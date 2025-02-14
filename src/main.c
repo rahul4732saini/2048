@@ -5,7 +5,7 @@
 #include "core.h"
 #include "consts.h"
 
-#include "interface/common.h"
+#include "interface/shared.h"
 #include "interface/core.h"
 
 Screen *setup(void)
