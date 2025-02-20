@@ -17,12 +17,10 @@
 #include "shared.h"
 
 /*
- * @brief Defines the 2048 game board.
+ * @brief Dynamically allocates memory for the game board of the specified
+ *        of the specified board size.
  *
- * Dynamically allocates memory for the grid of the specified
- * board size.
- *
- * @return Returns a pointer to the game board.
+ * @return Pointer to the game board.
  */
 cell_t **create_board(size_t size)
 {
@@ -45,7 +43,7 @@ cell_t **create_board(size_t size)
  *             to right operation whereas the other signifies a right to
  *             left operation.
  *
- * @return Returns the total number of addition operations performed.
+ * @return Total number of addition operations performed.
  */
 size_t add_horizontal(Game *game, bool left)
 {
@@ -107,7 +105,7 @@ size_t add_horizontal(Game *game, bool left)
  *           true signifies a top to bottom operation whereas the other
  *           signifies a bottom to top operation.
  *
- * @return Returns the total number of addition operations performed.
+ * @return Total number of addition operations performed.
  */
 size_t add_vertical(Game *game, bool up)
 {
@@ -169,7 +167,7 @@ size_t add_vertical(Game *game, bool up)
  *             true signifies a left to right operation whereas the other
  *             signifies a right to left operation.
  *
- * @return Returns the total number of movement operations performed.
+ * @return Total number of movement operations performed.
  */
 size_t move_horizontal(Game *game, bool left)
 {
@@ -223,7 +221,7 @@ size_t move_horizontal(Game *game, bool left)
  *           true signifies a top to bottom operation whereas the other
  *           signifies a bottom to top operation.
  *
- * @return Returns the total number of movement operations performed.
+ * @return Total number of movement operations performed.
  */
 size_t move_vertical(Game *game, bool up)
 {
