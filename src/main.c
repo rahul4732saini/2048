@@ -11,6 +11,7 @@
  */
 
 #include <ncurses.h>
+#include <time.h>
 #include <stdlib.h>
 
 #include "shared.h"
@@ -68,6 +69,8 @@ void clean(Screen *scrs)
  */
 int main()
 {
+    srand(time(NULL));
+
     // Sets up the TUI environments and the required color pairs.
     Screen *scrs = setup();
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
