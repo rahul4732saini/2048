@@ -161,10 +161,24 @@ size_t add_vertical(Game *game, bool up)
     return operations;
 }
 
+/*
+ * @brief Horizontally moves tiles based on the specified direction.
+ *
+ * @param game Pointer to the Game structure comprising the game board.
+ * @param left Signifies the direction of the movement operation. A boolean
+ *             true signifies a left to right operation whereas the other
+ *             signifies a right to left operation.
+ *
+ * @return Returns the total number of movement operations performed.
+ */
 size_t move_horizontal(Game *game, bool left)
 {
     size_t start, end, zindex, operations = 0;
     int8_t dir = left ? 1 : -1;
+
+    // The following conditional statements define the starting
+    // and ending indices for the movement operation based on the
+    // specified direction of operation.
 
     if (left)
         start = 0, end = game->bsize;
@@ -174,12 +188,18 @@ size_t move_horizontal(Game *game, bool left)
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
+        // assigns the game board size to last signfying that there is
+        // no zero cell on the left or right based on the direction.
         zindex = game->bsize;
 
         for (size_t j = start; j != end; j += dir)
         {
             if (game->board[i][j] && zindex != game->bsize)
             {
+                // Swaps the tiles, updates the operations counter and increments
+                // zindex by 1 in the operation direction as the next tile is
+                // always meant to be a zero in the current scenario.
+
                 game->board[i][zindex] = game->board[i][j];
                 game->board[i][j] = 0;
 
