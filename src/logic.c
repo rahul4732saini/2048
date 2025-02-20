@@ -318,6 +318,10 @@ bool game_over(Game *game, bool cell_empty)
     return true;
 }
 
+/*
+ * @brief Frees the dynamically allocated memory for the game board.
+ * @param game Pointer to the Game structure comprising the game board.
+ */
 void free_board(Game *game)
 {
     for (size_t i = 0; i < game->bsize; ++i)
