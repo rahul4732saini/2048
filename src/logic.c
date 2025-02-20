@@ -99,10 +99,24 @@ size_t add_horizontal(Game *game, bool left)
     return operations;
 }
 
+/*
+ * @brief Vertically merges tiles based on the specified direction.
+ *
+ * @param game Pointer to the game structure comprising the game board.
+ * @param up Signifies the direction of the addition operation. A boolean
+ *           true signifies a top to bottom operation whereas the other
+ *           signifies a bottom to top operation.
+ *
+ * @return Returns the total number of addition operations performed.
+ */
 size_t add_vertical(Game *game, bool up)
 {
     size_t start, end, last, operations = 0;
     int8_t dir = up ? 1 : -1;
+
+    // The following conditional statements define the starting
+    // and ending indices for the addition operation based on the
+    // specified direction of operation.
 
     if (up)
         start = 0, end = game->bsize;
@@ -112,6 +126,9 @@ size_t add_vertical(Game *game, bool up)
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
+        // assigns the game board size to last signfying that there is
+        // no compatible cell for merging on the top or bottom based on
+        // the direction.
         last = game->bsize;
 
         for (size_t j = start; j != end; j += dir)
@@ -124,6 +141,9 @@ size_t add_vertical(Game *game, bool up)
                 last = j;
                 continue;
             }
+
+            // Updates the maximum tile value, game score and the operations
+            // counter. Also resets the last variable to signify incompatibility.
 
             game->board[last][i] *= 2;
             game->board[j][i] = 0;
