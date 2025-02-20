@@ -16,6 +16,14 @@
 
 #include "shared.h"
 
+/*
+ * @brief Defines the 2048 game board.
+ *
+ * Dynamically allocates memory for the grid of the specified
+ * board size.
+ *
+ * @return Returns a pointer to the game board.
+ */
 cell_t **create_board(size_t size)
 {
     cell_t **board = (cell_t **)malloc(size * sizeof(cell_t *));
