@@ -36,10 +36,25 @@ cell_t **create_board(size_t size)
     return board;
 }
 
+/*
+ * @brief Horizontally merges tiles based on the specified direction.
+ *
+ * @param game Pointer to the game structure comprising the game board.
+ * @param left This parameter is used for identifying the direction of
+ *             the addition operation. A boolean true signifies a left
+ *             to right operation whereas the other signifies a right to
+ *             left operation.
+ *
+ * @return Returns the total number of addition operations performed.
+ */
 size_t add_horizontal(Game *game, bool left)
 {
     size_t start, end, last, operations = 0;
     int8_t dir = left ? 1 : -1;
+
+    // The following conditional statements define the starting
+    // and ending indices for the addition operation based on the
+    // specified direction of operation.
 
     if (left)
         start = 0, end = game->bsize;
@@ -49,6 +64,9 @@ size_t add_horizontal(Game *game, bool left)
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
+        // assigns the game board size to last signfying that there is
+        // no compatible cell for merging on the right or left based on
+        // the direction.
         last = game->bsize;
 
         for (size_t j = start; j != end; j += dir)
@@ -64,6 +82,9 @@ size_t add_horizontal(Game *game, bool left)
 
             game->board[i][last] *= 2;
             game->board[i][j] = 0;
+
+            // Updates the maximum tile value, game score and the operations
+            // counter. Also resets the last variable to signify incompatibility.
 
             if (game->board[i][last] > game->max_val)
                 game->max_val = game->board[i][last];
