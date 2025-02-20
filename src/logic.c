@@ -269,10 +269,18 @@ size_t move_vertical(Game *game, bool up)
     return operations;
 }
 
+/*
+ * @brief Places the value 2 at a random tile on the game board.
+ * @param game Pointer to the Game structure comprising the game board.
+ * @return A boolean value signifying the presence of empty tiles.
+ */
 bool place_random(Game *game)
 {
     size_t positions[game->bsize * game->bsize];
     size_t ctr = 0;
+
+    // Iterates through all the tiles and appends the indices to the
+    // positions array for random selection.
 
     for (size_t i = 0; i < game->bsize; ++i)
     {
