@@ -1,3 +1,15 @@
+/*
+ * @file logic.c
+ * @brief Implements all logical aspects of the 2048 game.
+ *
+ * This module defines functions for handling all game logic
+ * including the following:
+ * - Handling tile movement and merge operations.
+ * - Defintion and decomposition of the game board.
+ * - Checking game status conditions.
+ * - Placing values randomly on the game board.
+ */
+
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
