@@ -1,3 +1,12 @@
+/*
+ * @file core.c
+ * @brief Defines handler functions for all game interface windows.
+ *
+ * This module defines functions for handling all the TUI windows
+ * including user input management and integration of the logic associated
+ * with the interface.
+ */
+
 #include <ncurses.h>
 #include <stdint.h>
 #include <stdbool.h>
