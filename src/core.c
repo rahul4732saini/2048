@@ -67,6 +67,22 @@ static int8_t handle_main_menu(Screen *scrs)
     return select;
 }
 
+/*
+ * @brief Handles the pause menu interface window.
+ *
+ * This function displays the pause menu window while handling user
+ * input for triggering the actions  associated with the pause menu
+ * buttons.
+ *
+ * @param Pointer to the screens array comprising the Screen structs.
+ * @return Returns an integer code to indicate the pressed button signifying
+ *         the action which needs to be triggered. The codes along with
+ *         their actions are as follows:
+ *         -  0 -> Resume game
+ *         -  1 -> Quit to main menu
+ *         -  2 -> Quit game
+ *         - -1 -> Screen resize
+ */
 static int8_t handle_pause_menu(Screen *scrs)
 {
     int16_t input = 0;
@@ -75,6 +91,8 @@ static int8_t handle_pause_menu(Screen *scrs)
     place_pause_menu(scrs + 2, scrs + 1);
     show_pause_menu(scrs + 2, select, 1);
 
+    // Displays the main menu window until the RETURN key is pressed
+    // signifying a button press.
     while ((input = getch()) != 10)
     {
         switch (input)
