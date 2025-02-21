@@ -22,13 +22,13 @@ const char *footers[] = {
 };
 
 // Length of the headers and footers array.
-const size_t headers_size = 1;
-const size_t footers_size = 2;
+const size_t headers_len = 1;
+const size_t footers_len = 2;
 
 // Horizontal and vertical margins for the game  window. A additional
 // height of 4 is added in the vertical margin to display empty lines
 // between the game window and the screen edges.
-const size_t win_vertical_margins = headers_size + footers_size + 4;
+const size_t win_vertical_margins = headers_len + footers_len + 4;
 const size_t win_horizontal_margins = 0;
 
 const char *main_menu_title = "Main Menu";
