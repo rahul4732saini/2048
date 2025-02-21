@@ -15,7 +15,7 @@ $(shell mkdir -p objs/interface)
 build: a.out
 
 a.out: $(OBJS) $(INTERFACE_OBJS)
-	$(CC) $(CFLAGS) $(LIBS) $(INCLUDE) -o $@ $^
+	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
 
 objs/%.o: src/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
