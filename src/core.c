@@ -19,6 +19,20 @@
 #include "interface/board.h"
 #include "interface/menu.h"
 
+/*
+ * @brief Handles the main menu interface window.
+ *
+ * This function displays the main menu window while handling user
+ * input for triggering the actions  associated with the main menu
+ * buttons.
+ *
+ * @param Pointer to the screens array comprising the Screen structs.
+ * @return Returns an integer code to indicate the pressed button signifying
+ *         the action which needs to be triggered. The codes along with
+ *         their actions are as follows:
+ *         - 0 -> Start
+ *         - 1 -> Exit
+ */
 static int8_t handle_main_menu(Screen *scrs)
 {
     int16_t input = 0;
@@ -27,6 +41,8 @@ static int8_t handle_main_menu(Screen *scrs)
     place_main_menu(scrs + 2, scrs + 1);
     show_main_menu(scrs + 2, select, 1);
 
+    // Displays the main menu window until the RETURN key is pressed
+    // signifying a button press.
     while ((input = getch()) != 10)
     {
         switch (input)
