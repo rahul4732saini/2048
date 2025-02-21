@@ -30,8 +30,9 @@
  * @return Returns an integer code to indicate the pressed button signifying
  *         the action which needs to be triggered. The codes along with
  *         their actions are as follows:
- *         - 0 -> Start
- *         - 1 -> Exit
+ *         -  0 -> Start
+ *         -  1 -> Exit
+ *         - -1 -> Screen resize
  */
 static int8_t handle_main_menu(Screen *scrs)
 {
