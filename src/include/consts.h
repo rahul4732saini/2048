@@ -12,8 +12,8 @@ extern const size_t cell_height;
 extern const char *headers[];
 extern const char *footers[];
 
-extern const size_t headers_size;
-extern const size_t footers_size;
+extern const size_t headers_len;
+extern const size_t footers_len;
 
 extern const size_t win_vertical_margins;
 extern const size_t win_horizontal_margins;
