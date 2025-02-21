@@ -46,16 +46,16 @@ void show_header_footer(Screen *scr)
     Dimension *dim = scr->dimension;
     size_t st_pos;
 
-    for (size_t i = 0; i < headers_size; ++i)
+    for (size_t i = 0; i < headers_len; ++i)
     {
         st_pos = (dim->width - strlen(headers[i])) / 2;
         mvprintw(1 + i, st_pos, "%s", headers[i]);
     }
 
-    for (size_t i = 0; i < footers_size; ++i)
+    for (size_t i = 0; i < footers_len; ++i)
     {
         st_pos = (dim->width - strlen(footers[i])) / 2;
-        mvprintw(dim->height - footers_size + i - 1, st_pos, "%s", footers[i]);
+        mvprintw(dim->height - footers_len + i - 1, st_pos, "%s", footers[i]);
     }
 
     wrefresh(scr->window);
