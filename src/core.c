@@ -247,6 +247,15 @@ static Game setup_game(void)
 }
 
 /*
+ * @brief Cleans the dynamically allocated memory during initialization.
+ * @param game Pointer to the Game struct comprising the game data.
+ */
+static void clean_game(Game *game)
+{
+    free_board(game);
+}
+
+/*
  * @brief Handles the 2048 game session.
  *
  * This function handles all the interface windows in the game, while
