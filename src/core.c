@@ -116,6 +116,24 @@ static int8_t handle_pause_menu(Screen *scrs)
     return select;
 }
 
+/*
+ * @brief Handles the game board interface window.
+ *
+ * This function displays the game board  window while handling the
+ * complete 2048 game mechanics including user input management and
+ * tile operations, placing random  values on the board, displaying
+ * the game score and checking game over conditions at each move.
+ *
+ * @param scrs Pointers to the screens array comprising the Screen structs.
+ * @param game Pointer to the Game struct comprising the game data.
+ *
+ * @return Returns an integer code signifying the next action to be performed
+ *         in the game session. The codes along with their actions associated
+ *         are as follows:
+ *         -  0 -> Game over (either won or lost)
+ *         -  1 -> Open pause menu
+ *         - -1 -> Screen resize
+ */
 static int8_t handle_game_board(Screen *scrs, Game *game)
 {
     int16_t input, operations;
@@ -126,9 +144,12 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
     place_board(scrs + 2, scrs + 1, game->bsize);
     show_board(scrs + 2, game);
 
+    // Displays the current game score as the window title.
     sprintf(score, "Score: %zu", game->score);
     show_window_title(scrs + 1, score);
 
+    // Displays the game board and handles the game mechanics
+    // until the ESC key is pressed to open the pause menu.
     while ((input = getch()) != 27)
     {
         operations = 0;
@@ -159,6 +180,9 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
 
         if (game_over(game, isempty) || game->max_val == target)
             return 0;
+
+        // Updates the game score string and refreshes
+        // the game board as well as the window title.
 
         sprintf(score, "Score: %zu", game->score);
 
