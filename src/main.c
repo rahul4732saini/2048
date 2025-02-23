@@ -1,4 +1,4 @@
-/*
+/**
  * @file main.c
  * @brief Entry point for the TUI-based 2048 game.
  *
@@ -21,8 +21,8 @@
 #include "interface/shared.h"
 #include "interface/core.h"
 
-/*
- * Initializes the TUI environment for the game.
+/**
+ * @brief Initializes the TUI environment for the game.
  *
  * Sets up the Screen and Dimensions structures for encapsulating the TUI
  * windows and their associated dimensions. It also initializes the standard
@@ -47,8 +47,8 @@ Screen *setup(void)
     return scrs;
 }
 
-/*
- * Cleans the TUI environment before closure.
+/**
+ * @brief Cleans the TUI environment before closure.
  *
  * Frees the dynamically allocated memory for the TUI windows, their associated
  * Dimension structs and the screens array comprising the Screen structs.
@@ -64,8 +64,8 @@ void clean(Screen *scrs)
     free(scrs);
 }
 
-/*
- * Main function for program execution.
+/**
+ * @brief Main function for program execution.
  */
 int main()
 {
