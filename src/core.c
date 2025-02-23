@@ -246,10 +246,25 @@ static Game setup_game(void)
     return game;
 }
 
+/*
+ * @brief Handles the 2048 game session.
+ *
+ * This function handles all the interface windows in the game, while
+ * managing user input and, proper game setup and cleanup operations.
+ *
+ * @param scrs Pointer to the screens array comprising the Screen structs.
+ *
+ * @return An integer code signifying the next action to be performed
+ *         in the game session. The codes along with their associated
+ *         actions are as follows:
+ *         -  0 -> Exit
+ *         -  1 -> Restart
+ */
 int8_t handle_game(Screen *scrs)
 {
     int8_t status;
 
+    // Handles the main menu interface.
     do
         refresh_game_win(scrs + 1, scrs, main_menu_title);
     while ((status = handle_main_menu(scrs)) < 0);
@@ -257,9 +272,12 @@ int8_t handle_game(Screen *scrs)
     if (status == 1)
         return 0;
 
+    // Sets up the Game struct and clears the window
+    // title for displaying  the game score.
     Game game = setup_game();
     refresh_game_win(scrs + 1, scrs, "");
 
+    // Handles the game board interface.
     while ((status = handle_game_board(scrs, &game)))
     {
         if (status < 0)
@@ -268,6 +286,7 @@ int8_t handle_game(Screen *scrs)
             continue;
         }
 
+        // Handles the pause menu interface.
         do
             refresh_game_win(scrs + 1, scrs, pause_menu_title);
         while ((status = handle_pause_menu(scrs)) < 0);
@@ -283,6 +302,8 @@ int8_t handle_game(Screen *scrs)
 
     refresh_game_win(scrs + 1, scrs, "");
 
+    // Displays a dialog box based on whether
+    // the end-user won or lost the game.
     if (game.max_val == target)
         handle_dialog(scrs + 1, win_dialog_txt, win_dialog_txt_len, 1);
 
