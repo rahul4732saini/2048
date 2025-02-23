@@ -27,9 +27,9 @@
  * buttons.
  *
  * @param Pointer to the screens array comprising the Screen structs.
- * @return Returns an integer code to indicate the pressed button signifying
- *         the action which needs to be triggered. The codes along with
- *         their actions are as follows:
+ * @return An integer code to indicate the pressed button signifying the
+ *         action which needs to be triggered. The codes along with their
+ *         actions are as follows:
  *         -  0 -> Start
  *         -  1 -> Exit
  *         - -1 -> Screen resize
@@ -75,9 +75,9 @@ static int8_t handle_main_menu(Screen *scrs)
  * buttons.
  *
  * @param Pointer to the screens array comprising the Screen structs.
- * @return Returns an integer code to indicate the pressed button signifying
- *         the action which needs to be triggered. The codes along with
- *         their actions are as follows:
+ * @return An integer code to indicate the pressed button signifying the
+ *         action which needs to be triggered. The codes along with their
+ *         actions are as follows:
  *         -  0 -> Resume game
  *         -  1 -> Quit to main menu
  *         -  2 -> Quit game
@@ -127,8 +127,8 @@ static int8_t handle_pause_menu(Screen *scrs)
  * @param scrs Pointers to the screens array comprising the Screen structs.
  * @param game Pointer to the Game struct comprising the game data.
  *
- * @return Returns an integer code signifying the next action to be performed
- *         in the game session. The codes along with their actions associated
+ * @return An integer code signifying the next action to be performed in
+ *         the game session. The codes along with their actions associated
  *         are as follows:
  *         -  0 -> Game over (either won or lost)
  *         -  1 -> Open pause menu
@@ -205,9 +205,9 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
  * @param mesg_len Length of the mesg array.
  * @param select Integer signifying the color pair for the selected button.
  *
- * @return Returns an integer code to indicate the pressed button signifying
- *         the action which needs to be triggered. The codes along with
- *         their actions are as follows:
+ * @return An integer code to indicate the pressed button signifying the
+ *         action which needs to be triggered. The codes along with their
+ *         actions are as follows:
  *         -  0 -> OK
  *         - -1 -> Screen resize
  */
@@ -230,7 +230,7 @@ static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_le
  * @brief Sets up the Game struct for keeping track of
  *        the associated data during the game session.
  *
- * @return Returns the Game struct comprising the inital game data.
+ * @return The Game struct comprising the inital game data.
  */
 static Game setup_game(void)
 {
