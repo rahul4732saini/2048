@@ -193,12 +193,32 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
     return 1;
 }
 
+/*
+ * @brief Handles the dialog box interface window.
+ *
+ * This function displays the dialog box window while handling user
+ * input for triggering the actions associated with the dialog box
+ * buttons.
+ *
+ * @param game_win Pointer to the game window screen.
+ * @param mesg Pointer to the array comprising the strings to be displayed.
+ * @param mesg_len Length of the mesg array.
+ * @param select Integer signifying the color pair for the selected button.
+ *
+ * @return Returns an integer code to indicate the pressed button signifying
+ *         the action which needs to be triggered. The codes along with
+ *         their actions are as follows:
+ *         -  0 -> OK
+ *         - -1 -> Screen resize
+ */
 static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_len, int select_color)
 {
     show_dialog(game_win, mesg, mesg_len, select_color);
 
     int16_t input;
 
+    // Displays the dialog box window until the RETURN
+    // key is pressed signifying a button press.
     while ((input = getch()) != 10)
         if (input == KEY_RESIZE)
             return -1;
