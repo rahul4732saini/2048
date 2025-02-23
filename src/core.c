@@ -226,6 +226,12 @@ static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_le
     return 0;
 }
 
+/*
+ * @brief Sets up the Game struct for keeping track of
+ *        the associated data during the game session.
+ *
+ * @return Returns the Game struct comprising the inital game data.
+ */
 static Game setup_game(void)
 {
     Game game;
