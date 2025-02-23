@@ -301,10 +301,16 @@ int8_t handle_game(Screen *scrs)
         while ((status = handle_pause_menu(scrs)) < 0);
 
         if (status == 1)
+        {
+            clean_game(&game);
             return 1;
+        }
 
         else if (status == 2)
+        {
+            clean_game(&game);
             return 0;
+        }
 
         refresh_game_win(scrs + 1, scrs, "");
     }
@@ -319,5 +325,6 @@ int8_t handle_game(Screen *scrs)
     else
         handle_dialog(scrs + 1, lost_dialog_txt, lost_dialog_txt_len, 1);
 
+    clean_game(&game);
     return 1;
 }
