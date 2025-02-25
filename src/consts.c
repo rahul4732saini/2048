@@ -1,4 +1,4 @@
-/*
+/**
  * @file consts.c
  * @brief Defines constants used throughout the game for assistance.
  */
