@@ -104,6 +104,12 @@ void show_game_win(Screen *scr)
     wrefresh(scr->window);
 }
 
+/**
+ * @brief Displays the window title on the top of the game window.
+ *
+ * @param scr Pointer to the Screen struct comprising the game window data.
+ * @param title The text to be displayed as the window title.
+ */
 void show_window_title(Screen *scr, const char *title)
 {
     size_t start_x = (scr->dimension->width - strlen(title)) / 2;
