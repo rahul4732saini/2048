@@ -50,6 +50,17 @@ void get_screen_dimension(Screen *scr)
     getmaxyx(stdscr, dim->height, dim->width);
 }
 
+/**
+ * @brief Places the game window on the screen based on the
+ *        dimensions stored in Dimension structs within the
+ *        specified Screen structs.
+ *
+ * This functions calculates the dimensions of the game window
+ * and transform it with the `place_window` function.
+ *
+ * @param scr Screen struct comprising the game window data.
+ * @param parent Screen struct comprising the standard screen data.
+ */
 void place_game_win(Screen *scr, Screen *parent)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
