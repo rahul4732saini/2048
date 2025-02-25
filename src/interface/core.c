@@ -147,6 +147,18 @@ void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_co
     wrefresh(win);
 }
 
+/**
+ * @brief Refreshes the game window upon a screen resize.
+ *
+ * This function defines mechanism to refreshing the game window upon a
+ * screen resize, update the dimensions of the standard screen and game
+ * window, and display them on the screen along with the screen headers,
+ * footers and the window title.
+ *
+ * @param game_scr Pointer to the Screen struct comprising the game window data.
+ * @param core_scr Pointer to the Screen struct comprising the standard screen data.
+ * @param title The text to be displayed as the window title.
+ */
 void refresh_game_win(Screen *game_scr, Screen *core_scr, const char *title)
 {
     clear();
