@@ -1,4 +1,4 @@
-/*
+/**
  * @file logic.c
  * @brief Implements all logical aspects of the 2048 game.
  *
@@ -16,7 +16,7 @@
 
 #include "shared.h"
 
-/*
+/**
  * @brief Dynamically allocates memory for the game board of the specified
  *        of the specified board size.
  *
@@ -34,7 +34,7 @@ cell_t **create_board(size_t size)
     return board;
 }
 
-/*
+/**
  * @brief Horizontally merges tiles based on the specified direction.
  *
  * @param game Pointer to the game structure comprising the game board.
@@ -97,7 +97,7 @@ size_t add_horizontal(Game *game, bool left)
     return operations;
 }
 
-/*
+/**
  * @brief Vertically merges tiles based on the specified direction.
  *
  * @param game Pointer to the game structure comprising the game board.
@@ -159,7 +159,7 @@ size_t add_vertical(Game *game, bool up)
     return operations;
 }
 
-/*
+/**
  * @brief Horizontally moves tiles based on the specified direction.
  *
  * @param game Pointer to the Game structure comprising the game board.
@@ -213,7 +213,7 @@ size_t move_horizontal(Game *game, bool left)
     return operations;
 }
 
-/*
+/**
  * @brief Vertically moves tiles based on the specified direction.
  *
  * @param game Pointer to the Game structure comprising the game board.
@@ -267,7 +267,7 @@ size_t move_vertical(Game *game, bool up)
     return operations;
 }
 
-/*
+/**
  * @brief Places the value 2 at a random tile on the game board.
  * @param game Pointer to the Game structure comprising the game board.
  * @return A boolean value signifying the presence of empty tiles.
@@ -300,10 +300,12 @@ bool place_random(Game *game)
     return ctr > 1;
 }
 
-/*
+/**
  * @brief Checks if the game is over and the player has lost.
+ *
  * @param game Pointer to the game structure comprising the game board.
  * @param cell_empty Whether there are any empty cells on the game board.
+ *
  * @return A Boolean value signifying whether the game is over.
  */
 bool game_over(Game *game, bool cell_empty)
@@ -326,7 +328,7 @@ bool game_over(Game *game, bool cell_empty)
     return true;
 }
 
-/*
+/**
  * @brief Frees the dynamically allocated memory for the game board.
  * @param game Pointer to the Game structure comprising the game board.
  */
