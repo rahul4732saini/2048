@@ -83,6 +83,16 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
     wrefresh(win);
 }
 
+/**
+ * @brief Places the pause menu on the screen based on the
+ * Dimension structs within the specified Screen structs.
+ *
+ * This functions calculates the dimensions of the pause menu
+ * window and transform it with the `place_window` function.
+ *
+ * @param scr Screen struct comprising the pause menu window data.
+ * @param parent Screen struct comprising the game window data.
+ */
 void place_pause_menu(Screen *scr, Screen *parent)
 {
     Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
