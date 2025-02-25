@@ -36,6 +36,16 @@ void place_main_menu(Screen *scr, Screen *parent)
     place_window(scr);
 }
 
+/**
+ * @brief Displays the main menu window on the TUI screen.
+ *
+ * Displays the main menu window with the menu items also highlighting
+ * the specified item in the specified color pair marking the selection.
+ *
+ * @param scr Screen struct comprising the main menu window data.
+ * @param select Index of the selected menu item.
+ * @param select_color Integer signifying the color pair for marking selection.
+ */
 void show_main_menu(Screen *scr, size_t select, int select_color)
 {
     WINDOW *win = scr->window;
@@ -46,13 +56,21 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
 
     for (size_t i = 0; i < main_menu_items_size; ++i)
     {
+        // Extracts the length of the string and calculates the size
+        // of the left cutoff to display it at the center of the menu.
         length = strlen(main_menu_items[i]);
         left_cutoff = (width - length) / 2;
+
+        // Configures the current background and foreground
+        // color based on the index of the menu item.
 
         if (i == select)
             wattron(win, COLOR_PAIR(select_color));
 
         wmove(win, i + 1, 1);
+
+        // Explicitly prints the left and right blank spaces to display
+        // the foreground color in case the current item is selected.
 
         wprintw(win, "%*s", left_cutoff, "");
         wprintw(win, "%s", main_menu_items[i]);
