@@ -1,4 +1,4 @@
-/*
+/**
  * @file core.c
  * @brief Defines handler functions for all game interface windows.
  *
@@ -19,7 +19,7 @@
 #include "interface/board.h"
 #include "interface/menu.h"
 
-/*
+/**
  * @brief Handles the main menu interface window.
  *
  * This function displays the main menu window while handling user
@@ -67,7 +67,7 @@ static int8_t handle_main_menu(Screen *scrs)
     return select;
 }
 
-/*
+/**
  * @brief Handles the pause menu interface window.
  *
  * This function displays the pause menu window while handling user
@@ -116,7 +116,7 @@ static int8_t handle_pause_menu(Screen *scrs)
     return select;
 }
 
-/*
+/**
  * @brief Handles the game board interface window.
  *
  * This function displays the game board  window while handling the
@@ -193,7 +193,7 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
     return 1;
 }
 
-/*
+/**
  * @brief Handles the dialog box interface window.
  *
  * This function displays the dialog box window while handling user
@@ -226,7 +226,7 @@ static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_le
     return 0;
 }
 
-/*
+/**
  * @brief Sets up the Game struct for keeping track of
  *        the associated data during the game session.
  *
@@ -246,7 +246,7 @@ static Game setup_game(void)
     return game;
 }
 
-/*
+/**
  * @brief Cleans the dynamically allocated memory during initialization.
  * @param game Pointer to the Game struct comprising the game data.
  */
@@ -255,7 +255,7 @@ static void clean_game(Game *game)
     free_board(game);
 }
 
-/*
+/**
  * @brief Handles the 2048 game session.
  *
  * This function handles all the interface windows in the game, while
