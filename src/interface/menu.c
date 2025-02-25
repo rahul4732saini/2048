@@ -1,3 +1,10 @@
+/**
+ * @brief Defines functions for handling menu interfaces.
+ *
+ * This function defines the functions for placing and
+ * displaying the main and pause menu interfaces.
+ */
+
 #include <ncurses.h>
 #include <string.h>
 
