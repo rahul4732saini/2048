@@ -148,14 +148,14 @@ void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_co
     }
 
     cur_x = (dim->width - dialog_bt_width) / 2;
-    size_t left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
+    size_t inner_left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
 
     wmove(win, ++cur_y, cur_x);
     wattron(win, COLOR_PAIR(select_color));
 
-    wprintw(win, "%*s", left_cutoff, "");
+    wprintw(win, "%*s", inner_left_cutoff, "");
     wprintw(win, "%s", dialog_bt_txt);
-    wprintw(win, "%*s", dialog_bt_width - left_cutoff - strlen(dialog_bt_txt), "");
+    wprintw(win, "%*s", dialog_bt_width - inner_left_cutoff - strlen(dialog_bt_txt), "");
 
     wattroff(win, COLOR_PAIR(select_color));
     wrefresh(win);
