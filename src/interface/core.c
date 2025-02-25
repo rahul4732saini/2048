@@ -132,15 +132,32 @@ void show_window_title(Screen *scr, const char *title)
     wrefresh(scr->window);
 }
 
+/**
+ * @brief Displays a dialog box at the center of the game window.
+ *
+ * This function defines mechanism to display a dialog box with the specified
+ * message at the center of the game window, with an OK button displayed in the
+ * specified selection color pair for accepting the text.
+ *
+ * @param scr Pointer to the Screen struct comprising the game window.
+ * @param mesg Pointer to the array comprising the text as inidividual lines.
+ * @param mesg_length Length of the mesg array.
+ * @param select_color Integer signifying the color pair for marking selection.
+ */
 void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_color)
 {
     Dimension *dim = scr->dimension;
     WINDOW *win = scr->window;
 
+    // Calculates the current Y coordinates for placing the message.
+    // A margin of 2 rows is reduced during the  calculation of the
+    // centre position for the OK button.
     size_t cur_x, cur_y = (dim->height - mesg_len - 2) / 2;
 
     for (size_t i = 0; i < mesg_len; ++i)
     {
+        // Calculates the left cutoff to place the text in the middle
+        // of the game window.
         cur_x = (dim->width - strlen(mesg[i])) / 2;
 
         wmove(win, cur_y++, cur_x);
@@ -148,10 +165,16 @@ void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_co
     }
 
     cur_x = (dim->width - dialog_bt_width) / 2;
+
+    // Stores the internal left cutoff within the OK button
+    // to place the text in the middle of the button.
     size_t inner_left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
 
     wmove(win, ++cur_y, cur_x);
     wattron(win, COLOR_PAIR(select_color));
+
+    // Explicitly prints the left and right blank spaces
+    // to display the foreground color within the button.
 
     wprintw(win, "%*s", inner_left_cutoff, "");
     wprintw(win, "%s", dialog_bt_txt);
