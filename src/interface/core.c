@@ -74,17 +74,31 @@ void place_game_win(Screen *scr, Screen *parent)
     place_window(scr);
 }
 
+/**
+ * @brief Displays the screen header and footer text.
+ *
+ * Displays the header and footer text above and below the game window
+ * providing general details about the game and its associates.
+ *
+ * @param scr Pointer to the Screen struct comprising the standard screen data.
+ */
 void show_header_footer(Screen *scr)
 {
     Dimension *dim = scr->dimension;
+
+    // Stores the left cutoff to place the text at the center of the game window.
     size_t st_pos;
 
+    // Places the headers below the game window with
+    // a 1 row padding above and below the text.
     for (size_t i = 0; i < headers_len; ++i)
     {
         st_pos = (dim->width - strlen(headers[i])) / 2;
         mvprintw(1 + i, st_pos, "%s", headers[i]);
     }
 
+    // Places the footers below the game window with
+    // a 1 row padding above and below the text.
     for (size_t i = 0; i < footers_len; ++i)
     {
         st_pos = (dim->width - strlen(footers[i])) / 2;
