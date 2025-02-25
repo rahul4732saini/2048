@@ -36,6 +36,12 @@ void init_screen(Screen *scr)
     scr->window = stdscr;
 }
 
+/**
+ * @brief Extracts the standard screen dimensions and stores them in the
+ *        Dimension struct within the specified Screen struct.
+ *
+ * @param scr Pointer to the Screen struct comprising the standard screen data.
+ */
 void get_screen_dimension(Screen *scr)
 {
     Dimension *dim = scr->dimension;
