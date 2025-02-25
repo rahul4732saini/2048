@@ -94,6 +94,10 @@ void show_header_footer(Screen *scr)
     wrefresh(scr->window);
 }
 
+/**
+ * @brief Displays the game window on the TUI screen.
+ * @param scr Screen struct comprising the game window data.
+ */
 void show_game_win(Screen *scr)
 {
     box(scr->window, 0, 0);
