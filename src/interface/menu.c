@@ -15,7 +15,8 @@
 
 /**
  * @brief Places the main menu on the screen based on the
- * Dimension structs within the specified Screen structs.
+ *        dimensions stored in Dimension structs within the
+ *        specified Screen structs.
  *
  * This functions calculates the dimensions of the main menu
  * window and transform it with the `place_window` function.
@@ -85,7 +86,8 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
 
 /**
  * @brief Places the pause menu on the screen based on the
- * Dimension structs within the specified Screen structs.
+ *        dimensions stored in Dimension structs within the
+ *        specified Screen structs.
  *
  * This functions calculates the dimensions of the pause menu
  * window and transform it with the `place_window` function.
