@@ -82,8 +82,8 @@ static void draw_hline(WINDOW *win, size_t bsize)
  * @brief Draws the edges of the horizontal and
  *        vertical grid lines on the game board.
  *
- * Draws the 'T' symbol rotated in a favourable direction to mark the
- * edges of the horizontal and vertical grid lines on the game board.
+ * @details Draws the 'T' symbol rotated in a favourable direction to mark the
+ *          edges of the horizontal and vertical grid lines on the game board.
  *
  * @param win Pointer to the game board window.
  * @param bsize Size of the game board.
@@ -166,8 +166,8 @@ static void populate_cells(WINDOW *win, Game *game)
 /**
  * @brief Displays the game board window on the TUI screen.
  *
- * Draws the game board in the associated window and
- * populates the cells with their associated values.
+ * @details Draws the game board in the associated window and
+ *          populates the cells with their associated values.
  *
  * @param scr Pointer to the Screen struct comprising the game board window data.
  * @param game Pointer to the Game struct comrising the game data.
