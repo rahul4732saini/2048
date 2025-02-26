@@ -87,6 +87,8 @@ static void draw_edges(WINDOW *win, size_t bsize)
  */
 static void draw_grid(WINDOW *win, size_t bsize)
 {
+    box(win, 0, 0);
+
     draw_edges(win, bsize);
     draw_vlines(win, bsize);
 
@@ -138,9 +140,6 @@ void show_board(Screen *scr, Game *game)
     WINDOW *win = scr->window;
 
     wclear(win);
-
-    box(win, 0, 0);
-    wrefresh(win);
 
     draw_grid(win, game->bsize);
     populate_cells(win, game);
