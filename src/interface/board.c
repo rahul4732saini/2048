@@ -58,7 +58,7 @@ static void draw_vlines(WINDOW *win, size_t bsize)
     }
 }
 
-static void draw_hlines(WINDOW *win, size_t bsize)
+static void draw_hline(WINDOW *win, size_t bsize)
 {
     for (size_t i = 0; i < bsize; ++i)
     {
@@ -102,7 +102,7 @@ static void draw_grid(WINDOW *win, size_t bsize)
     for (size_t i = 0; i < bsize - 1; ++i)
     {
         wmove(win, (i + 1) * (cell_height + 1), 1);
-        draw_hlines(win, bsize);
+        draw_hline(win, bsize);
     }
 
     wrefresh(win);
