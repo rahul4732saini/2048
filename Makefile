@@ -12,9 +12,9 @@ OBJS = objs/main.o objs/core.o objs/logic.o objs/consts.o
 # Ensure the obj directories exist for storing the object files.
 $(shell mkdir -p objs/interface)
 
-build: a.out
+build: 2048
 
-a.out: $(OBJS) $(INTERFACE_OBJS)
+2048: $(OBJS) $(INTERFACE_OBJS)
 	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
 
 objs/%.o: src/%.c
@@ -25,4 +25,4 @@ objs/interface/%.o: src/interface/%.c
 
 clean:
 	rm -r objs/
-	rm a.out
+	rm 2048
