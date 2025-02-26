@@ -38,6 +38,12 @@ void place_board(Screen *scr, Screen *parent, size_t bsize)
     place_window(scr);
 }
 
+/**
+ * @brief Draws vertical grid lines on the 2048 game board.
+ *
+ * @param win Pointer to the game board window.
+ * @param bsize Size of the game board.
+ */
 static void draw_vlines(WINDOW *win, size_t bsize)
 {
     for (size_t i = 1; i < bsize * (cell_height + 1); ++i)
