@@ -78,16 +78,29 @@ static void draw_hline(WINDOW *win, size_t bsize)
     }
 }
 
+/**
+ * @brief Draws the edges of the horizontal and
+ *        vertical grid lines on the game board.
+ *
+ * Draws the 'T' symbol rotated in a favourable direction to mark the
+ * edges of the horizontal and vertical grid lines on the game board.
+ *
+ * @param win Pointer to the game board window.
+ * @param bsize Size of the game board.
+ */
 static void draw_edges(WINDOW *win, size_t bsize)
 {
     size_t height = bsize * (cell_height + 1) + 1;
     size_t width = bsize * (cell_width + 1) + 1;
 
+    // Draws the edges for each individual horizontal and vertical line.
     for (size_t i = 1; i < bsize; ++i)
     {
+        // Draws the edges of the vertical grid line.
         mvwaddch(win, 0, (cell_width + 1) * i, ACS_TTEE);
         mvwaddch(win, height - 1, (cell_width + 1) * i, ACS_BTEE);
 
+        // Draws the edges of the horizontal grid line.
         mvwaddch(win, (cell_height + 1) * i, 0, ACS_LTEE);
         mvwaddch(win, (cell_height + 1) * i, width - 1, ACS_RTEE);
     }
