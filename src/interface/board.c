@@ -124,6 +124,15 @@ static void populate_cells(WINDOW *win, Game *game)
     wrefresh(win);
 }
 
+/**
+ * @brief Displays the game board window on the TUI screen.
+ *
+ * Draws the game board in the associated window and
+ * populates the cells with their associated values.
+ *
+ * @param scr Pointer to the Screen struct comprising the game board window data.
+ * @param game Pointer to the Game struct comrising the game data.
+ */
 void show_board(Screen *scr, Game *game)
 {
     WINDOW *win = scr->window;
