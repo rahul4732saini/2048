@@ -40,11 +40,9 @@ void place_board(Screen *scr, Screen *parent, size_t bsize)
 
 static void draw_vlines(WINDOW *win, size_t bsize)
 {
-    size_t y = getcury(win);
-
-    for (size_t i = 0; i < cell_height; ++i)
+    for (size_t i = 1; i < bsize * (cell_height + 1); ++i)
     {
-        wmove(win, y + i, 1);
+        wmove(win, i, 1);
 
         for (size_t j = 0; j < bsize - 1; ++j)
         {
