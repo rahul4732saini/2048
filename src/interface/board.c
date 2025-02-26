@@ -117,6 +117,12 @@ static void draw_grid(WINDOW *win, size_t bsize)
     wrefresh(win);
 }
 
+/**
+ * @brief Populate the cells with their corresponding values on the game board.
+ *
+ * @param win Pointer to the game board window.
+ * @param game Pointer to the Game struct comprising the game data.
+ */
 static void populate_cells(WINDOW *win, Game *game)
 {
     size_t pos_x, pos_y, num_len;
@@ -128,8 +134,11 @@ static void populate_cells(WINDOW *win, Game *game)
             if (!game->board[i][j])
                 continue;
 
+            // Calculates the length of the number to place it
+            // at the center of the cell.
             num_len = floor(log10(game->board[i][j])) + 1;
 
+            // Calculates the X and Y coordinates for placing the value.
             pos_x = j * (cell_width + 1) + (cell_width - num_len) / 2 + 1;
             pos_y = i * (cell_height + 1) + cell_height / 2 + 1;
 
