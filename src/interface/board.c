@@ -82,15 +82,10 @@ static void draw_edges(WINDOW *win, size_t bsize)
 static void draw_grid(WINDOW *win, size_t bsize)
 {
     draw_edges(win, bsize);
+    draw_vlines(win, bsize);
 
-    for (size_t i = 0; i < bsize; ++i)
+    for (size_t i = 0; i < bsize - 1; ++i)
     {
-        wmove(win, (cell_height + 1) * i + 1, 1);
-        draw_vlines(win, bsize);
-
-        if (i == bsize - 1)
-            continue;
-
         wmove(win, (i + 1) * (cell_height + 1), 1);
         draw_hlines(win, bsize);
     }
