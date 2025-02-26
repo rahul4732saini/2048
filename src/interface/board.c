@@ -39,7 +39,7 @@ void place_board(Screen *scr, Screen *parent, size_t bsize)
 }
 
 /**
- * @brief Draws vertical grid lines on the 2048 game board.
+ * @brief Draws vertical grid lines on the game board.
  *
  * @param win Pointer to the game board window.
  * @param bsize Size of the game board.
@@ -58,6 +58,12 @@ static void draw_vlines(WINDOW *win, size_t bsize)
     }
 }
 
+/**
+ * @brief Draws horizontal grid line for an individual row on the game board.
+ *
+ * @param win Pointer to the game board window.
+ * @param bsize Size of the game board.
+ */
 static void draw_hline(WINDOW *win, size_t bsize)
 {
     for (size_t i = 0; i < bsize; ++i)
@@ -65,6 +71,8 @@ static void draw_hline(WINDOW *win, size_t bsize)
         for (size_t j = 0; j < cell_width; ++j)
             waddch(win, ACS_HLINE);
 
+        // Draws a '+' symbol at the intersection of the vertical
+        // and horizontal grid lines for visual appeal.
         if (i != bsize - 1)
             waddch(win, ACS_PLUS);
     }
@@ -98,7 +106,8 @@ static void draw_grid(WINDOW *win, size_t bsize)
     draw_edges(win, bsize);
     draw_vlines(win, bsize);
 
-    // Draws horizontal lines between all individual rows on the game board.
+    // Draws horizontal lines vertically between all individual
+    // cells on the game board.
     for (size_t i = 0; i < bsize - 1; ++i)
     {
         wmove(win, (i + 1) * (cell_height + 1), 1);
