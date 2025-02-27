@@ -1,8 +1,8 @@
 /**
- * @brief Defines functions for handling menu interfaces.
+ * @brief Defines functions for handling menu windows in the TUI.
  *
- * This module defines the functions for placing and
- * displaying the main and pause menu interfaces.
+ * @details This module defines functions for placing and displaying
+ *          the main and pause menu windows on the TUI screen.
  */
 
 #include <ncurses.h>
@@ -14,15 +14,14 @@
 #include "interface/shared.h"
 
 /**
- * @brief Places the main menu on the screen based on the
- *        dimensions stored in Dimension structs within the
- *        specified Screen structs.
+ * @brief Positions the main menu window on the TUI screen.
  *
- * This functions calculates the dimensions of the main menu
- * window and transform it with the `place_window` function.
+ * @details Calculates the dimensions of the main menu window based
+ *          on the dimensions of the game window and positions it on
+ *          screen with the `place_window` function.
  *
- * @param scr Screen struct comprising the main menu window data.
- * @param parent Screen struct comprising the game window data.
+ * @param scr Pointer to the Screen struct for the main menu.
+ * @param parent Pointer to the Screen struct for the game window.
  */
 void place_main_menu(Screen *scr, Screen *parent)
 {
@@ -40,10 +39,10 @@ void place_main_menu(Screen *scr, Screen *parent)
 /**
  * @brief Displays the main menu window on the TUI screen.
  *
- * Displays the main menu window with the menu items also highlighting
- * the specified item in the specified color pair marking the selection.
+ * @details Displays the main menu window with the menu items also highlighting
+ *          the selected item in the specified color pair marking the selection.
  *
- * @param scr Screen struct comprising the main menu window data.
+ * @param scr Pointer to the Screen struct for the main menu.
  * @param select Index of the selected menu item.
  * @param select_color Integer signifying the color pair for marking selection.
  */
@@ -85,15 +84,14 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
 }
 
 /**
- * @brief Places the pause menu on the screen based on the
- *        dimensions stored in Dimension structs within the
- *        specified Screen structs.
+ * @brief Positions the pause menu window on the TUI screen.
  *
- * This functions calculates the dimensions of the pause menu
- * window and transform it with the `place_window` function.
+ * @details Calculates the dimensions of the pause menu window based
+ *          on the dimensions of the game window and positions it on
+ *          screen with the `place_window` function.
  *
- * @param scr Screen struct comprising the pause menu window data.
- * @param parent Screen struct comprising the game window data.
+ * @param scr Pointer to the Screen struct for the pause menu.
+ * @param parent Pointer to the Screen struct for the game window.
  */
 void place_pause_menu(Screen *scr, Screen *parent)
 {
@@ -111,10 +109,10 @@ void place_pause_menu(Screen *scr, Screen *parent)
 /**
  * @brief Displays the pause menu window on the TUI screen.
  *
- * Displays the pause menu window with the menu items also highlighting
- * the specified item in the specified color pair marking the selection.
+ * @details Displays the pause menu window with the menu items also highlighting
+ *          the selected item in the specified color pair marking the selection.
  *
- * @param scr Screen struct comprising the pause menu window data.
+ * @param scr Pointer to the Screen struct for the pause menu.
  * @param select Index of the selected menu item.
  * @param select_color Integer signifying the color pair for marking selection.
  */
