@@ -1,6 +1,7 @@
 /**
  * @file consts.c
- * @brief Defines constants used throughout the game for assistance.
+ * @brief Defines constants used throughout the project definition
+ *        to configure TUI elements and gameplay parameters.
  */
 
 #include <stdlib.h>
@@ -8,7 +9,7 @@
 const size_t screen_count = 3;
 const size_t target = 2048;
 
-// Define the width and heigh of each tile on the game board.
+// Defines the width and height of each cell on the game board.
 const size_t cell_width = 8;
 const size_t cell_height = 3;
 
@@ -25,9 +26,9 @@ const char *footers[] = {
 const size_t headers_len = 1;
 const size_t footers_len = 2;
 
-// Horizontal and vertical margins for the game  window. A additional
-// height of 4 is added in the vertical margin to display empty lines
-// between the game window and the screen edges.
+// Horizontal and vertical margins for the game window. The vertical
+// margin includes space for headers, footers,  and an extra padding
+// of 4 for separation from the game window and screen edges.
 const size_t win_vertical_margins = headers_len + footers_len + 4;
 const size_t win_horizontal_margins = 0;
 
