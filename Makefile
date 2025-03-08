@@ -1,8 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -O2
 
-LIBS = -lncurses -lm -ltinfo
+LIBS = -lncurses -lm
 INCLUDE = -Isrc/include
+
+OS = "$(shell uname)"
+
+# Adds the tinfo library to the libraries if the OS is Linux.
+ifeq ($(OS), Linux)
+	LIBS += -ltinfo
+
+endif
 
 INTERFACE_OBJS = objs/interface/core.o objs/interface/shared.o\
 				 objs/interface/menu.o objs/interface/board.o
