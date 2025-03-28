@@ -6,16 +6,16 @@ INCLUDE = -Isrc/include
 
 OS = "$(shell uname)"
 
+INTERFACE_OBJS = objs/interface/core.o objs/interface/shared.o\
+				 objs/interface/menu.o objs/interface/board.o
+
+OBJS = objs/main.o objs/core.o objs/logic.o objs/consts.o
+
 # Adds the tinfo library to the libraries if the OS is Linux.
 ifeq ($(OS), Linux)
 	LIBS += -ltinfo
 
 endif
-
-INTERFACE_OBJS = objs/interface/core.o objs/interface/shared.o\
-				 objs/interface/menu.o objs/interface/board.o
-
-OBJS = objs/main.o objs/core.o objs/logic.o objs/consts.o
 
 # Ensure the obj directories exist for storing the object files.
 $(shell mkdir -p objs/interface)
