@@ -22,7 +22,7 @@
  * @brief Initializes the standard screen and sets up the screen configurations.
  * @param scr Pointer to the Screen struct comprising the standard screen data.
  */
-void init_screen(Screen *scr)
+void init_screen()
 {
     initscr();
 
@@ -32,8 +32,6 @@ void init_screen(Screen *scr)
 
     curs_set(0);
     keypad(stdscr, TRUE);
-
-    scr->window = stdscr;
 }
 
 /**
