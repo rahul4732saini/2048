@@ -22,24 +22,6 @@
 #include "interface/core.h"
 
 /**
- * @brief Cleans the TUI environment before closure.
- *
- * @details Frees the dynamically allocated memory for the TUI windows, their
- *          associated Dimension structs and the screens array comprising the
- *          Screen structs.
- */
-void clean(Screen *scrs)
-{
-    for (size_t i = 0; i < screen_count; ++i)
-    {
-        delwin(scrs[i].window);
-        free(scrs[i].dimension);
-    }
-
-    free(scrs);
-}
-
-/**
  * @brief Main function for program execution.
  */
 int main()
