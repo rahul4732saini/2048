@@ -13,27 +13,17 @@
 
 #include "interface/shared.h"
 
-/**
- * @brief Positions the main menu window on the TUI screen.
- *
- * @details Calculates the dimensions of the main menu window based
- *          on the dimensions of the game window and positions it on
- *          screen with the `place_window` function.
- *
- * @param scr Pointer to the Screen struct for the main menu.
- * @param parent Pointer to the Screen struct for the game window.
- */
-void place_main_menu(Screen *scr, Screen *parent)
+void init_main_menu(Screen *scr)
 {
-    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
+    Dimension *dim = scr->dimension;
 
-    dim_scr->height = main_menu_items_size + 2;
-    dim_scr->width = main_menu_width;
+    dim->height = main_menu_items_size + 2;
+    dim->width = main_menu_width;
 
-    dim_scr->start_y = dim_parent->start_y + (dim_parent->height - dim_scr->height) / 2;
-    dim_scr->start_x = dim_parent->start_x + (dim_parent->width - dim_scr->width) / 2;
+    dim->start_y = (getmaxy(stdscr) - dim->height) / 2;
+    dim->start_x = (getmaxx(stdscr) - dim->width) / 2;
 
-    place_window(scr);
+    scr->window = init_window(dim);
 }
 
 /**
