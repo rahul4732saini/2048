@@ -35,20 +35,6 @@ void init_screen()
 }
 
 /**
- * @brief Extracts the standard screen dimensions and stores them in the
- *        Dimension struct within the specified Screen struct.
- *
- * @param scr Pointer to the Screen struct comprising the standard screen data.
- */
-void get_screen_dimension(Screen *scr)
-{
-    Dimension *dim = scr->dimension;
-
-    dim->start_x = dim->start_y = 0;
-    getmaxyx(stdscr, dim->height, dim->width);
-}
-
-/**
  * @brief Places the game window on the screen based on the
  *        dimensions stored in Dimension structs within the
  *        specified Screen structs.

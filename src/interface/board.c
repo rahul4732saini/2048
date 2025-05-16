@@ -13,29 +13,17 @@
 
 #include "interface/shared.h"
 
-/**
- * @brief Places the game board on the screen based on the
- *        dimensions stored in Dimension structs within the
- *        specified Screen structs.
- *
- * This functions calculates the dimensions of the game board
- * window and transform it with the `place_window` function.
- *
- * @param scr Screen struct comprising the game board window data.
- * @param parent Screen struct comprising the game window data.
- * @param bsize Size of the game board.
- */
-void place_board(Screen *scr, Screen *parent, size_t bsize)
+void init_game_win(Screen *scr, size_t bsize)
 {
-    Dimension *dim_scr = scr->dimension, *dim_pr = parent->dimension;
+    Dimension *dim = scr->dimension;
 
-    dim_scr->height = bsize * (cell_height + 1) + 1;
-    dim_scr->width = bsize * (cell_width + 1) + 1;
+    dim->height = bsize * (cell_height + 1) + 1;
+    dim->width = bsize * (cell_width + 1) + 1;
 
-    dim_scr->start_y = dim_pr->start_y + (dim_pr->height - dim_scr->height) / 2;
-    dim_scr->start_x = dim_pr->start_x + (dim_pr->width - dim_scr->width) / 2;
+    dim->start_y = (getmaxy(stdscr) - dim->height) / 2;
+    dim->start_x = (getmaxx(stdscr) - dim->width) / 2;
 
-    place_window(scr);
+    scr->window = init_window(dim);
 }
 
 /**
