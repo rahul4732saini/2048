@@ -22,33 +22,6 @@
 #include "interface/core.h"
 
 /**
- * @brief Initializes the TUI environment for the game.
- *
- * @details Sets up the Screen and Dimensions structures for encapsulating the TUI
- *          windows and their associated dimensions. It also initializes the standard
- *          TUI screen and other game windows.
- *
- * @return A pointer to the first Screen in the dynamically allocated screens
- *         array, representing the TUI windows.
- */
-Screen *setup(void)
-{
-    Screen *scrs = (Screen *)calloc(screen_count, sizeof(Screen));
-
-    for (size_t i = 0; i < screen_count; ++i)
-        scrs[i].dimension = (Dimension *)malloc(sizeof(Dimension));
-
-    init_screen(scrs);
-    get_screen_dimension(scrs);
-
-    // Avoids overriding the standard screen window at the 0th index.
-    for (size_t i = 1; i < screen_count; ++i)
-        scrs[i].window = init_window();
-
-    return scrs;
-}
-
-/**
  * @brief Cleans the TUI environment before closure.
  *
  * @details Frees the dynamically allocated memory for the TUI windows, their
