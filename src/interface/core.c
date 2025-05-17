@@ -35,54 +35,6 @@ void init_screen()
 }
 
 /**
- * @brief Places the game window on the screen based on the
- *        dimensions stored in Dimension structs within the
- *        specified Screen structs.
- *
- * This functions calculates the dimensions of the game window
- * and transform it with the `place_window` function.
- *
- * @param scr Screen struct comprising the game window data.
- * @param parent Screen struct comprising the standard screen data.
- */
-void place_game_win(Screen *scr, Screen *parent)
-{
-    Dimension *dim_scr = scr->dimension, *dim_parent = parent->dimension;
-
-    dim_scr->width = dim_parent->width - win_horizontal_margins;
-    dim_scr->height = dim_parent->height - win_vertical_margins;
-
-    dim_scr->start_x = win_horizontal_margins / 2;
-    dim_scr->start_y = win_vertical_margins / 2;
-
-    place_window(scr);
-}
-
-/**
- * @brief Displays the game window on the TUI screen.
- * @param scr Screen struct comprising the game window data.
- */
-void show_game_win(Screen *scr)
-{
-    box(scr->window, 0, 0);
-    wrefresh(scr->window);
-}
-
-/**
- * @brief Displays the window title on the top of the game window.
- *
- * @param scr Pointer to the Screen struct comprising the game window data.
- * @param title The text to be displayed as the window title.
- */
-void show_window_title(Screen *scr, const char *title)
-{
-    size_t start_x = (scr->dimension->width - strlen(title)) / 2;
-
-    mvwprintw(scr->window, 2, start_x, "%s", title);
-    wrefresh(scr->window);
-}
-
-/**
  * @brief Displays a dialog box at the center of the game window.
  *
  * This function defines mechanism to display a dialog box with the specified
