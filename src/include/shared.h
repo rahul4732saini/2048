@@ -28,6 +28,6 @@ typedef struct
 {
     WINDOW *window;
     Dimension *dimension;
-} Screen;
+} WinContext;
 
 #endif
