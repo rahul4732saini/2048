@@ -23,20 +23,3 @@ WINDOW *init_window(void)
 
     return win;
 }
-
-/**
- * @brief Positions and resizes the specified TUI window.
- *
- * @details This function resizes the window dimensions, and moves it
- *          to the coordinates stored within the Dimension struct.
- */
-void place_window(Screen *scr)
-{
-    Dimension *dim = scr->dimension;
-
-    wresize(scr->window, dim->height, dim->width);
-    mvwin(scr->window, dim->start_y, dim->start_x);
-
-    wclear(scr->window);
-    wrefresh(scr->window);
-}
