@@ -73,6 +73,19 @@ void show_main_menu(Screen *scr, size_t select, int select_color)
     wrefresh(win);
 }
 
+void init_pause_menu(Screen *scr, Dimension *scr_dim)
+{
+    Dimension *dim = scr->dimension;
+
+    dim->height = pause_menu_items_size + 2;
+    dim->width = pause_menu_width;
+
+    dim->start_y = (scr_dim->height - dim->height) / 2;
+    dim->start_x = (scr_dim->width - dim->width) / 2;
+
+    scr->window = init_window(dim);
+}
+
 /**
  * @brief Displays the pause menu window on the TUI screen.
  *
