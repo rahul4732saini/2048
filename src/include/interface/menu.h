@@ -4,10 +4,10 @@
 #include <ncurses.h>
 #include "shared.h"
 
-void place_main_menu(Screen *scr, Screen *parent);
-void place_pause_menu(Screen *scr, Screen *parent);
+void init_main_menu(WinContext *wctx, Dimension *scr_dim);
+void show_main_menu(WinContext *wctx, size_t select);
 
-void show_main_menu(Screen *scr, size_t select, int select_color);
-void show_pause_menu(Screen *scr, size_t select, int select_color);
+void init_pause_menu(WinContext *wctx, Dimension *scr_dim);
+void show_pause_menu(WinContext *wctx, size_t select);
 
 #endif
