@@ -19,8 +19,8 @@
 #include "interface/shared.h"
 
 /**
- * @brief Initializes the standard screen and sets up the screen configurations.
- * @param scr Pointer to the Screen struct comprising the standard screen data.
+ * @brief Initializes the standard TUI screen and sets up the
+ * screen configuration.
  */
 void init_screen()
 {
