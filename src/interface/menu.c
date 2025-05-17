@@ -62,6 +62,31 @@ static void show_menu_heading(
 }
 
 /**
+ * @brief Initializes the main menu and displays its
+ * static layout on the TUI screen.
+ *
+ * @param wctx Pointer to the WinContext struct comprising the window data.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ */
+void init_main_menu(WinContext *wctx, Dimension *scr_dim)
+{
+    Dimension *dim = wctx->dimension;
+
+    dim->height = main_menu_items_size + 2;
+    dim->width = main_menu_width;
+
+    dim->start_y = (scr_dim->height - dim->height) / 2;
+    dim->start_x = (scr_dim->width - dim->width) / 2;
+
+    wctx->window = init_window(dim);
+
+    box(wctx->window, 0, 0);
+    show_menu_heading(scr_dim, main_menu_title, dim->start_y);
+    show_header_footer(scr_dim);
+}
+
+/**
  * @brief Displays the main menu window on the TUI screen.
  *
  * @details Displays the main menu window with the menu items also highlighting
