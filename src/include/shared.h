@@ -18,10 +18,10 @@ typedef struct
 
 typedef struct
 {
-    size_t width;
     size_t height;
-    size_t start_x;
+    size_t width;
     size_t start_y;
+    size_t start_x;
 } Dimension;
 
 typedef struct
