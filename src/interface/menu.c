@@ -44,6 +44,24 @@ static void show_header_footer(Dimension *scr_dim)
 }
 
 /**
+ * @brief Displays the specified menu heading on top on the
+ * associated menu window.
+ *
+ * @param heading Heading to be displayed on top on the menu window.
+ * @param menu_start_y Vertical starting position of the menu.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ */
+static void show_menu_heading(
+    char *heading, size_t menu_start_y, Dimension *scr_dim)
+{
+    size_t start_y = menu_start_y - 1;
+    size_t start_x = (scr_dim->width - strlen(heading)) / 2;
+
+    mvprintw(start_y, start_x, "%s", heading);
+}
+
+/**
  * @brief Displays the main menu window on the TUI screen.
  *
  * @details Displays the main menu window with the menu items also highlighting
