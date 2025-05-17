@@ -46,7 +46,7 @@ void init_screen()
  * @param mesg_length Length of the mesg array.
  * @param select_color Integer signifying the color pair for marking selection.
  */
-void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_color)
+void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len)
 {
     Dimension *dim = scr->dimension;
     WINDOW *win = scr->window;
@@ -73,7 +73,7 @@ void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_co
     size_t inner_left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
 
     wmove(win, ++cur_y, cur_x);
-    wattron(win, COLOR_PAIR(select_color));
+    wattron(win, COLOR_PAIR(COLOR_SELECT));
 
     // Explicitly prints the left and right blank spaces
     // to display the foreground color within the button.
@@ -82,6 +82,6 @@ void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_co
     wprintw(win, "%s", dialog_bt_txt);
     wprintw(win, "%*s", dialog_bt_width - inner_left_cutoff - strlen(dialog_bt_txt), "");
 
-    wattroff(win, COLOR_PAIR(select_color));
+    wattroff(win, COLOR_PAIR(COLOR_SELECT));
     wrefresh(win);
 }
