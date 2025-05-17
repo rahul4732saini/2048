@@ -1,8 +1,8 @@
 /**
- * @brief Defines functions for handling menu windows in the TUI.
+ * @brief Defines functions for handling the in-game menu interfaces.
  *
- * @details This module defines functions for placing and displaying
- *          the main and pause menu windows on the TUI screen.
+ * @details This module defines functions for initializing the displaying
+ * the various in-game menu interfaces including the main and pause menu.
  */
 
 #include <ncurses.h>
