@@ -13,17 +13,34 @@
 
 #include "interface/shared.h"
 
-void init_main_menu(Screen *scr)
+/**
+ * @brief Displays the screen header and footer text comprising
+ * general details about the game.
+ *
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ */
+static void show_header_footer(Dimension *scr_dim)
 {
-    Dimension *dim = scr->dimension;
+    // The header and footer text is placed with
+    // 1 row of padding from the screen edges.
 
-    dim->height = main_menu_items_size + 2;
-    dim->width = main_menu_width;
+    for (size_t i = 0; i < headers_len; ++i)
+    {
+        move(i + 1, (scr_dim->width - strlen(headers[i])) / 2);
+        printw("%s", headers[i]);
+    }
 
-    dim->start_y = (getmaxy(stdscr) - dim->height) / 2;
-    dim->start_x = (getmaxx(stdscr) - dim->width) / 2;
+    for (size_t i = 0; i < footers_len; ++i)
+    {
+        move(
+            scr_dim->height - footers_len + i - 1,
+            (scr_dim->width - strlen(footers[i])) / 2);
 
-    scr->window = init_window(dim);
+        printw("%s", footers[i]);
+    }
+
+    refresh();
 }
 
 /**
