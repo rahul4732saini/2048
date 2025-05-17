@@ -156,17 +156,15 @@ void show_main_menu(WinContext *wctx, size_t select)
 /**
  * @brief Displays the pause menu window on the TUI screen.
  *
- * @details Displays the pause menu window with the menu items also highlighting
- *          the selected item in the specified color pair marking the selection.
+ * @details Displays the pause menu window with the menu items
+ * also highlighting the selected item marking the selection.
  *
- * @param scr Pointer to the Screen struct for the pause menu.
+ * @param wctx Pointer to the WinContext struct comprising the window data.
  * @param select Index of the selected menu item.
- * @param select_color Integer signifying the color pair for marking selection.
  */
-void show_pause_menu(Screen *scr, size_t select, int select_color)
+void show_pause_menu(WinContext *wctx, size_t select)
 {
-    WINDOW *win = scr->window;
-    box(win, 0, 0);
+    WINDOW *win = wctx->window;
 
     size_t width = pause_menu_width - 2;
     size_t length, left_cutoff;
@@ -182,19 +180,16 @@ void show_pause_menu(Screen *scr, size_t select, int select_color)
         // color based on the index of the menu item.
 
         if (i == select)
-            wattron(win, COLOR_PAIR(select_color));
+            wattron(win, COLOR_PAIR(COLOR_SELECT));
 
         wmove(win, i + 1, 1);
-
-        // Explicitly prints the left and right blank spaces to display
-        // the foreground color in case the current item is selected.
 
         wprintw(win, "%*s", left_cutoff, "");
         wprintw(win, "%s", pause_menu_items[i]);
         wprintw(win, "%*s", width - length - left_cutoff, "");
 
         if (i == select)
-            wattroff(win, COLOR_PAIR(select_color));
+            wattroff(win, COLOR_PAIR(COLOR_SELECT));
     }
 
     wrefresh(win);
