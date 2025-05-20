@@ -71,28 +71,29 @@ static size_t handle_menu(Menu *menu, Dimension *scr_dim)
 }
 
 /**
- * @brief Handles the pause menu interface window.
+ * @brief Handles the main menu interface.
  *
- * This function displays the pause menu window while handling user
- * input for triggering the actions  associated with the pause menu
- * buttons.
+ * @details This function displays the main menu window and handles user
+ * input for triggering the actions associated with the main menu buttons.
  *
- * @param Pointer to the screens array comprising the Screen structs.
- * @return An integer code to indicate the pressed button signifying the
- *         action which needs to be triggered. The codes along with their
- *         actions are as follows:
- *         -  0 -> Resume game
- *         -  1 -> Quit to main menu
- *         -  2 -> Quit game
- *         - -1 -> Screen resize
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ *
+ * @return A non-negative integer indicating the screen
+ * handler to be called next in the game execution loop.
  */
-static int8_t handle_pause_menu(Screen *scrs)
+size_t handle_main_menu(Dimension *scr_dim)
 {
-    int16_t input = 0;
-    int8_t select = 0;
+    Menu menu = {
+        init_main_menu,
+        show_main_menu,
+        H_MAIN_MENU,
+        main_menu_items_size,
+        main_menu_handlers,
+    };
 
-    place_pause_menu(scrs + 2, scrs + 1);
-    show_pause_menu(scrs + 2, select, 1);
+    return handle_menu(&menu, scr_dim);
+}
 
     // Displays the main menu window until the RETURN key is pressed
     // signifying a button press.
