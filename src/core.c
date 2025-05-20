@@ -95,29 +95,29 @@ size_t handle_main_menu(Dimension *scr_dim)
     return handle_menu(&menu, scr_dim);
 }
 
-    // Displays the main menu window until the RETURN key is pressed
-    // signifying a button press.
-    while ((input = getch()) != 10)
-    {
-        switch (input)
-        {
-        case KEY_UP:
-            --select;
-            break;
+/**
+ * @brief Handles the pause menu interface.
+ *
+ * @details This function displays the pause menu window and handles user
+ * input for triggering the actions associated with the pause menu buttons.
+ *
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ *
+ * @return A non-negative integer indicating the screen
+ * handler to be called next in the game execution loop.
+ */
+size_t handle_pause_menu(Dimension *scr_dim)
+{
+    Menu menu = {
+        init_pause_menu,
+        show_pause_menu,
+        H_PAUSE_MENU,
+        pause_menu_items_size,
+        pause_menu_handlers,
+    };
 
-        case KEY_DOWN:
-            ++select;
-            break;
-
-        case KEY_RESIZE:
-            return -1;
-        }
-
-        select = (select + pause_menu_items_size) % pause_menu_items_size;
-        show_pause_menu(scrs + 2, select, 1);
-    }
-
-    return select;
+    return handle_menu(&menu, scr_dim);
 }
 
 /**
