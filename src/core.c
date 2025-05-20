@@ -20,31 +20,32 @@
 #include "interface/menu.h"
 
 /**
- * @brief Handles the main menu interface window.
+ * @brief Handles the specified in-game menu interface.
  *
- * This function displays the main menu window while handling user
- * input for triggering the actions  associated with the main menu
- * buttons.
+ * @details This function displays the specified menu window and handles
+ * user input for triggering the actions associated with the menu buttons.
  *
- * @param Pointer to the screens array comprising the Screen structs.
- * @return An integer code to indicate the pressed button signifying the
- *         action which needs to be triggered. The codes along with their
- *         actions are as follows:
- *         -  0 -> Start
- *         -  1 -> Exit
- *         - -1 -> Screen resize
+ * @param menu Pointer to the Menu struct comprising the menu details.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ *
+ * @return A non-negative integer indicating the screen
+ * handler to be called next in the game execution loop.
  */
-static int8_t handle_main_menu(Screen *scrs)
+static size_t handle_menu(Menu *menu, Dimension *scr_dim)
 {
+    WinContext wctx;
+    Dimension dim;
+
+    wctx.dimension = &dim;
+    menu->init_handler(&wctx, scr_dim);
+
     int16_t input = 0;
-    int8_t select = 0;
+    size_t select = 0;
 
-    place_main_menu(scrs + 2, scrs + 1);
-    show_main_menu(scrs + 2, select, 1);
-
-    // Displays the main menu window until the RETURN key is pressed
-    // signifying a button press.
-    while ((input = getch()) != 10)
+    // Displays the menu window until the RETURN key
+    // is pressed signifying a menu button press.
+    do
     {
         switch (input)
         {
@@ -57,14 +58,16 @@ static int8_t handle_main_menu(Screen *scrs)
             break;
 
         case KEY_RESIZE:
-            return -1;
+            return menu->screen_handler;
         }
 
-        select = (select + main_menu_items_size) % main_menu_items_size;
-        show_main_menu(scrs + 2, select, 1);
-    }
+        // Updates the selection and displays the menu.
+        select = (select + menu->item_count) % menu->item_count;
+        menu->display_handler(&wctx, select);
 
-    return select;
+    } while ((input = getch()) != 10);
+
+    return menu->return_handlers[select];
 }
 
 /**
