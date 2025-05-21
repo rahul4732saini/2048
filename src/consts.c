@@ -57,3 +57,17 @@ const char *lost_dialog_txt[] = {"You lost the game!", "Better luck next time...
 
 const size_t win_dialog_txt_len = 1;
 const size_t lost_dialog_txt_len = 2;
+
+// The following constants comprise the indices of the screen handlers
+// associated with individual options in the main and pause menu.
+
+const size_t main_menu_handlers[] = {
+    HDL_GAME_WIN,
+    HDL_EXIT,
+};
+
+const size_t pause_menu_handlers[] = {
+    HDL_GAME_WIN,
+    HDL_MAIN_MENU,
+    HDL_EXIT,
+};
