@@ -16,11 +16,12 @@ extern const size_t footers_len;
 
 extern const char *main_menu_title;
 extern const char *pause_menu_title;
-extern const char *main_menu_items[];
-extern const char *pause_menu_items[];
 
-extern const size_t main_menu_items_size;
-extern const size_t pause_menu_items_size;
+extern const char *main_menu_options[];
+extern const size_t main_menu_option_cnt;
+extern const char *pause_menu_options[];
+extern const size_t pause_menu_option_cnt;
+
 extern const size_t main_menu_width;
 extern const size_t pause_menu_width;
 
