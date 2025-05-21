@@ -3,6 +3,21 @@
 
 #include <stdlib.h>
 
+#define BOARD_SIZE 4
+
+#define MIN_HEIGHT 25
+#define MIN_WIDTH 80
+
+// Index values used to identify the handler functions
+// associated with the corresponding in-game screens.
+#define HDL_EXIT 0
+#define HDL_MAIN_MENU 1
+#define HDL_PAUSE_MENU 2
+#define HDL_GAME_WIN 3
+#define HDL_END_GAME_DIALOG 4
+
+#define COLOR_SELECT 1
+
 extern const size_t target;
 
 extern const size_t cell_width;
