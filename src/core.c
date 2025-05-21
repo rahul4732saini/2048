@@ -89,8 +89,8 @@ size_t handle_main_menu(Dimension *scr_dim)
     Menu menu = {
         init_main_menu,
         show_main_menu,
-        H_MAIN_MENU,
-        main_menu_items_size,
+        HDL_MAIN_MENU,
+        main_menu_option_cnt,
         main_menu_handlers,
     };
 
@@ -114,8 +114,8 @@ size_t handle_pause_menu(Dimension *scr_dim)
     Menu menu = {
         init_pause_menu,
         show_pause_menu,
-        H_PAUSE_MENU,
-        pause_menu_items_size,
+        HDL_PAUSE_MENU,
+        pause_menu_option_cnt,
         pause_menu_handlers,
     };
 
@@ -225,7 +225,7 @@ size_t handle_end_game_dialog(Dimension *scr_dim)
     // signifying the OK button press.
     while ((input = getch()) != 10)
         if (input == KEY_RESIZE)
-            return H_END_GAME_DIALOG;
+            return HDL_END_GAME_DIALOG;
 
-    return H_MAIN_MENU;
+    return HDL_MAIN_MENU;
 }
