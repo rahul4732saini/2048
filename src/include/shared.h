@@ -31,4 +31,13 @@ typedef struct
     Dimension *dimension;
 } WinContext;
 
+typedef struct
+{
+    void (*init_handler)(WinContext *, Dimension *);
+    void (*display_handler)(WinContext *, size_t);
+    const size_t screen_handler;
+    const size_t item_count;
+    const size_t *return_handlers;
+} Menu;
+
 #endif
