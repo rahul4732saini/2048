@@ -198,34 +198,32 @@ static int8_t handle_game_board(Screen *scrs, Game *game)
 }
 
 /**
- * @brief Handles the dialog box interface window.
+ * @brief Handles the end game dialog interface.
  *
- * This function displays the dialog box window while handling user
- * input for triggering the actions associated with the dialog box
- * buttons.
+ * @details Displays the appropriate end game dialog based
+ * on the game result and waits for user input to proceed.
  *
- * @param game_win Pointer to the game window screen.
- * @param mesg Pointer to the array comprising the strings to be displayed.
- * @param mesg_len Length of the mesg array.
- * @param select Integer signifying the color pair for the selected button.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
  *
- * @return An integer code to indicate the pressed button signifying the
- *         action which needs to be triggered. The codes along with their
- *         actions are as follows:
- *         -  0 -> OK
- *         - -1 -> Screen resize
+ * @return A non-negative integer indicating the screen
+ * handler to be called next in the game execution loop.
  */
-static int8_t handle_dialog(Screen *game_win, const char *mesg[], size_t mesg_len, int select_color)
+size_t handle_end_game_dialog(Dimension *scr_dim)
 {
-    show_dialog(game_win, mesg, mesg_len, select_color);
-
     int16_t input;
 
-    // Displays the dialog box window until the RETURN
-    // key is pressed signifying a button press.
+    if (game.max_val == target)
+        show_end_game_dialog(win_dialog_txt, win_dialog_txt_len, scr_dim);
+
+    else
+        show_end_game_dialog(lost_dialog_txt, lost_dialog_txt_len, scr_dim);
+
+    // Displays the dialog until the RETURN key is pressed
+    // signifying the OK button press.
     while ((input = getch()) != 10)
         if (input == KEY_RESIZE)
-            return -1;
+            return H_END_GAME_DIALOG;
 
-    return 0;
+    return H_MAIN_MENU;
 }
