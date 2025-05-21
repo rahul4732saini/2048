@@ -19,6 +19,8 @@
 #include "interface/board.h"
 #include "interface/menu.h"
 
+Game game;
+
 /**
  * @brief Handles the specified in-game menu interface.
  *
