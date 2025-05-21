@@ -67,7 +67,7 @@ static size_t handle_menu(Menu *menu, Dimension *scr_dim)
         select = (select + menu->item_count) % menu->item_count;
         menu->display_handler(&wctx, select);
 
-    } while ((input = getch()) != 10);
+    } while ((input = getch()) != ASCII_LF);
 
     return menu->return_handlers[select];
 }
@@ -223,7 +223,7 @@ size_t handle_end_game_dialog(Dimension *scr_dim)
 
     // Displays the dialog until the RETURN key is pressed
     // signifying the OK button press.
-    while ((input = getch()) != 10)
+    while ((input = getch()) != ASCII_LF)
         if (input == KEY_RESIZE)
             return HDL_END_GAME_DIALOG;
 
