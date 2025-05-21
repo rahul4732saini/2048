@@ -18,6 +18,7 @@
 
 #define COLOR_SELECT 1
 
+extern const char *scr_dim_warning;
 extern const size_t target;
 
 extern const size_t cell_width;
@@ -48,5 +49,8 @@ extern const char *lost_dialog_txt[];
 
 extern const size_t win_dialog_txt_len;
 extern const size_t lost_dialog_txt_len;
+
+extern const size_t main_menu_handlers[];
+extern const size_t pause_menu_handlers[];
 
 #endif
