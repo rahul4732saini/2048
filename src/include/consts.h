@@ -18,6 +18,9 @@
 
 #define COLOR_SELECT 1
 
+#define ASCII_ESC 27
+#define ASCII_LF 10
+
 extern const char *scr_dim_warning;
 extern const size_t target;
 
