@@ -1,7 +1,7 @@
 /**
  * @file consts.c
  * @brief Defines constants used throughout the project definition
- *        to configure TUI elements and gameplay parameters.
+ * to configure TUI components and gameplay parameters.
  */
 
 #include <stdlib.h>
