@@ -14,7 +14,7 @@ Please resize the window to a larger size to continue.";
 
 const size_t target = 2048;
 
-// Defines the width and height of each cell on the game board.
+// Defines the width and height of each cell in the game board.
 const size_t cell_width = 8;
 const size_t cell_height = 3;
 
@@ -24,7 +24,7 @@ const char *headers[] = {
 
 const char *footers[] = {
     "Made by Rahul Saini",
-    "Visit https://www.github.com/rahul4732saini/2048 for more info",
+    "Visit https://www.github.com/rahul4732saini/2048 for more info.",
 };
 
 // Length of the headers and footers array.
