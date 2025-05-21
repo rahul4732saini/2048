@@ -6,7 +6,6 @@
 
 #include <stdlib.h>
 
-const size_t screen_count = 3;
 const size_t target = 2048;
 
 // Defines the width and height of each cell on the game board.
@@ -25,12 +24,6 @@ const char *footers[] = {
 // Length of the headers and footers array.
 const size_t headers_len = 1;
 const size_t footers_len = 2;
-
-// Horizontal and vertical margins for the game window. The vertical
-// margin includes space for headers, footers,  and an extra padding
-// of 4 for separation from the game window and screen edges.
-const size_t win_vertical_margins = headers_len + footers_len + 4;
-const size_t win_horizontal_margins = 0;
 
 const char *main_menu_title = "Main Menu";
 const char *pause_menu_title = "Pause Menu";
