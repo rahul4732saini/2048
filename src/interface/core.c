@@ -35,18 +35,17 @@ void init_screen()
 }
 
 /**
- * @brief Displays a dialog box at the center of the game window.
+ * @brief Displays the end game dialog box.
  *
- * This function defines mechanism to display a dialog box with the specified
- * message at the center of the game window, with an OK button displayed in the
- * specified selection color pair for accepting the text.
+ * @details This functions displays the end game dialog box with
+ * the specified message and an OK button for accepting the text.
  *
  * @param mesg Pointer to the array comprising the text as inidividual lines.
- * @param mesg_len Length of the message array signifying the number of lines.
+ * @param mesg_len Length of the message array.
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
  */
-void show_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_dim)
+void show_end_game_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_dim)
 {
     // Calculates the Y coordinates for placing the message. A margin of
     // 2 rows is reduced for the placement of the OK button in the center.
