@@ -73,7 +73,7 @@ void init_main_menu(WinContext *wctx, Dimension *scr_dim)
 {
     Dimension *dim = wctx->dimension;
 
-    dim->height = main_menu_items_size + 2;
+    dim->height = main_menu_option_cnt + 2;
     dim->width = main_menu_width;
 
     dim->start_y = (scr_dim->height - dim->height) / 2;
@@ -98,7 +98,7 @@ void init_pause_menu(WinContext *wctx, Dimension *scr_dim)
 {
     Dimension *dim = wctx->dimension;
 
-    dim->height = pause_menu_items_size + 2;
+    dim->height = pause_menu_option_cnt + 2;
     dim->width = pause_menu_width;
 
     dim->start_y = (scr_dim->height - dim->height) / 2;
@@ -127,11 +127,11 @@ void show_main_menu(WinContext *wctx, size_t select)
     size_t width = main_menu_width - 2;
     size_t length, left_cutoff;
 
-    for (size_t i = 0; i < main_menu_items_size; ++i)
+    for (size_t i = 0; i < main_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
         // of the left cutoff to display it at the center of the menu.
-        length = strlen(main_menu_items[i]);
+        length = strlen(main_menu_options[i]);
         left_cutoff = (width - length) / 2;
 
         // Configures the current background and foreground
@@ -143,7 +143,7 @@ void show_main_menu(WinContext *wctx, size_t select)
         wmove(win, i + 1, 1);
 
         wprintw(win, "%*s", left_cutoff, "");
-        wprintw(win, "%s", main_menu_items[i]);
+        wprintw(win, "%s", main_menu_options[i]);
         wprintw(win, "%*s", width - length - left_cutoff, "");
 
         if (i == select)
@@ -169,11 +169,11 @@ void show_pause_menu(WinContext *wctx, size_t select)
     size_t width = pause_menu_width - 2;
     size_t length, left_cutoff;
 
-    for (size_t i = 0; i < pause_menu_items_size; ++i)
+    for (size_t i = 0; i < pause_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
         // of the left cutoff to display it at the center of the menu.
-        length = strlen(pause_menu_items[i]);
+        length = strlen(pause_menu_options[i]);
         left_cutoff = (width - length) / 2;
 
         // Configures the current background and foreground
@@ -185,7 +185,7 @@ void show_pause_menu(WinContext *wctx, size_t select)
         wmove(win, i + 1, 1);
 
         wprintw(win, "%*s", left_cutoff, "");
-        wprintw(win, "%s", pause_menu_items[i]);
+        wprintw(win, "%s", pause_menu_options[i]);
         wprintw(win, "%*s", width - length - left_cutoff, "");
 
         if (i == select)
