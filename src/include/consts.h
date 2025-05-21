@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 
-extern const size_t screen_count;
 extern const size_t target;
 
 extern const size_t cell_width;
@@ -14,9 +13,6 @@ extern const char *footers[];
 
 extern const size_t headers_len;
 extern const size_t footers_len;
-
-extern const size_t win_vertical_margins;
-extern const size_t win_horizontal_margins;
 
 extern const char *main_menu_title;
 extern const char *pause_menu_title;
