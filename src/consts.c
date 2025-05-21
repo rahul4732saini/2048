@@ -5,6 +5,12 @@
  */
 
 #include <stdlib.h>
+#include "consts.h"
+
+// Warning message to be displayed on the screen when the
+// screen dimensions are too small to render the game.
+const char *scr_dim_warning = "Current screen dimensions are unsupported.\n\
+Please resize the window to a larger size to continue.";
 
 const size_t target = 2048;
 
