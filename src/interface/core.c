@@ -57,7 +57,7 @@ void show_end_game_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_di
         // of the TUI screen.
         pos_x = (scr_dim->width - strlen(mesg[i])) / 2;
 
-        move(++pos_y, pos_x);
+        move(pos_y++, pos_x);
         printw("%s", mesg[i]);
     }
 
