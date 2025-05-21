@@ -41,7 +41,7 @@ static size_t handle_menu(Menu *menu, Dimension *scr_dim)
     menu->init_handler(&wctx, scr_dim);
 
     int16_t input = 0;
-    size_t select = 0;
+    select_t select = 0;
 
     // Displays the menu window until the RETURN key
     // is pressed signifying a menu button press.
