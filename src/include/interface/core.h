@@ -5,6 +5,6 @@
 #include "shared.h"
 
 void init_screen();
-void show_dialog(Screen *scr, const char *mesg[], size_t mesg_len, int select_color);
+void show_end_game_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_dim);
 
 #endif
