@@ -82,7 +82,7 @@ void init_main_menu(WinContext *wctx, Dimension *scr_dim)
     wctx->window = init_window(dim);
 
     box(wctx->window, 0, 0);
-    show_menu_heading(scr_dim, main_menu_title, dim->start_y);
+    show_menu_heading(main_menu_title, dim->start_y, scr_dim);
     show_header_footer(scr_dim);
 }
 
@@ -107,7 +107,7 @@ void init_pause_menu(WinContext *wctx, Dimension *scr_dim)
     wctx->window = init_window(dim);
 
     box(wctx->window, 0, 0);
-    show_menu_heading(scr_dim, pause_menu_title, dim->start_y);
+    show_menu_heading(pause_menu_title, dim->start_y, scr_dim);
     show_header_footer(scr_dim);
 }
 
