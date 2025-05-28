@@ -75,8 +75,8 @@ static size_t handle_menu(Menu *menu, Dimension *scr_dim)
 /**
  * @brief Handles the main menu interface.
  *
- * @details This function displays the main menu window and handles user
- * input for triggering the actions associated with the main menu buttons.
+ * @details Displays the main menu window and handles user input for
+ * triggering the actions associated with the main menu buttons.
  *
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
@@ -100,8 +100,8 @@ size_t handle_main_menu(Dimension *scr_dim)
 /**
  * @brief Handles the pause menu interface.
  *
- * @details This function displays the pause menu window and handles user
- * input for triggering the actions associated with the pause menu buttons.
+ * @details Displays the pause menu window and handles user input for
+ * triggering the actions associated with the pause menu buttons.
  *
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
