@@ -301,24 +301,24 @@ bool place_random(Game *game)
 /**
  * @brief Checks if the game is over and the player has lost.
  *
- * @param game Pointer to the game structure comprising the game board.
- * @param cell_empty Whether there are any empty cells on the game board.
+ * @param board Pointer to the game board.
+ * @param cell_empty Whether there is any empty cell on the game board.
  *
  * @return A Boolean value signifying whether the game is over.
  */
-bool game_over(Game *game, bool cell_empty)
+bool game_over(cell_t **board, bool cell_empty)
 {
     if (cell_empty)
         return false;
 
     // Iterates though the game board looking up for equal
     // adjacent tiles to check if the game is still not over.
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < game->bsize - 1; ++j)
+        for (size_t j = 0; j < BOARD_SIZE - 1; ++j)
         {
-            if (game->board[i][j] == game->board[i][j + 1] ||
-                game->board[j][i] == game->board[j + 1][i])
+            if (board[i][j] == board[i][j + 1] ||
+                board[j][i] == board[j + 1][i])
                 return false;
         }
     }
