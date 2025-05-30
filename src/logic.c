@@ -17,18 +17,16 @@
 #include "shared.h"
 
 /**
- * @brief Dynamically allocates memory for the game board of the specified
- *        of the specified board size.
- *
+ * @brief Dynamically allocates memory for the game board.
  * @return Pointer to the game board.
  */
-cell_t **create_board(size_t size)
+cell_t **create_board(void)
 {
-    cell_t **board = (cell_t **)malloc(size * sizeof(cell_t *));
+    cell_t **board = (cell_t **)malloc(BOARD_SIZE * sizeof(cell_t *));
 
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        board[i] = (cell_t *)calloc(size, sizeof(cell_t));
+        board[i] = (cell_t *)calloc(BOARD_SIZE, sizeof(cell_t));
     }
 
     return board;
