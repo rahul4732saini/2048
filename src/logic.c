@@ -306,7 +306,7 @@ bool place_random(Game *game)
  *
  * @return A Boolean value signifying whether the game is over.
  */
-bool game_over(cell_t **board, bool cell_empty)
+bool is_game_over(cell_t **board, bool cell_empty)
 {
     if (cell_empty)
         return false;
