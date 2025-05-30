@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include "shared.h"
 
-cell_t **create_board(size_t size);
-void free_board(Game *game);
+cell_t **create_board(void);
+void free_board(cell_t **board);
 
 bool game_over(Game *game, bool cell_empty);
 bool place_random(Game *game);
