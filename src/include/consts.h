@@ -4,9 +4,14 @@
 #include <stdlib.h>
 
 #define BOARD_SIZE 4
+#define TARGET 2048
 
 #define MIN_HEIGHT 25
 #define MIN_WIDTH 80
+
+// Width and height of each cell in the game board.
+#define CELL_HEIGHT 3
+#define CELL_WIDTH 8
 
 // Index values used to identify the handler functions
 // associated with the corresponding in-game screens.
