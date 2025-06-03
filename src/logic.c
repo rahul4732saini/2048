@@ -299,13 +299,13 @@ bool place_random(Game *game)
 /**
  * @brief Checks if the game is over.
  *
- * @param board Pointer to the game board.
+ * @param game Pointer to the Game struct comprising the game data.
  * @param cell_empty Whether there is any empty cell on the
  * game board, to indicate that the game is still not over.
  *
  * @return A Boolean value signifying whether the game is over.
  */
-bool is_game_over(cell_t **board, bool cell_empty)
+bool is_game_over(Game *game, bool cell_empty)
 {
     if (cell_empty)
         return false;
@@ -317,8 +317,8 @@ bool is_game_over(cell_t **board, bool cell_empty)
     {
         for (size_t j = 0; j < BOARD_SIZE - 1; ++j)
         {
-            if (board[i][j] == board[i][j + 1] ||
-                board[j][i] == board[j + 1][i])
+            if (game->board[i][j] == game->board[i][j + 1] ||
+                game->board[j][i] == game->board[j + 1][i])
                 return false;
         }
     }
