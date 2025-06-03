@@ -33,13 +33,15 @@ cell_t **create_board(void)
 }
 
 /**
- * @brief Horizontally merges tiles based on the specified direction.
+ * @brief Horizontally adds tiles based on the specified direction.
  *
- * @param game Pointer to the game structure comprising the game board.
- * @param left This parameter is used for identifying the direction of
- *             the addition operation. A boolean true signifies a left
- *             to right operation whereas the other signifies a right to
- *             left operation.
+ * @details Adds and merges adjacent equal tiles in all rows across
+ * the game board in the given direction (left/right), and updates
+ * the game metadata.
+ *
+ * @param game Pointer to the Game struct comprising all the game data.
+ * @param left Boolean value to indicate whether to perform a left to
+ * right operation. If false, the operation is performed right to left.
  *
  * @return Total number of addition operations performed.
  */
@@ -48,29 +50,27 @@ size_t add_horizontal(Game *game, bool left)
     size_t start, end, last, operations = 0;
     int8_t dir = left ? 1 : -1;
 
-    // The following conditional statements define the starting
-    // and ending indices for the addition operation based on the
-    // specified direction of operation.
+    // The following conditional statements define the starting and
+    // ending index for the operation based on the speciifed direction.
 
     if (left)
-        start = 0, end = game->bsize;
+        start = 0, end = BOARD_SIZE;
 
     else
-        start = game->bsize - 1, end = -1;
+        start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // assigns the game board size to last signfying that there is
-        // no compatible cell for merging on the right or left based on
-        // the direction.
-        last = game->bsize;
+        // The board size is used as a special index to signify
+        // unavailability of a compatible cell for operation.
+        last = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
             if (!game->board[i][j])
                 continue;
 
-            else if (last == game->bsize || game->board[i][j] != game->board[i][last])
+            else if (last == BOARD_SIZE || game->board[i][j] != game->board[i][last])
             {
                 last = j;
                 continue;
@@ -79,14 +79,14 @@ size_t add_horizontal(Game *game, bool left)
             game->board[i][last] *= 2;
             game->board[i][j] = 0;
 
-            // Updates the maximum tile value, game score and the operations
-            // counter. Also resets the last variable to signify incompatibility.
+            // Updates the game metadata and operations counter, and
+            // resets the "last" variable to signify unavailability.
 
             if (game->board[i][last] > game->max_val)
                 game->max_val = game->board[i][last];
 
             game->score += game->board[i][last];
-            last = game->bsize;
+            last = BOARD_SIZE;
 
             ++operations;
         }
