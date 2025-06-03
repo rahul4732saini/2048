@@ -268,17 +268,19 @@ size_t move_vertical(Game *game, bool up)
 }
 
 /**
- * @brief Places the value 2 at a random tile on the game board.
- * @param game Pointer to the Game structure comprising the game board.
- * @return A boolean value signifying the presence of empty tiles.
+ * @brief Randomly places the value 2 at an empty tile on the game board.
+ * @param game Pointer to the Game struct comprising the game data.
+ *
+ * @return Boolean value signifying the presence of empty
+ * tiles after the value has been placed on the game board.
  */
 bool place_random(Game *game)
 {
     size_t positions[BOARD_SIZE * BOARD_SIZE];
     size_t ctr = 0;
 
-    // Iterates through all the tiles and appends the indices to the
-    // positions array for random selection.
+    // Searches for empty tiles on the game board and adds
+    // their positions in the array for random selection.
 
     for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
@@ -301,10 +303,11 @@ bool place_random(Game *game)
 }
 
 /**
- * @brief Checks if the game is over and the player has lost.
+ * @brief Checks if the game is over.
  *
  * @param board Pointer to the game board.
- * @param cell_empty Whether there is any empty cell on the game board.
+ * @param cell_empty Whether there is any empty cell on the
+ * game board, to indicate that the game is still not over.
  *
  * @return A Boolean value signifying whether the game is over.
  */
@@ -315,6 +318,7 @@ bool is_game_over(cell_t **board, bool cell_empty)
 
     // Iterates though the game board looking up for equal
     // adjacent tiles to check if the game is still not over.
+
     for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
         for (size_t j = 0; j < BOARD_SIZE - 1; ++j)
