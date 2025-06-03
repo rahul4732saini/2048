@@ -274,20 +274,20 @@ size_t move_vertical(Game *game, bool up)
  */
 bool place_random(Game *game)
 {
-    size_t positions[game->bsize * game->bsize];
+    size_t positions[BOARD_SIZE * BOARD_SIZE];
     size_t ctr = 0;
 
     // Iterates through all the tiles and appends the indices to the
     // positions array for random selection.
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < game->bsize; ++j)
+        for (size_t j = 0; j < BOARD_SIZE; ++j)
         {
             if (game->board[i][j])
                 continue;
 
-            positions[ctr++] = i * game->bsize + j;
+            positions[ctr++] = i * BOARD_SIZE + j;
         }
     }
 
@@ -295,7 +295,7 @@ bool place_random(Game *game)
         return false;
 
     size_t position = positions[rand() % ctr];
-    game->board[position / game->bsize][position % game->bsize] = 2;
+    game->board[position / BOARD_SIZE][position % BOARD_SIZE] = 2;
 
     return ctr > 1;
 }
