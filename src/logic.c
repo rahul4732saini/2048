@@ -294,8 +294,8 @@ bool place_random(Game *game)
     if (!ctr)
         return false;
 
-    size_t position = positions[rand() % ctr];
-    game->board[position / BOARD_SIZE][position % BOARD_SIZE] = 2;
+    size_t pos = positions[rand() % ctr];
+    game->board[pos / BOARD_SIZE][pos % BOARD_SIZE] = 2;
 
     return ctr > 1;
 }
