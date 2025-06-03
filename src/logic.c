@@ -233,20 +233,20 @@ size_t move_vertical(Game *game, bool up)
     // specified direction of operation.
 
     if (up)
-        start = 0, end = game->bsize;
+        start = 0, end = BOARD_SIZE;
 
     else
-        start = game->bsize - 1, end = -1;
+        start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
         // assigns the game board size to last signfying that there is
         // no zero cell on the left or right based on the direction.
-        zindex = game->bsize;
+        zindex = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
-            if (game->board[j][i] && zindex != game->bsize)
+            if (game->board[j][i] && zindex != BOARD_SIZE)
             {
                 // Swaps the tiles, updates the operations counter and increments
                 // zindex by 1 in the operation direction as the next tile is
@@ -259,7 +259,7 @@ size_t move_vertical(Game *game, bool up)
                 ++operations;
             }
 
-            else if (!game->board[j][i] && zindex == game->bsize)
+            else if (!game->board[j][i] && zindex == BOARD_SIZE)
                 zindex = j;
         }
     }
