@@ -212,12 +212,11 @@ size_t move_horizontal(Game *game, bool left)
 }
 
 /**
- * @brief Vertically moves tiles based on the specified direction.
+ * @brief Vertically moves the tiles based on the specified direction.
  *
- * @param game Pointer to the Game structure comprising the game board.
- * @param up Signifies the direction of the movement operation. A boolean
- *           true signifies a top to bottom operation whereas the other
- *           signifies a bottom to top operation.
+ * @param game Pointer to the Game struct comprising the game data.
+ * @param up Boolean value to indicate whether to perform
+ * the operation from top to bottom or from bottom to top.
  *
  * @return Total number of movement operations performed.
  */
@@ -226,9 +225,8 @@ size_t move_vertical(Game *game, bool up)
     size_t start, end, zindex, operations = 0;
     int8_t dir = up ? 1 : -1;
 
-    // The following conditional statements define the starting
-    // and ending indices for the movement operation based on the
-    // specified direction of operation.
+    // The following conditional statements define the starting and
+    // ending index for the operation absed on the specified direction.
 
     if (up)
         start = 0, end = BOARD_SIZE;
@@ -238,17 +236,17 @@ size_t move_vertical(Game *game, bool up)
 
     for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // assigns the game board size to last signfying that there is
-        // no zero cell on the left or right based on the direction.
+        // The board size is used as a special value to indicate
+        // the absence of empty tiles before the current position.
         zindex = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
             if (game->board[j][i] && zindex != BOARD_SIZE)
             {
-                // Swaps the tiles, updates the operations counter and increments
-                // zindex by 1 in the operation direction as the next tile is
-                // always meant to be a zero in the current scenario.
+                // Swaps the tiles, updates the operations counter and updates
+                // zindex by 1 in the direction of operation as the subsequent
+                // tile is always meant to be zero.
 
                 game->board[zindex][i] = game->board[j][i];
                 game->board[j][i] = 0;
