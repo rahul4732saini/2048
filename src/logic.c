@@ -160,10 +160,9 @@ size_t add_vertical(Game *game, bool to_bottom)
 /**
  * @brief Horizontally moves tiles based on the specified direction.
  *
- * @param game Pointer to the Game structure comprising the game board.
- * @param left Signifies the direction of the movement operation. A boolean
- *             true signifies a left to right operation whereas the other
- *             signifies a right to left operation.
+ * @param game Pointer to the Game struct comprising the game data.
+ * @param left Boolean value to indicate whether to perform
+ * the operation from left to right or from right to left.
  *
  * @return Total number of movement operations performed.
  */
@@ -172,29 +171,28 @@ size_t move_horizontal(Game *game, bool left)
     size_t start, end, zindex, operations = 0;
     int8_t dir = left ? 1 : -1;
 
-    // The following conditional statements define the starting
-    // and ending indices for the movement operation based on the
-    // specified direction of operation.
+    // The following conditional statements defined the starting and
+    // ending index for the operation based on the specified direction.
 
     if (left)
-        start = 0, end = game->bsize;
+        start = 0, end = BOARD_SIZE;
 
     else
-        start = game->bsize - 1, end = -1;
+        start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // assigns the game board size to last signfying that there is
-        // no zero cell on the left or right based on the direction.
-        zindex = game->bsize;
+        // The board size is used as a special value to indicate
+        // the absence of empty tiles before the current position.
+        zindex = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
-            if (game->board[i][j] && zindex != game->bsize)
+            if (game->board[i][j] && zindex != BOARD_SIZE)
             {
-                // Swaps the tiles, updates the operations counter and increments
-                // zindex by 1 in the operation direction as the next tile is
-                // always meant to be a zero in the current scenario.
+                // Swaps the tiles, updates the operations counter and updates
+                // inx_0 by 1 in the direction of operation as the next tile is
+                // always meant to be zero.
 
                 game->board[i][zindex] = game->board[i][j];
                 game->board[i][j] = 0;
@@ -203,7 +201,7 @@ size_t move_horizontal(Game *game, bool left)
                 ++operations;
             }
 
-            else if (!game->board[i][j] && zindex == game->bsize)
+            else if (!game->board[i][j] && zindex == BOARD_SIZE)
                 zindex = j;
         }
     }
