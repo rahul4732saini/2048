@@ -161,20 +161,20 @@ size_t add_vertical(Game *game, bool to_bottom)
  * @brief Horizontally moves tiles based on the specified direction.
  *
  * @param game Pointer to the Game struct comprising the game data.
- * @param left Boolean value to indicate whether to perform
+ * @param to_right Boolean value to indicate whether to perform
  * the operation from left to right or from right to left.
  *
  * @return Total number of movement operations performed.
  */
-size_t move_horizontal(Game *game, bool left)
+size_t move_horizontal(Game *game, bool to_right)
 {
     size_t start, end, zindex, operations = 0;
-    int8_t dir = left ? 1 : -1;
+    int8_t dir = to_right ? 1 : -1;
 
     // The following conditional statements defined the starting and
     // ending index for the operation based on the specified direction.
 
-    if (left)
+    if (to_right)
         start = 0, end = BOARD_SIZE;
 
     else
