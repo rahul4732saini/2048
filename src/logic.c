@@ -222,7 +222,7 @@ size_t move_horizontal(Game *game, bool left)
  */
 size_t move_vertical(Game *game, bool up)
 {
-    size_t start, end, zindex, operations = 0;
+    size_t start, end, inx_0, operations = 0;
     int8_t dir = up ? 1 : -1;
 
     // The following conditional statements define the starting and
@@ -238,25 +238,25 @@ size_t move_vertical(Game *game, bool up)
     {
         // The board size is used as a special value to indicate
         // the absence of empty tiles before the current position.
-        zindex = BOARD_SIZE;
+        inx_0 = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
-            if (game->board[j][i] && zindex != BOARD_SIZE)
+            if (game->board[j][i] && inx_0 != BOARD_SIZE)
             {
                 // Swaps the tiles, updates the operations counter and updates
-                // zindex by 1 in the direction of operation as the subsequent
+                // "inx_0" by 1 in the direction of operation as the subsequent
                 // tile is always meant to be zero.
 
-                game->board[zindex][i] = game->board[j][i];
+                game->board[inx_0][i] = game->board[j][i];
                 game->board[j][i] = 0;
 
-                zindex += dir;
+                inx_0 += dir;
                 ++operations;
             }
 
-            else if (!game->board[j][i] && zindex == BOARD_SIZE)
-                zindex = j;
+            else if (!game->board[j][i] && inx_0 == BOARD_SIZE)
+                inx_0 = j;
         }
     }
 
