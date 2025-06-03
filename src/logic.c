@@ -40,20 +40,20 @@ cell_t **create_board(void)
  * the game metadata.
  *
  * @param game Pointer to the Game struct comprising all the game data.
- * @param left Boolean value to indicate whether to perform a left to
+ * @param to_right Boolean value to indicate whether to perform a left to
  * right operation. If false, the operation is performed right to left.
  *
  * @return Total number of addition operations performed.
  */
-size_t add_horizontal(Game *game, bool left)
+size_t add_horizontal(Game *game, bool to_right)
 {
     size_t start, end, last, operations = 0;
-    int8_t dir = left ? 1 : -1;
+    int8_t dir = to_right ? 1 : -1;
 
     // The following conditional statements define the starting and
     // ending index for the operation based on the speciifed direction.
 
-    if (left)
+    if (to_right)
         start = 0, end = BOARD_SIZE;
 
     else
