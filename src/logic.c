@@ -15,6 +15,7 @@
 #include <stdint.h>
 
 #include "shared.h"
+#include "consts.h"
 
 /**
  * @brief Dynamically allocates memory for the game board.
@@ -115,24 +116,23 @@ size_t add_vertical(Game *game, bool up)
     // specified direction of operation.
 
     if (up)
-        start = 0, end = game->bsize;
+        start = 0, end = BOARD_SIZE;
 
     else
-        start = game->bsize - 1, end = -1;
+        start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // assigns the game board size to last signfying that there is
-        // no compatible cell for merging on the top or bottom based on
-        // the direction.
-        last = game->bsize;
+        // The board size is used as a special index to signify
+        // unavailability of a compatible cell for operation.
+        last = BOARD_SIZE;
 
         for (size_t j = start; j != end; j += dir)
         {
             if (!game->board[j][i])
                 continue;
 
-            else if (last == game->bsize || game->board[j][i] != game->board[last][i])
+            else if (last == BOARD_SIZE || game->board[j][i] != game->board[last][i])
             {
                 last = j;
                 continue;
@@ -148,7 +148,7 @@ size_t add_vertical(Game *game, bool up)
                 game->max_val = game->board[last][i];
 
             game->score += game->board[last][i];
-            last = game->bsize;
+            last = BOARD_SIZE;
 
             ++operations;
         }
