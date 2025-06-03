@@ -36,13 +36,12 @@ cell_t **create_board(void)
 /**
  * @brief Horizontally adds tiles based on the specified direction.
  *
- * @details Adds and merges adjacent equal tiles in all rows across
- * the game board in the given direction (left/right), and updates
- * the game metadata.
+ * @details Adds and merges adjacent equal tiles horizontally in the
+ * specified direction (left/right), and updates the game metadata.
  *
  * @param game Pointer to the Game struct comprising all the game data.
- * @param to_right Boolean value to indicate whether to perform a left to
- * right operation. If false, the operation is performed right to left.
+ * @param to_right Boolean value to indicate whether to perform the
+ * operation from left to right or right to left.
  *
  * @return Total number of addition operations performed.
  */
@@ -99,13 +98,12 @@ size_t add_horizontal(Game *game, bool to_right)
 /**
  * @brief Vertically adds tiles based on the specified direction.
  *
- * @details Adds and merges adjacent equal tiles in all columns
- * across the game board in the specified direction (top/down),
- * and updates the game metadata.
+ * @details Adds and merges adjacent equal tiles vertically in the
+ * specified direction (top/down), and updates the game metadata.
  *
  * @param game Pointer to the Game struct comprising the game data.
- * @param to_bottom Boolean value to indicate whether to perform a top to
- * bottom operation. If false, the operation is performed bottom to top.
+ * @param to_bottom Boolean value to indicate whether to perform
+ * the operation from top to bottom or from bottom to top.
  *
  * @return Total number of addition operations performed.
  */
