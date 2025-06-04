@@ -129,7 +129,7 @@ static void populate_cells(WINDOW *win, Game *game)
 static void show_game_score(size_t score)
 {
     char string[20];
-    snprintf(string, sizeof(string), "Score: %d", string);
+    snprintf(string, sizeof(string), "Score: %d", score);
 
     size_t height = getmaxy(stdscr), width = getmaxx(stdscr);
 
