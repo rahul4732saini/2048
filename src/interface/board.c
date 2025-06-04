@@ -128,15 +128,15 @@ static void populate_cells(WINDOW *win, Game *game)
 {
     size_t pos_x, pos_y, num_len;
 
-    for (size_t i = 0; i < game->bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < game->bsize; ++j)
+        for (size_t j = 0; j < BOARD_SIZE; ++j)
         {
             if (!game->board[i][j])
                 continue;
 
-            // Calculates the length of the number to place it
-            // at the center of the cell.
+            // Calculates the length of the number to
+            // place it in the center of the cell.
             num_len = floor(log10(game->board[i][j])) + 1;
 
             // Calculates the X and Y coordinates for placing the value.
