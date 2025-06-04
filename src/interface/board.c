@@ -161,20 +161,16 @@ void init_game_win(WinContext *wctx, Dimension *scr_dim)
 }
 
 /**
- * @brief Displays the game board window on the TUI screen.
+ * @brief Displays the game window on the TUI screen.
  *
- * @details Draws the game board in the associated window and
- *          populates the cells with their associated values.
+ * @details Refreshes the dynamic content of the game window by
+ * updating the board cells and displaying the current game score.
  *
- * @param scr Pointer to the Screen struct comprising the game board window data.
+ * @param wctx Pointer to the WinContext struct comprising window data.
  * @param game Pointer to the Game struct comrising the game data.
  */
-void show_board(Screen *scr, Game *game)
+void show_board(WinContext *wctx, Game *game)
 {
-    WINDOW *win = scr->window;
-
-    wclear(win);
-
-    draw_grid(win, game->bsize);
-    populate_cells(win, game);
+    populate_cells(wctx->window, game);
+    show_game_score(game->score);
 }
