@@ -13,37 +13,15 @@
 
 #include "interface/shared.h"
 
-void init_game_win(Screen *scr, size_t bsize)
-{
-    Dimension *dim = scr->dimension;
-
-    dim->height = bsize * (cell_height + 1) + 1;
-    dim->width = bsize * (cell_width + 1) + 1;
-
-    dim->start_y = (getmaxy(stdscr) - dim->height) / 2;
-    dim->start_x = (getmaxx(stdscr) - dim->width) / 2;
-
-    scr->window = init_window(dim);
-}
-
 /**
  * @brief Draws vertical grid lines on the game board.
- *
  * @param win Pointer to the game board window.
- * @param bsize Size of the game board.
  */
-static void draw_vlines(WINDOW *win, size_t bsize)
+static void draw_vlines(WINDOW *win)
 {
-    for (size_t i = 1; i < bsize * (cell_height + 1); ++i)
-    {
-        wmove(win, i, 1);
-
-        for (size_t j = 0; j < bsize - 1; ++j)
-        {
-            wprintw(win, "%*s", cell_width, "");
-            waddch(win, ACS_VLINE);
-        }
-    }
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
+        for (size_t j = 1; j < BOARD_SIZE * (CELL_HEIGHT + 1); ++j)
+            mvwaddch(win, j, i * (CELL_WIDTH + 1), ACS_VLINE);
 }
 
 /**
