@@ -152,6 +152,21 @@ static void populate_cells(WINDOW *win, Game *game)
 }
 
 /**
+ * @brief Displays the game score at the bottom of the screen.
+ * @param score The score to be displayed.
+ */
+void show_game_score(size_t score)
+{
+    char string[20];
+    snprintf(string, sizeof(string), "Score: %d", string);
+
+    size_t height = getmaxy(stdscr), width = getmaxx(stdscr);
+
+    move(height - 2, (width - strlen(string)) / 2);
+    printw("%s", string);
+}
+
+/**
  * @brief Displays the game board window on the TUI screen.
  *
  * @details Draws the game board in the associated window and
