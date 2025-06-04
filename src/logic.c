@@ -13,7 +13,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 
+#include "logic.h"
 #include "shared.h"
 #include "consts.h"
 
@@ -43,6 +45,27 @@ void free_board(cell_t **board)
         free(board[i]);
 
     free(board);
+}
+
+/**
+ * @brief Sets up the Game struct for a new game session.
+ *
+ * @details Resets all the cells on the game board to 0, place 2 random
+ * values for the initial state, sets init to true and resets the other
+ * variables to their defaults.
+ *
+ * @param game Pointer to the Game struct comprising the game data.
+ */
+void setup_game(Game *game)
+{
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
+        memset(game->board[i], 0, BOARD_SIZE * sizeof(cell_t));
+
+    place_random(game);
+    place_random(game);
+
+    game->max_val = 2, game->score = 0;
+    game->init = true;
 }
 
 /**
