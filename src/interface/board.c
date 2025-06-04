@@ -103,18 +103,23 @@ static void populate_cells(WINDOW *win, Game *game)
     {
         for (size_t j = 0; j < BOARD_SIZE; ++j)
         {
+            // Calculates the X and Y coordinates for value placement.
+            pos_x = j * (CELL_WIDTH + 1) + 1;
+            pos_y = i * (CELL_HEIGHT + 1) + CELL_HEIGHT / 2 + 1;
+
+            wmove(win, pos_y, pos_x);
+
             if (!game->board[i][j])
+            {
+                wprintw(win, "%*s", CELL_WIDTH, "");
                 continue;
+            }
 
             // Calculates the length of the number to
             // place it in the center of the cell.
             num_len = floor(log10(game->board[i][j])) + 1;
 
-            // Calculates the X and Y coordinates for placing the value.
-            pos_x = j * (CELL_WIDTH + 1) + (CELL_WIDTH - num_len) / 2 + 1;
-            pos_y = i * (CELL_HEIGHT + 1) + CELL_HEIGHT / 2 + 1;
-
-            wmove(win, pos_y, pos_x);
+            wmove(win, pos_y, pos_x + (CELL_WIDTH - num_len) / 2);
             wprintw(win, "%d", game->board[i][j]);
         }
     }
