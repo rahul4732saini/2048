@@ -14,7 +14,7 @@
 #include "interface/shared.h"
 
 /**
- * @brief Draws vertical grid lines on the game board.
+ * @brief Draws the vertical grid lines.
  * @param win Pointer to the game board window.
  */
 static void draw_vlines(WINDOW *win)
@@ -25,7 +25,7 @@ static void draw_vlines(WINDOW *win)
 }
 
 /**
- * @brief Draws horizontal grid line for an individual row on the game board.
+ * @brief Draws the horizontal grid line for an individual row.
  * @param win Pointer to the game board window.
  */
 static void draw_hline(WINDOW *win)

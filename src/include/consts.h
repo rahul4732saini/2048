@@ -13,6 +13,9 @@
 #define CELL_HEIGHT 3
 #define CELL_WIDTH 8
 
+#define BOARD_HEIGHT (CELL_HEIGHT + 1) * BOARD_SIZE + 1
+#define BOARD_WIDTH (CELL_WIDTH + 1) * BOARD_SIZE + 1
+
 // Index values used to identify the handler functions
 // associated with the corresponding in-game screens.
 #define HDL_EXIT 0
