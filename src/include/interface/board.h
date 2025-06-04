@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include "shared.h"
 
-void place_board(Screen *scr, Screen *parent, size_t bsize);
-void show_board(Screen *scr, Game *game);
+void init_game_win(WinContext *wctx, Dimension *scr_dim);
+void show_board(WinContext *wctx, Game *game);
 
 #endif
