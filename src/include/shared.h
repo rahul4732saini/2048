@@ -12,7 +12,6 @@ typedef uint8_t select_t;
 typedef struct
 {
     cell_t **board;
-    size_t bsize;
     size_t max_val;
     size_t score;
 } Game;
