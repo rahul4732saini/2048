@@ -26,20 +26,18 @@ static void draw_vlines(WINDOW *win)
 
 /**
  * @brief Draws horizontal grid line for an individual row on the game board.
- *
  * @param win Pointer to the game board window.
- * @param bsize Size of the game board.
  */
-static void draw_hline(WINDOW *win, size_t bsize)
+static void draw_hline(WINDOW *win)
 {
-    for (size_t i = 0; i < bsize; ++i)
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < cell_width; ++j)
+        for (size_t j = 0; j < CELL_WIDTH; ++j)
             waddch(win, ACS_HLINE);
 
         // Draws a '+' symbol at the intersection of the vertical
         // and horizontal grid lines for visual appeal.
-        if (i != bsize - 1)
+        if (i != BOARD_SIZE - 1)
             waddch(win, ACS_PLUS);
     }
 }
