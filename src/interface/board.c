@@ -138,6 +138,29 @@ static void show_game_score(size_t score)
 }
 
 /**
+ * @brief Initializes the game window and displays its
+ * static layout on the TUI screen.
+ *
+ * @param wctx Pointer to the WinContxet struct comprising the window data.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
+ */
+void init_game_win(WinContext *wctx, Dimension *scr_dim)
+{
+    Dimension *dim = wctx->dimension;
+
+    *dim = (Dimension){
+        BOARD_HEIGHT,
+        BOARD_WIDTH,
+        (scr_dim->height - BOARD_HEIGHT) / 2,
+        (scr_dim->width - BOARD_WIDTH) / 2,
+    };
+
+    wctx->window = init_window(dim);
+    draw_grid(wctx->window);
+}
+
+/**
  * @brief Displays the game board window on the TUI screen.
  *
  * @details Draws the game board in the associated window and
