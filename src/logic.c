@@ -34,6 +34,18 @@ cell_t **create_board(void)
 }
 
 /**
+ * @brief Frees the dynamically allocated memory for the game board.
+ * @param board Pointer to the game board.
+ */
+void free_board(cell_t **board)
+{
+    for (size_t i = 0; i < BOARD_SIZE; ++i)
+        free(board[i]);
+
+    free(board);
+}
+
+/**
  * @brief Horizontally adds tiles based on the specified direction.
  *
  * @details Adds and merges adjacent equal tiles horizontally in the
