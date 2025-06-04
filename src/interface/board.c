@@ -67,24 +67,23 @@ static void draw_edges(WINDOW *win)
 }
 
 /**
- * @brief Draws the 2048 game board grid within the associated TUI window.
+ * @brief Draws the game board grid layout.
  *
  * @param win Pointer to the game board window.
  * @param bsize Size of the game board.
  */
-static void draw_grid(WINDOW *win, size_t bsize)
+static void draw_grid(WINDOW *win)
 {
     box(win, 0, 0);
 
-    draw_edges(win, bsize);
-    draw_vlines(win, bsize);
+    draw_edges(win);
+    draw_vlines(win);
 
-    // Draws horizontal lines vertically between all individual
-    // cells on the game board.
-    for (size_t i = 0; i < bsize - 1; ++i)
+    // Draws individual horizontal grid lines for each row of cells.
+    for (size_t i = 1; i < BOARD_SIZE; ++i)
     {
-        wmove(win, (i + 1) * (cell_height + 1), 1);
-        draw_hline(win, bsize);
+        wmove(win, i * (CELL_HEIGHT + 1), 1);
+        draw_hline(win);
     }
 
     wrefresh(win);
