@@ -111,8 +111,8 @@ static void populate_cells(WINDOW *win, Game *game)
             num_len = floor(log10(game->board[i][j])) + 1;
 
             // Calculates the X and Y coordinates for placing the value.
-            pos_x = j * (cell_width + 1) + (cell_width - num_len) / 2 + 1;
-            pos_y = i * (cell_height + 1) + cell_height / 2 + 1;
+            pos_x = j * (CELL_WIDTH + 1) + (CELL_WIDTH - num_len) / 2 + 1;
+            pos_y = i * (CELL_HEIGHT + 1) + CELL_HEIGHT / 2 + 1;
 
             wmove(win, pos_y, pos_x);
             wprintw(win, "%d", game->board[i][j]);
