@@ -360,15 +360,3 @@ bool is_game_over(Game *game, bool cell_empty)
 
     return true;
 }
-
-/**
- * @brief Frees the dynamically allocated memory for the game board.
- * @param board Pointer to the game board.
- */
-void free_board(cell_t **board)
-{
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
-        free(board[i]);
-
-    free(board);
-}
