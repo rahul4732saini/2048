@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 #include "shared.h"
-#include "core.h"
+#include "handlers.h"
 #include "consts.h"
 #include "logic.h"
 
