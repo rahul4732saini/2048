@@ -56,6 +56,15 @@ void setup(void)
 }
 
 /**
+ * @brief Cleans the game resources and exits and TUI environment.
+ */
+void clean(void)
+{
+    free_board(game.board);
+    endwin();
+}
+
+/**
  * @brief Main function for program execution.
  */
 int main()
