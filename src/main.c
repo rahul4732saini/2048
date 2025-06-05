@@ -2,10 +2,10 @@
  * @file main.c
  * @brief Entry point for the TUI-based 2048 game.
  *
- * @details This file comprises the main function and the core setup and cleanup
- *          routines for the text-based user interface (TUI) using ncurses. It
- *          initializes the TUI environment, manages the game loop, and ensures
- *          proper resource cleanup before exiting.
+ * @details This file comprises the main function and the core setup and
+ * cleanup routines for the TUI environment. It defines the mechanism to
+ * handle the game execution loop, and ensure proper setup and cleanup of
+ * resources at expected intervals.
  *
  * @author rahul4732saini
  */
