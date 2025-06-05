@@ -123,80 +123,72 @@ size_t handle_pause_menu(Dimension *scr_dim)
 }
 
 /**
- * @brief Handles the game board interface window.
+ * @brief Handles the game board interface.
  *
- * This function displays the game board  window while handling the
- * complete 2048 game mechanics including user input management and
- * tile operations, placing random  values on the board, displaying
- * the game score and checking game over conditions at each move.
+ * @details Displays the game board window and handles user input, and
+ * the complete game mechanics including tile operations, random value
+ * placement, and game over condition check at each move during the
+ * gameplay.
  *
- * @param scrs Pointers to the screens array comprising the Screen structs.
- * @param game Pointer to the Game struct comprising the game data.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
  *
- * @return An integer code signifying the next action to be performed in
- *         the game session. The codes along with their actions associated
- *         are as follows:
- *         -  0 -> Game over (either won or lost)
- *         -  1 -> Open pause menu
- *         - -1 -> Screen resize
+ * @return A non-negative integer indicating the screen
+ * handler to be called next in the game execution loop.
  */
-static int8_t handle_game_board(Screen *scrs, Game *game)
+size_t handle_game_board(Dimension *scr_dim)
 {
-    int16_t input, operations;
+    WinContext wctx;
+    Dimension dim;
+
+    wctx.dimension = &dim;
+    init_game_win(&wctx, scr_dim);
+
+    if (!game.init)
+        setup_game(&game);
+
+    int16_t input = 0, operations;
     bool iskey, isempty;
-
-    static char score[20];
-
-    place_board(scrs + 2, scrs + 1, game->bsize);
-    show_board(scrs + 2, game);
-
-    // Displays the current game score as the window title.
-    sprintf(score, "Score: %zu", game->score);
-    show_window_title(scrs + 1, score);
 
     // Displays the game board and handles the game mechanics
     // until the ESC key is pressed to open the pause menu.
-    while ((input = getch()) != 27)
+    do
     {
-        operations = 0;
-
-        isempty = true;
+        operations = 0, isempty = true;
         iskey = input == KEY_UP || input == KEY_LEFT;
 
         switch (input)
         {
         case KEY_UP:
         case KEY_DOWN:
-            operations += add_vertical(game, iskey);
-            operations += move_vertical(game, iskey);
+            operations += add_vertical(&game, iskey);
+            operations += move_vertical(&game, iskey);
             break;
 
         case KEY_LEFT:
         case KEY_RIGHT:
-            operations += add_horizontal(game, iskey);
-            operations += move_horizontal(game, iskey);
+            operations += add_horizontal(&game, iskey);
+            operations += move_horizontal(&game, iskey);
             break;
 
         case KEY_RESIZE:
-            return -1;
+            return HDL_GAME_WIN;
         }
 
         if (operations)
-            isempty = place_random(game);
+            isempty = place_random(&game);
 
-        if (game_over(game, isempty) || game->max_val == target)
-            return 0;
+        show_board(&wctx, &game);
 
-        // Updates the game score string and refreshes
-        // the game board as well as the window title.
+        if (is_game_over(&game, isempty) || game.max_val == TARGET)
+        {
+            game.init = FALSE;
+            return HDL_END_GAME_DIALOG;
+        }
 
-        sprintf(score, "Score: %zu", game->score);
+    } while ((input = getch()) != ASCII_ESC);
 
-        show_window_title(scrs + 1, score);
-        show_board(scrs + 2, game);
-    }
-
-    return 1;
+    return HDL_PAUSE_MENU;
 }
 
 /**
@@ -215,7 +207,7 @@ size_t handle_end_game_dialog(Dimension *scr_dim)
 {
     int16_t input;
 
-    if (game.max_val == target)
+    if (game.max_val == TARGET)
         show_end_game_dialog(win_dialog_txt, win_dialog_txt_len, scr_dim);
 
     else
