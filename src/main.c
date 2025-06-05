@@ -17,6 +17,7 @@
 #include "shared.h"
 #include "core.h"
 #include "consts.h"
+#include "logic.h"
 
 #include "interface/shared.h"
 #include "interface/core.h"
@@ -67,22 +68,39 @@ void clean(void)
 /**
  * @brief Main function for program execution.
  */
-int main()
+int main(void)
 {
-    srand(time(NULL));
+    setup();
 
-    // Sets up the TUI environments and the required color pairs.
-    Screen *scrs = setup();
-    init_pair(1, COLOR_BLACK, COLOR_WHITE);
+    Dimension scr_dim;
 
-    // Handles the game execution loop while the associated function
-    // does not return a non-zero integer signifying a closure.
-    while (handle_game(scrs))
-        ;
+    // Stores the index of the current screen handler.
+    size_t cur = HDL_MAIN_MENU;
 
-    // Cleans the TUI environment and closes the standard TUI screen.
-    clean(scrs);
-    endwin();
+    // Handles the game execution loop until any screen
+    // handler return a zero signifying a closure.
+    do
+    {
+        clear();
+        scr_dim = (Dimension){getmaxy(stdscr), getmaxx(stdscr)};
+
+        // Displays a warning while the screen dimensions are unsupported.
+        if (scr_dim.height < MIN_HEIGHT || scr_dim.width < MIN_WIDTH)
+        {
+            mvprintw(0, 0, "%s", scr_dim_warning);
+            refresh();
+
+            while (getch() != KEY_RESIZE)
+                ;
+
+            continue;
+        }
+
+        cur = handlers[cur](&scr_dim);
+
+    } while (cur);
+
+    clean();
 
     return EXIT_SUCCESS;
 }
