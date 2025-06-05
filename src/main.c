@@ -21,6 +21,18 @@
 #include "interface/shared.h"
 #include "interface/core.h"
 
+// Stores references to the screen handler functions.
+const size_t (*handlers[])(Dimension *) = {
+
+    // The first index is reserved and signifies the EXIT handler.
+    (size_t (*)(Dimension *))NULL,
+
+    handle_main_menu,
+    handle_pause_menu,
+    handle_game_board,
+    handle_end_game_dialog,
+};
+
 /**
  * @brief Main function for program execution.
  */
