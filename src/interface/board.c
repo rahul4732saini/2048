@@ -140,6 +140,8 @@ static void show_game_score(size_t score)
 
     move(height - 2, (width - strlen(string)) / 2);
     printw("%s", string);
+
+    refresh();
 }
 
 /**
