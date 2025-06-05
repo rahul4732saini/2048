@@ -107,16 +107,16 @@ static void populate_cells(WINDOW *win, Game *game)
             pos_x = j * (CELL_WIDTH + 1) + 1;
             pos_y = i * (CELL_HEIGHT + 1) + CELL_HEIGHT / 2 + 1;
 
+            // Clears the middle row of the cell to remove any
+            // previously placed value.
             wmove(win, pos_y, pos_x);
+            wprintw(win, "%*s", CELL_WIDTH, "");
 
             if (!game->board[i][j])
-            {
-                wprintw(win, "%*s", CELL_WIDTH, "");
                 continue;
-            }
 
-            // Calculates the length of the number to
-            // place it in the center of the cell.
+            // Calculates the length of the number to place it
+            // in the center of the cell.
             num_len = floor(log10(game->board[i][j])) + 1;
 
             wmove(win, pos_y, pos_x + (CELL_WIDTH - num_len) / 2);
