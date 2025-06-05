@@ -22,57 +22,6 @@
 Game game;
 
 /**
- * @brief Handles the specified in-game menu interface.
- *
- * @details This function displays the specified menu window and handles
- * user input for triggering the actions associated with the menu buttons.
- *
- * @param menu Pointer to the Menu struct comprising the menu details.
- * @param scr_dim Pointer to the Dimension struct comprising the
- * screen dimensions.
- *
- * @return A non-negative integer indicating the screen
- * handler to be called next in the game execution loop.
- */
-static size_t handle_menu(Menu *menu, Dimension *scr_dim)
-{
-    WinContext wctx;
-    Dimension dim;
-
-    wctx.dimension = &dim;
-    menu->init_handler(&wctx, scr_dim);
-
-    int16_t input = 0;
-    select_t select = 0;
-
-    // Displays the menu window until the RETURN key
-    // is pressed signifying a menu button press.
-    do
-    {
-        switch (input)
-        {
-        case KEY_UP:
-            --select;
-            break;
-
-        case KEY_DOWN:
-            ++select;
-            break;
-
-        case KEY_RESIZE:
-            return menu->screen_handler;
-        }
-
-        // Updates the selection and displays the menu.
-        select = (select + menu->item_count) % menu->item_count;
-        menu->display_handler(&wctx, select);
-
-    } while ((input = getch()) != ASCII_LF);
-
-    return menu->return_handlers[select];
-}
-
-/**
  * @brief Handles the main menu interface.
  *
  * @details Displays the main menu window and handles user input for
