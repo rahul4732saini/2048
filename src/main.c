@@ -34,6 +34,28 @@ const size_t (*handlers[])(Dimension *) = {
 };
 
 /**
+ * @brief Sets up the TUI environment and game-related data structures.
+ *
+ * @details Sets up TUI environment with ncurses, seeds the random number
+ * generator, and sets up the Game struct for handling game-related data.
+ */
+void setup(void)
+{
+    srand(time(NULL));
+
+    // Sets up the TUI environment and the required color pairs.
+    init_screen();
+    init_pair(COLOR_SELECT, COLOR_BLACK, COLOR_WHITE);
+
+    game = (Game){
+        .board = create_board(),
+        .init = FALSE,
+        .score = 0,
+        .max_val = 0,
+    };
+}
+
+/**
  * @brief Main function for program execution.
  */
 int main()
