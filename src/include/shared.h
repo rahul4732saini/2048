@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <ncurses.h>
 
@@ -14,6 +15,7 @@ typedef struct
     cell_t **board;
     size_t max_val;
     size_t score;
+    bool init;
 } Game;
 
 typedef struct
