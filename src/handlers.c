@@ -86,15 +86,40 @@ static size_t handle_menu(Menu *menu, Dimension *scr_dim)
  */
 size_t handle_main_menu(Dimension *scr_dim)
 {
-    Menu menu = {
-        init_main_menu,
-        show_main_menu,
-        HDL_MAIN_MENU,
-        main_menu_option_cnt,
-        main_menu_handlers,
-    };
+    WinContext wctx;
+    Dimension dim;
 
-    return handle_menu(&menu, scr_dim);
+    wctx.dimension = &dim;
+    init_main_menu(&wctx, scr_dim);
+
+    int16_t input = 0;
+    select_t select = 0;
+
+    // Displays the menu window until the RETURN key
+    // is pressed signifying a menu button press.
+    do
+    {
+        switch (input)
+        {
+        case KEY_UP:
+            --select;
+            break;
+
+        case KEY_DOWN:
+            ++select;
+            break;
+
+        case KEY_RESIZE:
+            return HDL_MAIN_MENU;
+        }
+
+        // Updates the selection and displays the menu.
+        select = (select + main_menu_option_cnt) % main_menu_option_cnt;
+        show_main_menu(&wctx, select);
+
+    } while ((input = getch()) != ASCII_LF);
+
+    return main_menu_handlers[select];
 }
 
 /**
