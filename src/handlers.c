@@ -111,15 +111,47 @@ size_t handle_main_menu(Dimension *scr_dim)
  */
 size_t handle_pause_menu(Dimension *scr_dim)
 {
-    Menu menu = {
-        init_pause_menu,
-        show_pause_menu,
-        HDL_PAUSE_MENU,
-        pause_menu_option_cnt,
-        pause_menu_handlers,
-    };
+    WinContext wctx;
+    Dimension dim;
 
-    return handle_menu(&menu, scr_dim);
+    wctx.dimension = &dim;
+    init_pause_menu(&wctx, scr_dim);
+
+    int16_t input = 0;
+    select_t select = 0;
+
+    // Displays the menu window until the RETURN key
+    // is pressed signifying a menu button press.
+    do
+    {
+        switch (input)
+        {
+        case KEY_UP:
+            --select;
+            break;
+
+        case KEY_DOWN:
+            ++select;
+            break;
+
+        case KEY_RESIZE:
+            return HDL_PAUSE_MENU;
+
+        // Pressing the ESC key redirects back to the game window.
+        case ASCII_ESC:
+            return HDL_GAME_WIN;
+        }
+
+        // Updates the selection and displays the menu.
+        select = (select + pause_menu_option_cnt) % pause_menu_option_cnt;
+        show_pause_menu(&wctx, select);
+
+    } while ((input = getch()) != ASCII_LF);
+
+    if (pause_menu_handlers[select] != HDL_GAME_WIN)
+        game.init = false;
+
+    return pause_menu_handlers[select];
 }
 
 /**
