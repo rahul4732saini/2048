@@ -98,6 +98,7 @@ static void draw_grid(WINDOW *win)
 static void populate_cells(WINDOW *win, Game *game)
 {
     size_t pos_x, pos_y, num_len;
+    wattron(win, A_BOLD);
 
     for (size_t i = 0; i < BOARD_SIZE; ++i)
     {
@@ -124,6 +125,7 @@ static void populate_cells(WINDOW *win, Game *game)
         }
     }
 
+    wattroff(win, A_BOLD);
     wrefresh(win);
 }
 
