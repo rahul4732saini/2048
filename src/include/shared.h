@@ -7,6 +7,7 @@
 
 #include <ncurses.h>
 
+typedef uint16_t input_t;
 typedef uint16_t cell_t;
 typedef uint8_t select_t;
 
