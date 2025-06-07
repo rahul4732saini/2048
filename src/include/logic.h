@@ -11,10 +11,10 @@ void setup_game(Game *game);
 bool is_game_over(Game *game, bool cell_empty);
 bool place_random(Game *game);
 
-size_t add_horizontal(Game *game, bool to_right);
-size_t add_vertical(Game *game, bool to_bottom);
+bool add_horizontal(Game *game, bool to_right);
+bool add_vertical(Game *game, bool to_bottom);
 
-size_t move_horizontal(Game *game, bool to_right);
-size_t move_vertical(Game *game, bool to_bottom);
+bool move_horizontal(Game *game, bool to_right);
+bool move_vertical(Game *game, bool to_bottom);
 
 #endif
