@@ -144,10 +144,12 @@ bool add_horizontal(Game *game, bool to_right)
  *
  * @return Total number of addition operations performed.
  */
-size_t add_vertical(Game *game, bool to_bottom)
+bool add_vertical(Game *game, bool to_bottom)
 {
-    size_t start, end, last, operations = 0;
+    size_t start, end, last;
     int8_t dir = to_bottom ? 1 : -1;
+
+    bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation based on the specified direction.
@@ -187,11 +189,11 @@ size_t add_vertical(Game *game, bool to_bottom)
             game->score += game->board[last][i];
             last = BOARD_SIZE;
 
-            ++operations;
+            operated = true;
         }
     }
 
-    return operations;
+    return operated;
 }
 
 /**
@@ -203,10 +205,12 @@ size_t add_vertical(Game *game, bool to_bottom)
  *
  * @return Total number of movement operations performed.
  */
-size_t move_horizontal(Game *game, bool to_right)
+bool move_horizontal(Game *game, bool to_right)
 {
-    size_t start, end, inx_0, operations = 0;
+    size_t start, end, inx_0;
     int8_t dir = to_right ? 1 : -1;
+
+    bool operated = false;
 
     // The following conditional statements defined the starting and
     // ending index for the operation based on the specified direction.
@@ -235,7 +239,7 @@ size_t move_horizontal(Game *game, bool to_right)
                 game->board[i][j] = 0;
 
                 inx_0 += dir;
-                ++operations;
+                operated = true;
             }
 
             else if (!game->board[i][j] && inx_0 == BOARD_SIZE)
@@ -243,7 +247,7 @@ size_t move_horizontal(Game *game, bool to_right)
         }
     }
 
-    return operations;
+    return operated;
 }
 
 /**
@@ -255,10 +259,12 @@ size_t move_horizontal(Game *game, bool to_right)
  *
  * @return Total number of movement operations performed.
  */
-size_t move_vertical(Game *game, bool to_bottom)
+bool move_vertical(Game *game, bool to_bottom)
 {
-    size_t start, end, inx_0, operations = 0;
+    size_t start, end, inx_0;
     int8_t dir = to_bottom ? 1 : -1;
+
+    bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation absed on the specified direction.
@@ -287,7 +293,7 @@ size_t move_vertical(Game *game, bool to_bottom)
                 game->board[j][i] = 0;
 
                 inx_0 += dir;
-                ++operations;
+                operated = true;
             }
 
             else if (!game->board[j][i] && inx_0 == BOARD_SIZE)
@@ -295,7 +301,7 @@ size_t move_vertical(Game *game, bool to_bottom)
         }
     }
 
-    return operations;
+    return operated;
 }
 
 /**
