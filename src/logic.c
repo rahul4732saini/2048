@@ -27,7 +27,7 @@ cell_t **create_board(void)
 {
     cell_t **board = (cell_t **)malloc(BOARD_SIZE * sizeof(cell_t *));
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
         board[i] = (cell_t *)calloc(BOARD_SIZE, sizeof(cell_t));
     }
@@ -41,7 +41,7 @@ cell_t **create_board(void)
  */
 void free_board(cell_t **board)
 {
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
         free(board[i]);
 
     free(board);
@@ -58,7 +58,7 @@ void free_board(cell_t **board)
  */
 void setup_game(Game *game)
 {
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
         memset(game->board[i], 0, BOARD_SIZE * sizeof(cell_t));
 
     place_random(game);
@@ -82,8 +82,8 @@ void setup_game(Game *game)
  */
 bool add_horizontal(Game *game, bool to_right)
 {
-    size_t start, end, last;
-    int8_t dir = to_right ? 1 : -1;
+    index_t start, end, last;
+    index_t dir = to_right ? 1 : -1;
 
     bool operated = false;
 
@@ -96,13 +96,13 @@ bool add_horizontal(Game *game, bool to_right)
     else
         start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
         // The board size is used as a special index to signify
         // unavailability of a compatible cell for operation.
         last = BOARD_SIZE;
 
-        for (size_t j = start; j != end; j += dir)
+        for (index_t j = start; j != end; j += dir)
         {
             if (!game->board[i][j])
                 continue;
@@ -146,8 +146,8 @@ bool add_horizontal(Game *game, bool to_right)
  */
 bool add_vertical(Game *game, bool to_bottom)
 {
-    size_t start, end, last;
-    int8_t dir = to_bottom ? 1 : -1;
+    index_t start, end, last;
+    index_t dir = to_bottom ? 1 : -1;
 
     bool operated = false;
 
@@ -160,13 +160,13 @@ bool add_vertical(Game *game, bool to_bottom)
     else
         start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
         // The board size is used as a special index to signify
         // unavailability of a compatible cell for operation.
         last = BOARD_SIZE;
 
-        for (size_t j = start; j != end; j += dir)
+        for (index_t j = start; j != end; j += dir)
         {
             if (!game->board[j][i])
                 continue;
@@ -207,8 +207,8 @@ bool add_vertical(Game *game, bool to_bottom)
  */
 bool move_horizontal(Game *game, bool to_right)
 {
-    size_t start, end, inx_0;
-    int8_t dir = to_right ? 1 : -1;
+    index_t start, end, inx_0;
+    index_t dir = to_right ? 1 : -1;
 
     bool operated = false;
 
@@ -221,13 +221,13 @@ bool move_horizontal(Game *game, bool to_right)
     else
         start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
         // The board size is used as a special value to indicate
         // the absence of empty tiles before the current position.
         inx_0 = BOARD_SIZE;
 
-        for (size_t j = start; j != end; j += dir)
+        for (index_t j = start; j != end; j += dir)
         {
             if (game->board[i][j] && inx_0 != BOARD_SIZE)
             {
@@ -261,8 +261,8 @@ bool move_horizontal(Game *game, bool to_right)
  */
 bool move_vertical(Game *game, bool to_bottom)
 {
-    size_t start, end, inx_0;
-    int8_t dir = to_bottom ? 1 : -1;
+    index_t start, end, inx_0;
+    index_t dir = to_bottom ? 1 : -1;
 
     bool operated = false;
 
@@ -275,13 +275,13 @@ bool move_vertical(Game *game, bool to_bottom)
     else
         start = BOARD_SIZE - 1, end = -1;
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
         // The board size is used as a special value to indicate
         // the absence of empty tiles before the current position.
         inx_0 = BOARD_SIZE;
 
-        for (size_t j = start; j != end; j += dir)
+        for (index_t j = start; j != end; j += dir)
         {
             if (game->board[j][i] && inx_0 != BOARD_SIZE)
             {
@@ -313,15 +313,15 @@ bool move_vertical(Game *game, bool to_bottom)
  */
 bool place_random(Game *game)
 {
-    size_t positions[BOARD_SIZE * BOARD_SIZE];
-    size_t ctr = 0;
+    index_t positions[BOARD_SIZE * BOARD_SIZE];
+    index_t ctr = 0;
 
     // Searches for empty tiles on the game board and adds
     // their positions in the array for random selection.
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < BOARD_SIZE; ++j)
+        for (index_t j = 0; j < BOARD_SIZE; ++j)
         {
             if (game->board[i][j])
                 continue;
@@ -333,7 +333,7 @@ bool place_random(Game *game)
     if (!ctr)
         return false;
 
-    size_t pos = positions[rand() % ctr];
+    index_t pos = positions[rand() % ctr];
     game->board[pos / BOARD_SIZE][pos % BOARD_SIZE] = 2;
 
     return ctr > 1;
@@ -356,9 +356,9 @@ bool is_game_over(Game *game, bool cell_empty)
     // Iterates though the game board looking up for equal
     // adjacent tiles to check if the game is still not over.
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < BOARD_SIZE - 1; ++j)
+        for (index_t j = 0; j < BOARD_SIZE - 1; ++j)
         {
             if (game->board[i][j] == game->board[i][j + 1] ||
                 game->board[j][i] == game->board[j + 1][i])
