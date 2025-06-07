@@ -41,7 +41,7 @@ size_t handle_main_menu(Dimension *scr_dim)
     wctx.dimension = &dim;
     init_main_menu(&wctx, scr_dim);
 
-    int16_t input = 0;
+    input_t input = 0;
     select_t select = 0;
 
     // Displays the menu window until the RETURN key
@@ -91,7 +91,7 @@ size_t handle_pause_menu(Dimension *scr_dim)
     wctx.dimension = &dim;
     init_pause_menu(&wctx, scr_dim);
 
-    int16_t input = 0;
+    input_t input = 0;
     select_t select = 0;
 
     // Displays the menu window until the RETURN key
@@ -153,7 +153,7 @@ size_t handle_game_board(Dimension *scr_dim)
     if (!game.init)
         setup_game(&game);
 
-    int16_t input = 0, operations;
+    input_t input = 0, operations;
     bool iskey, isempty;
 
     // Displays the game board and handles the game mechanics
@@ -211,7 +211,7 @@ size_t handle_game_board(Dimension *scr_dim)
  */
 size_t handle_end_game_dialog(Dimension *scr_dim)
 {
-    int16_t input;
+    input_t input;
 
     if (game.max_val == TARGET)
         show_end_game_dialog(win_dialog_txt, win_dialog_txt_len, scr_dim);
