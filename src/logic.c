@@ -80,10 +80,12 @@ void setup_game(Game *game)
  *
  * @return Total number of addition operations performed.
  */
-size_t add_horizontal(Game *game, bool to_right)
+bool add_horizontal(Game *game, bool to_right)
 {
-    size_t start, end, last, operations = 0;
+    size_t start, end, last;
     int8_t dir = to_right ? 1 : -1;
+
+    bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation based on the speciifed direction.
@@ -123,11 +125,11 @@ size_t add_horizontal(Game *game, bool to_right)
             game->score += game->board[i][last];
             last = BOARD_SIZE;
 
-            ++operations;
+            operated = true;
         }
     }
 
-    return operations;
+    return operated;
 }
 
 /**
