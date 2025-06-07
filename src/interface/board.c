@@ -1,8 +1,8 @@
 /**
- * @brief Defines functions for handling the 2048 game board interface.
+ * @brief Defines functions for handling the game board window.
  *
- * This module defines functions for placing and
- * displaying the 2048 game board on the TUI screen.
+ * @details This module defines functions for initializing and
+ * displaying the game board on the TUI screen.
  */
 
 #include <math.h>
