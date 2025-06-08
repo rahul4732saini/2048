@@ -95,16 +95,16 @@ bool add_horizontal(Game *game, bool to_right)
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // The board size is used as a special index to signify
-        // unavailability of a compatible cell for operation.
-        last = BOARD_SIZE;
+        // -1 is used as a special value to signify unavailability
+        // of a compatible cell for operation.
+        last = -1;
 
         for (index_t j = start; j != end; j += dir)
         {
             if (!game->board[i][j])
                 continue;
 
-            else if (last == BOARD_SIZE || game->board[i][j] != game->board[i][last])
+            else if (last == -1 || game->board[i][j] != game->board[i][last])
             {
                 last = j;
                 continue;
@@ -120,7 +120,7 @@ bool add_horizontal(Game *game, bool to_right)
                 game->max_val = game->board[i][last];
 
             game->score += game->board[i][last];
-            last = BOARD_SIZE;
+            last = -1;
 
             operated = true;
         }
@@ -159,16 +159,16 @@ bool add_vertical(Game *game, bool to_bottom)
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // The board size is used as a special index to signify
-        // unavailability of a compatible cell for operation.
-        last = BOARD_SIZE;
+        // -1 is used as a special value to signify unavailability
+        // of a compatible cell for operation.
+        last = -1;
 
         for (index_t j = start; j != end; j += dir)
         {
             if (!game->board[j][i])
                 continue;
 
-            else if (last == BOARD_SIZE || game->board[j][i] != game->board[last][i])
+            else if (last == -1 || game->board[j][i] != game->board[last][i])
             {
                 last = j;
                 continue;
@@ -184,7 +184,7 @@ bool add_vertical(Game *game, bool to_bottom)
                 game->max_val = game->board[last][i];
 
             game->score += game->board[last][i];
-            last = BOARD_SIZE;
+            last = -1;
 
             operated = true;
         }
