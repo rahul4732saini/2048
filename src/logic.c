@@ -78,7 +78,7 @@ void setup_game(Game *game)
  * @param to_right Boolean value to indicate whether to perform the
  * operation from left to right or right to left.
  *
- * @return Total number of addition operations performed.
+ * @return Boolean value indicating whether any operations were performed.
  */
 bool add_horizontal(Game *game, bool to_right)
 {
@@ -142,7 +142,7 @@ bool add_horizontal(Game *game, bool to_right)
  * @param to_bottom Boolean value to indicate whether to perform
  * the operation from top to bottom or from bottom to top.
  *
- * @return Total number of addition operations performed.
+ * @return Boolean value indicating whether any operations were performed.
  */
 bool add_vertical(Game *game, bool to_bottom)
 {
@@ -203,7 +203,7 @@ bool add_vertical(Game *game, bool to_bottom)
  * @param to_right Boolean value to indicate whether to perform
  * the operation from left to right or from right to left.
  *
- * @return Total number of movement operations performed.
+ * @return Boolean value indicating whether any operations were performed.
  */
 bool move_horizontal(Game *game, bool to_right)
 {
@@ -257,7 +257,7 @@ bool move_horizontal(Game *game, bool to_right)
  * @param to_bottom Boolean value to indicate whether to perform
  * the operation from top to bottom or from bottom to top.
  *
- * @return Total number of movement operations performed.
+ * @return Boolean value indicating whether any operations were performed.
  */
 bool move_vertical(Game *game, bool to_bottom)
 {
@@ -346,7 +346,7 @@ bool place_random(Game *game)
  * @param cell_empty Whether there is any empty cell on the
  * game board, to indicate that the game is still not over.
  *
- * @return A Boolean value signifying whether the game is over.
+ * @return Boolean value signifying whether the game is over.
  */
 bool is_game_over(Game *game, bool cell_empty)
 {
