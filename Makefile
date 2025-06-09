@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -O2
+CFLAGS = -Wall -Wextra -O2
 
 LIBS = -lncurses -lm
 INCLUDE = -Isrc/include
