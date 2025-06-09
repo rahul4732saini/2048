@@ -153,35 +153,35 @@ size_t handle_game_board(Dimension *scr_dim)
     if (!game.init)
         setup_game(&game);
 
-    input_t input = 0, operations;
-    bool iskey, isempty;
+    input_t input = 0;
+    bool iskey, isempty, operated;
 
     // Displays the game board and handles the game mechanics
     // until the ESC key is pressed to open the pause menu.
     do
     {
-        operations = 0, isempty = true;
+        operated = false, isempty = true;
         iskey = input == KEY_UP || input == KEY_LEFT;
 
         switch (input)
         {
         case KEY_UP:
         case KEY_DOWN:
-            operations += add_vertical(&game, iskey);
-            operations += move_vertical(&game, iskey);
+            operated |= add_vertical(&game, iskey);
+            operated |= move_vertical(&game, iskey);
             break;
 
         case KEY_LEFT:
         case KEY_RIGHT:
-            operations += add_horizontal(&game, iskey);
-            operations += move_horizontal(&game, iskey);
+            operated |= add_horizontal(&game, iskey);
+            operated |= move_horizontal(&game, iskey);
             break;
 
         case KEY_RESIZE:
             return HDL_GAME_WIN;
         }
 
-        if (operations)
+        if (operated)
             isempty = place_random(&game);
 
         show_board(&wctx, &game);
