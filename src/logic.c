@@ -72,22 +72,22 @@ void setup_game(Game *game)
  * specified direction (left/right), and updates the game metadata.
  *
  * @param game Pointer to the Game struct comprising all the game data.
- * @param to_right Boolean value to indicate whether to perform the
- * operation from left to right or right to left.
+ * @param to_left Boolean value to indicate whether to perform the
+ * operation from right to left or left to right.
  *
  * @return Boolean value indicating whether any operations were performed.
  */
-bool add_horizontal(Game *game, bool to_right)
+bool add_horizontal(Game *game, bool to_left)
 {
     index_t start, end, last;
-    index_t dir = to_right ? 1 : -1;
+    index_t dir = to_left ? 1 : -1;
 
     bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation based on the speciifed direction.
 
-    if (to_right)
+    if (to_left)
         start = 0, end = BOARD_SIZE;
 
     else
@@ -136,22 +136,22 @@ bool add_horizontal(Game *game, bool to_right)
  * specified direction (top/down), and updates the game metadata.
  *
  * @param game Pointer to the Game struct comprising the game data.
- * @param to_bottom Boolean value to indicate whether to perform
- * the operation from top to bottom or from bottom to top.
+ * @param to_top Boolean value to indicate whether to perform the
+ * operation from bottom to top or from top to bottom.
  *
  * @return Boolean value indicating whether any operations were performed.
  */
-bool add_vertical(Game *game, bool to_bottom)
+bool add_vertical(Game *game, bool to_top)
 {
     index_t start, end, last;
-    index_t dir = to_bottom ? 1 : -1;
+    index_t dir = to_top ? 1 : -1;
 
     bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation based on the specified direction.
 
-    if (to_bottom)
+    if (to_top)
         start = 0, end = BOARD_SIZE;
 
     else
@@ -197,22 +197,22 @@ bool add_vertical(Game *game, bool to_bottom)
  * @brief Horizontally moves tiles based on the specified direction.
  *
  * @param game Pointer to the Game struct comprising the game data.
- * @param to_right Boolean value to indicate whether to perform
- * the operation from left to right or from right to left.
+ * @param to_left Boolean value to indicate whether to perform
+ * the operation from right to left or from left to right.
  *
  * @return Boolean value indicating whether any operations were performed.
  */
-bool move_horizontal(Game *game, bool to_right)
+bool move_horizontal(Game *game, bool to_left)
 {
     index_t start, end, inx_0;
-    index_t dir = to_right ? 1 : -1;
+    index_t dir = to_left ? 1 : -1;
 
     bool operated = false;
 
     // The following conditional statements defined the starting and
     // ending index for the operation based on the specified direction.
 
-    if (to_right)
+    if (to_left)
         start = 0, end = BOARD_SIZE;
 
     else
@@ -251,22 +251,22 @@ bool move_horizontal(Game *game, bool to_right)
  * @brief Vertically moves the tiles based on the specified direction.
  *
  * @param game Pointer to the Game struct comprising the game data.
- * @param to_bottom Boolean value to indicate whether to perform
- * the operation from top to bottom or from bottom to top.
+ * @param to_top Boolean value to indicate whether to perform
+ * the operation from bottom to top or from top to bottom.
  *
  * @return Boolean value indicating whether any operations were performed.
  */
-bool move_vertical(Game *game, bool to_bottom)
+bool move_vertical(Game *game, bool to_top)
 {
     index_t start, end, inx_0;
-    index_t dir = to_bottom ? 1 : -1;
+    index_t dir = to_top ? 1 : -1;
 
     bool operated = false;
 
     // The following conditional statements define the starting and
     // ending index for the operation absed on the specified direction.
 
-    if (to_bottom)
+    if (to_top)
         start = 0, end = BOARD_SIZE;
 
     else
