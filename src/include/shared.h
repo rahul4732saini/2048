@@ -12,6 +12,7 @@ typedef uint16_t input_t;
 typedef uint8_t select_t;
 typedef uint16_t score_t;
 typedef int8_t index_t;
+typedef uint16_t pos_t;
 typedef uint8_t handler_t;
 
 typedef struct
