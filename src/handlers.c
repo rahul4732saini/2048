@@ -2,9 +2,9 @@
  * @file handlers.c
  * @brief Defines screen handler functions for managing in-game interfaces.
  *
- * @details This module defines screen handler functions for in-game
- * TUI interfaces, including user input management and integration of
- * the logic associated with them.
+ * @details This module defines screen handler functions for managing
+ * in-game TUI interfaces, including user input management and integration
+ * of the logic associated with them.
  */
 
 #include <ncurses.h>
