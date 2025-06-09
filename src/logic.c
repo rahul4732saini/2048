@@ -220,13 +220,13 @@ bool move_horizontal(Game *game, bool to_right)
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // The board size is used as a special value to indicate
-        // the absence of empty tiles before the current position.
-        inx_0 = BOARD_SIZE;
+        // -1 is used as a special value to indicate the absence
+        // of empty tiles before the current position.
+        inx_0 = -1;
 
         for (index_t j = start; j != end; j += dir)
         {
-            if (game->board[i][j] && inx_0 != BOARD_SIZE)
+            if (game->board[i][j] && inx_0 != -1)
             {
                 // Swaps the tiles, updates the operations counter and updates
                 // inx_0 by 1 in the direction of operation as the next tile is
@@ -239,7 +239,7 @@ bool move_horizontal(Game *game, bool to_right)
                 operated = true;
             }
 
-            else if (!game->board[i][j] && inx_0 == BOARD_SIZE)
+            else if (!game->board[i][j] && inx_0 == -1)
                 inx_0 = j;
         }
     }
@@ -274,13 +274,13 @@ bool move_vertical(Game *game, bool to_bottom)
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        // The board size is used as a special value to indicate
-        // the absence of empty tiles before the current position.
-        inx_0 = BOARD_SIZE;
+        // -1 is used as a special value to indicate the absence
+        // of empty tiles before the current position.
+        inx_0 = -1;
 
         for (index_t j = start; j != end; j += dir)
         {
-            if (game->board[j][i] && inx_0 != BOARD_SIZE)
+            if (game->board[j][i] && inx_0 != -1)
             {
                 // Swaps the tiles, updates the operations counter and updates
                 // "inx_0" by 1 in the direction of operation as the subsequent
@@ -293,7 +293,7 @@ bool move_vertical(Game *game, bool to_bottom)
                 operated = true;
             }
 
-            else if (!game->board[j][i] && inx_0 == BOARD_SIZE)
+            else if (!game->board[j][i] && inx_0 == -1)
                 inx_0 = j;
         }
     }
