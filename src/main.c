@@ -23,10 +23,10 @@
 #include "interface/core.h"
 
 // Stores references to the screen handler functions.
-const size_t (*handlers[])(Dimension *) = {
+const handler_t (*handlers[])(Dimension *) = {
 
     // The first index is reserved and signifies the EXIT handler.
-    (size_t (*)(Dimension *))NULL,
+    (handler_t (*)(Dimension *))NULL,
 
     handle_main_menu,
     handle_pause_menu,
