@@ -19,7 +19,7 @@ typedef struct
 {
     cell_t **board;
     size_t max_val;
-    size_t score;
+    score_t score;
     bool init;
 } Game;
 
