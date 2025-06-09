@@ -26,8 +26,8 @@ typedef struct
 
 typedef struct
 {
-    size_t height;
-    size_t width;
+    len_t height;
+    len_t width;
     pos_t start_y;
     pos_t start_x;
 } Dimension;
