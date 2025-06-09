@@ -82,7 +82,11 @@ int main(void)
     do
     {
         clear();
-        scr_dim = (Dimension){getmaxy(stdscr), getmaxx(stdscr)};
+
+        scr_dim = (Dimension){
+            .height = getmaxy(stdscr),
+            .width = getmaxx(stdscr),
+        };
 
         // Displays a warning while the screen dimensions are unsupported.
         if (scr_dim.height < MIN_HEIGHT || scr_dim.width < MIN_WIDTH)
