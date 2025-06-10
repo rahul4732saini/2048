@@ -121,14 +121,20 @@ void init_pause_menu(WinContext *wctx, Dimension *scr_dim)
 void show_main_menu(WinContext *wctx, size_t select)
 {
     WINDOW *win = wctx->window;
-    len_t length, left_cutoff, width = main_menu_width - 2;
+
+    // Left and right cutoff values are stored to place the text in the
+    // center and display the selection color if the option is selected.
+
+    len_t left_cutoff, right_cutoff;
+    len_t length, width = main_menu_width - 2;
 
     for (index_t i = 0; i < main_menu_option_cnt; ++i)
     {
-        // Extracts the length of the string and calculates the size
-        // of the left cutoff to display it in the center of the menu.
+        // Extracts the string length for cutoff calculation.
         length = strlen(main_menu_options[i]);
+
         left_cutoff = (width - length) / 2;
+        right_cutoff = width - length - left_cutoff;
 
         // Configures the current background and foreground
         // color based on the index of the menu item.
@@ -138,9 +144,9 @@ void show_main_menu(WinContext *wctx, size_t select)
 
         wmove(win, i + 1, 1);
 
-        wprintw(win, "%*s", left_cutoff, "");
+        wprintw(win, "%*s", (int)left_cutoff, "");
         wprintw(win, "%s", main_menu_options[i]);
-        wprintw(win, "%*s", width - length - left_cutoff, "");
+        wprintw(win, "%*s", (int)right_cutoff, "");
 
         if (i == select)
             wattroff(win, COLOR_PAIR(COLOR_SELECT));
