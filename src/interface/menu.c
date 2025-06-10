@@ -1,8 +1,8 @@
 /**
- * @brief Defines functions for handling the in-game menu interfaces.
+ * @brief Defines functions for handling the in-game menu windows.
  *
  * @details This module defines functions for initializing the displaying
- * the various in-game menu interfaces including the main and pause menu.
+ * the various in-game menu windows including the main and pause menu.
  */
 
 #include <ncurses.h>
@@ -47,7 +47,7 @@ static void show_header_footer(Dimension *scr_dim)
  * @brief Displays the specified menu heading on top on the
  * associated menu window.
  *
- * @param heading Heading to be displayed on top on the menu window.
+ * @param heading Text to be displayed on top on the menu window.
  * @param menu_start_y Vertical starting position of the menu.
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
@@ -128,7 +128,7 @@ void show_main_menu(WinContext *wctx, size_t select)
     for (size_t i = 0; i < main_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
-        // of the left cutoff to display it at the center of the menu.
+        // of the left cutoff to display it in the center of the menu.
         length = strlen(main_menu_options[i]);
         left_cutoff = (width - length) / 2;
 
@@ -170,7 +170,7 @@ void show_pause_menu(WinContext *wctx, size_t select)
     for (size_t i = 0; i < pause_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
-        // of the left cutoff to display it at the center of the menu.
+        // of the left cutoff to display it in the center of the menu.
         length = strlen(pause_menu_options[i]);
         left_cutoff = (width - length) / 2;
 
