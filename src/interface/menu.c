@@ -118,7 +118,7 @@ void init_pause_menu(WinContext *wctx, Dimension *scr_dim)
  * @param wctx Pointer to the WinContext struct comprising the window data.
  * @param select Index of the selected menu item.
  */
-void show_main_menu(WinContext *wctx, size_t select)
+void show_main_menu(WinContext *wctx, index_t select)
 {
     WINDOW *win = wctx->window;
 
@@ -162,7 +162,7 @@ void show_main_menu(WinContext *wctx, size_t select)
  * @param wctx Pointer to the WinContext struct comprising the window data.
  * @param select Index of the selected menu item.
  */
-void show_pause_menu(WinContext *wctx, size_t select)
+void show_pause_menu(WinContext *wctx, index_t select)
 {
     WINDOW *win = wctx->window;
 
