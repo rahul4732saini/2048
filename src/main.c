@@ -57,7 +57,7 @@ void setup(void)
 }
 
 /**
- * @brief Cleans the game resources and exits and TUI environment.
+ * @brief Cleans the game resources and exits the TUI environment.
  */
 void clean(void)
 {
@@ -78,7 +78,7 @@ int main(void)
     handler_t cur = HDL_MAIN_MENU;
 
     // Handles the game execution loop until any screen
-    // handler return a zero signifying a closure.
+    // handler returns zero signifying a closure.
     do
     {
         clear();
@@ -100,6 +100,7 @@ int main(void)
             continue;
         }
 
+        // Invokes the current screen handler and stores the index of the next.
         cur = handlers[cur](&scr_dim);
 
     } while (cur);
