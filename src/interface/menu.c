@@ -52,13 +52,11 @@ static void show_header_footer(Dimension *scr_dim)
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
  */
-static void show_menu_heading(
+static inline void show_menu_heading(
     char *heading, size_t menu_start_y, Dimension *scr_dim)
 {
-    size_t start_y = menu_start_y - 1;
-    size_t start_x = (scr_dim->width - strlen(heading)) / 2;
-
-    mvprintw(start_y, start_x, "%s", heading);
+    move(menu_start_y - 1, (scr_dim->width - strlen(heading)) / 2);
+    printw("%s", heading);
 }
 
 /**
