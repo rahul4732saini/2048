@@ -43,16 +43,16 @@ void init_screen()
  * @param scr_dim Pointer to the Dimension struct comprising the
  * screen dimensions.
  */
-void show_end_game_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_dim)
+void show_end_game_dialog(const char *mesg[], len_t mesg_len, Dimension *scr_dim)
 {
     // Calculates the Y coordinates for placing the message. A margin of
     // 2 rows is reduced for the placement of the OK button in the center.
-    size_t pos_x, pos_y = (scr_dim->height - mesg_len - 2) / 2;
+    pos_t pos_x, pos_y = (scr_dim->height - mesg_len - 2) / 2;
 
-    for (size_t i = 0; i < mesg_len; ++i)
+    for (index_t i = 0; i < mesg_len; ++i)
     {
-        // Calculates the left cutoff to place the text in the center
-        // of the TUI screen.
+        // Calculates the X coordinate to place the
+        // text in the center of the TUI screen.
         pos_x = (scr_dim->width - strlen(mesg[i])) / 2;
 
         move(pos_y++, pos_x);
@@ -61,16 +61,18 @@ void show_end_game_dialog(const char *mesg[], size_t mesg_len, Dimension *scr_di
 
     pos_x = (scr_dim->width - dialog_bt_width) / 2;
 
-    // Stores the internal left cutoff within the OK button
-    // to place the text in the center of the button.
-    size_t inner_left_cutoff = (dialog_bt_width - strlen(dialog_bt_txt)) / 2;
+    // The left cutoff is stored as a 32-bit signed integer to meet
+    // the padding variable requirements for variadic formatting.
+
+    len_t text_len = strlen(dialog_bt_txt);
+    int left_cutoff = (dialog_bt_width - text_len) / 2;
 
     move(++pos_y, pos_x);
     attron(COLOR_PAIR(COLOR_SELECT));
 
-    printw("%*s", inner_left_cutoff, "");
+    printw("%*s", left_cutoff, "");
     printw("%s", dialog_bt_txt);
-    printw("%*s", dialog_bt_width - inner_left_cutoff - strlen(dialog_bt_txt), "");
+    printw("%*s", dialog_bt_width - left_cutoff - text_len, "");
 
     attroff(COLOR_PAIR(COLOR_SELECT));
     refresh();
