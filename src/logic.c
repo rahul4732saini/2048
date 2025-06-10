@@ -348,8 +348,8 @@ bool is_game_over(Game *game, bool cell_empty)
     if (cell_empty)
         return false;
 
-    // Iterates though the game board looking up for equal
-    // adjacent tiles to check if the game is still not over.
+    // Iterates though the game board looking up for equal adjacent
+    // tiles that can be merged to check if the game is still not over.
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
