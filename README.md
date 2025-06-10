@@ -12,15 +12,15 @@
 
 <h2 align=center>Description</h2>
 
-The repository offers a TUI-based rendition of the classic **2048** puzzle game, delivering an interactive and engaging experience directly within the command-line interface. This project is designed to provide users with a responsive and intuitive gameplay environment, capturing the essence of the original 2048 puzzle game.​
+The repository offers a TUI-based rendition of the classic **2048** puzzle game, delivering an interactive and engaging experience directly within the terminal. This project is designed to provide users with a responsive and intuitive gameplay environment, capturing the essence of the original 2048 puzzle game.​
 
-### Platform Compatibility:
+### Platform Compatibility
 
 Due to its reliance on the *ncurses* library, this game is primarily compatible with UNIX-based operating systems, such as Linux and MacOS. While Windows does not natively support ncurses, users can still enjoy the game on Windows systems through the Windows Subsystem for Linux (WSL), which provides a UNIX-like environment.
 
 <h2 align=center>Features</h2>
 
-1. **Terminal User Interface (TUI)**: Designed to run entirely within the terminal, this implementation ensures accessibility across various systems without the need for graphical interfaces.​
+1. **Text-Based User Interface (TUI)**: Designed to run entirely within the terminal, this implementation ensures accessibility across various systems without the need for graphical interfaces.​
 
 2. **Responsive Design**: The game adapts dynamically to different terminal sizes, maintaining an optimal layout and user experience regardless of the window dimensions.​
 
@@ -30,7 +30,7 @@ Due to its reliance on the *ncurses* library, this game is primarily compatible 
 
 To enjoy this game, follow the steps below to setup and run the game on your local system.
 
-### Prerequisites:
+### Prerequisites
 
 Before installing the game, ensure your system meets the following requirements:
 
@@ -40,7 +40,7 @@ Before installing the game, ensure your system meets the following requirements:
 
 3. **ncurses Library**: This library manages the game's Text-based User Interface. Ensure it's installed on your system.
 
-### Installation Options:
+### Installation Options
 
 You can obtain the game through the following methods:
 
@@ -61,11 +61,11 @@ You can obtain the game through the following methods:
 
     - Click on the `Code` button and select `Download ZIP`.​
 
-    - Extract the downloaded ZIP file and navigate to the extracted 2048 directory.​
+    - Finally, Extract the downloaded ZIP file.
 
-### Building and Running the Game:
+### Building and Running the Game
 
-Once you have the source code, compile and run the game with the following steps:
+Once you have the source code, navigate into the 2048 directory, compile and run the game with the following steps:
 
 1. **Build the Game**:
 
@@ -87,7 +87,7 @@ Once you have the source code, compile and run the game with the following steps
 
     The game will launch in your terminal, and you can begin playing immediately.
 
-### Uninstallation:
+### Uninstallation
 
 To remove the game from your system:
 
