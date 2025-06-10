@@ -6,7 +6,6 @@
 <a href="https://github.com/rahul4732saini/fise/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?maxAge=60" alt="License"></a>
 
 <a href="https://www.github.com/rahul4732saini/2048"><img src="https://img.shields.io/github/stars/rahul4732saini/2048.svg?style=social&label=Star&maxAge=60" alt="StarProject"></a>
-<a href="https://www.twitter.com/rahulsaini4732"><img src="https://img.shields.io/twitter/follow/rahulsaini4732?style=social&label=Follow&maxAge=60" alt="Twitter"></a>
 <a href="https://www.linkedin.com/in/rahul4732saini/"><img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin&maxAge=60" alt="LinkedIn"></a>
 
 
