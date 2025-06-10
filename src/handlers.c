@@ -189,7 +189,7 @@ handler_t handle_game_board(Dimension *scr_dim)
         if (operated)
             isempty = place_random(&game);
 
-        show_board(&wctx, &game);
+        show_board(&wctx, &game, scr_dim);
 
         // Terminates the game if either of the termintation conditions are met.
         if (is_game_over(&game, isempty) || game.max_val == TARGET)
