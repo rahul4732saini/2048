@@ -25,13 +25,13 @@ static void show_header_footer(Dimension *scr_dim)
     // The header and footer text is placed with
     // 1 row of padding from the screen edges.
 
-    for (size_t i = 0; i < headers_len; ++i)
+    for (index_t i = 0; i < headers_len; ++i)
     {
         move(i + 1, (scr_dim->width - strlen(headers[i])) / 2);
         printw("%s", headers[i]);
     }
 
-    for (size_t i = 0; i < footers_len; ++i)
+    for (index_t i = 0; i < footers_len; ++i)
     {
         move(
             scr_dim->height - footers_len + i - 1,
@@ -121,11 +121,9 @@ void init_pause_menu(WinContext *wctx, Dimension *scr_dim)
 void show_main_menu(WinContext *wctx, size_t select)
 {
     WINDOW *win = wctx->window;
+    len_t length, left_cutoff, width = main_menu_width - 2;
 
-    size_t width = main_menu_width - 2;
-    size_t length, left_cutoff;
-
-    for (size_t i = 0; i < main_menu_option_cnt; ++i)
+    for (index_t i = 0; i < main_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
         // of the left cutoff to display it in the center of the menu.
@@ -163,11 +161,9 @@ void show_main_menu(WinContext *wctx, size_t select)
 void show_pause_menu(WinContext *wctx, size_t select)
 {
     WINDOW *win = wctx->window;
+    len_t length, left_cutoff, width = pause_menu_width - 2;
 
-    size_t width = pause_menu_width - 2;
-    size_t length, left_cutoff;
-
-    for (size_t i = 0; i < pause_menu_option_cnt; ++i)
+    for (index_t i = 0; i < pause_menu_option_cnt; ++i)
     {
         // Extracts the length of the string and calculates the size
         // of the left cutoff to display it in the center of the menu.
