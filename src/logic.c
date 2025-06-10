@@ -25,9 +25,7 @@ cell_t **create_board(void)
     cell_t **board = (cell_t **)malloc(BOARD_SIZE * sizeof(cell_t *));
 
     for (index_t i = 0; i < BOARD_SIZE; ++i)
-    {
         board[i] = (cell_t *)calloc(BOARD_SIZE, sizeof(cell_t));
-    }
 
     return board;
 }
