@@ -75,7 +75,7 @@ int main(void)
     Dimension scr_dim;
 
     // Stores the index of the current screen handler.
-    size_t cur = HDL_MAIN_MENU;
+    handler_t cur = HDL_MAIN_MENU;
 
     // Handles the game execution loop until any screen
     // handler return a zero signifying a closure.
