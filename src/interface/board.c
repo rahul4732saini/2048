@@ -20,8 +20,8 @@
  */
 static void draw_vlines(WINDOW *win)
 {
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
-        for (size_t j = 1; j < BOARD_SIZE * (CELL_HEIGHT + 1); ++j)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
+        for (pos_t j = 1; j < BOARD_SIZE * (CELL_HEIGHT + 1); ++j)
             mvwaddch(win, j, i * (CELL_WIDTH + 1), ACS_VLINE);
 }
 
@@ -31,9 +31,9 @@ static void draw_vlines(WINDOW *win)
  */
 static void draw_hline(WINDOW *win)
 {
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < CELL_WIDTH; ++j)
+        for (index_t _ = 0; _ < CELL_WIDTH; ++_)
             waddch(win, ACS_HLINE);
 
         // Draws a '+' symbol at the intersection of the vertical
@@ -54,7 +54,7 @@ static void draw_hline(WINDOW *win)
 static void draw_edges(WINDOW *win)
 {
     // Draws the edges for individual horizontal and vertical lines.
-    for (size_t i = 1; i < BOARD_SIZE; ++i)
+    for (index_t i = 1; i < BOARD_SIZE; ++i)
     {
         // Draws the edges for the vertical grid line.
         mvwaddch(win, 0, (CELL_WIDTH + 1) * i, ACS_TTEE);
@@ -80,7 +80,7 @@ static void draw_grid(WINDOW *win)
     draw_vlines(win);
 
     // Draws individual horizontal grid lines for each row of cells.
-    for (size_t i = 1; i < BOARD_SIZE; ++i)
+    for (index_t i = 1; i < BOARD_SIZE; ++i)
     {
         wmove(win, i * (CELL_HEIGHT + 1), 1);
         draw_hline(win);
@@ -97,12 +97,14 @@ static void draw_grid(WINDOW *win)
  */
 static void populate_cells(WINDOW *win, Game *game)
 {
-    size_t pos_x, pos_y, num_len;
+    pos_t pos_x, pos_y;
+    len_t num_len;
+
     wattron(win, A_BOLD);
 
-    for (size_t i = 0; i < BOARD_SIZE; ++i)
+    for (index_t i = 0; i < BOARD_SIZE; ++i)
     {
-        for (size_t j = 0; j < BOARD_SIZE; ++j)
+        for (index_t j = 0; j < BOARD_SIZE; ++j)
         {
             // Calculates the X and Y coordinates for value placement.
             pos_x = j * (CELL_WIDTH + 1) + 1;
@@ -138,7 +140,7 @@ static void show_game_score(score_t score)
     char string[20];
     snprintf(string, sizeof(string), "Score: %u", score);
 
-    size_t height = getmaxy(stdscr), width = getmaxx(stdscr);
+    len_t height = getmaxy(stdscr), width = getmaxx(stdscr);
 
     move(height - 2, (width - strlen(string)) / 2);
     printw("%s", string);
