@@ -30,15 +30,11 @@
 #define ASCII_LF 10
 
 extern const char *scr_dim_warning;
-extern const size_t target;
-
-extern const size_t cell_width;
-extern const size_t cell_height;
 
 extern const char *headers[];
-extern const size_t headers_len;
-
 extern const char *footers[];
+
+extern const size_t headers_len;
 extern const size_t footers_len;
 
 extern const char *main_menu_title;
