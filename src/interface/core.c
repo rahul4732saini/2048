@@ -1,13 +1,9 @@
 /**
- * @brief Defines core functions for handling the Text-based User Interface.
+ * @brief Defines core functions for handling the TUI environment.
  *
- * This module defines functions for handling the core TUI functionalities
- * including the following:
- * - Initialzing the standard screen.
- * - Placing and displaying the game window.
- * - Displaying the window title, screen headers and footers.
- * - Displaying dialog windows.
- * - Refreshing the game window.
+ * @details This module defines functions for handling the core
+ * TUI functionalities including standard screen initialization,
+ * and displaying the end-game dialog box.
  */
 
 #include <ncurses.h>
@@ -19,8 +15,7 @@
 #include "interface/shared.h"
 
 /**
- * @brief Initializes the standard TUI screen and sets up the
- * screen configuration.
+ * @brief Initializes and configures the standard TUI screen.
  */
 void init_screen()
 {
