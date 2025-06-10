@@ -5,6 +5,6 @@
 #include "shared.h"
 
 void init_game_win(WinContext *wctx, Dimension *scr_dim);
-void show_board(WinContext *wctx, Game *game);
+void show_board(WinContext *wctx, Game *game, Dimension *scr_dim);
 
 #endif
