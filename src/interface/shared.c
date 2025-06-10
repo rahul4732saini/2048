@@ -2,9 +2,8 @@
  * @file shared.c
  * @brief Defines shared functions for common TUI routines.
  *
- * @details This module defines functions used for performing actions common
- *          to and reuiqred by all the TUI handler functions defined within
- *          other modules.
+ * @details This module defines common utility functions
+ * required by TUI handler functions within other modules.
  */
 
 #include <ncurses.h>
