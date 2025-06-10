@@ -53,7 +53,7 @@ static void show_header_footer(Dimension *scr_dim)
  * screen dimensions.
  */
 static inline void show_menu_heading(
-    char *heading, size_t menu_start_y, Dimension *scr_dim)
+    const char *heading, size_t menu_start_y, Dimension *scr_dim)
 {
     move(menu_start_y - 1, (scr_dim->width - strlen(heading)) / 2);
     printw("%s", heading);
