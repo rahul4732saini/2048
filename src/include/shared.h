@@ -19,7 +19,7 @@ typedef uint8_t handler_t;
 typedef struct
 {
     cell_t **board;
-    size_t max_val;
+    cell_t max_val;
     score_t score;
     bool init;
 } Game;
