@@ -2,6 +2,7 @@
 #define _CONSTS_H
 
 #include <stdlib.h>
+#include "shared.h"
 
 #define BOARD_SIZE 4
 #define TARGET 2048
@@ -34,30 +35,30 @@ extern const char *scr_dim_warning;
 extern const char *headers[];
 extern const char *footers[];
 
-extern const size_t headers_len;
-extern const size_t footers_len;
+extern const len_t headers_len;
+extern const len_t footers_len;
 
 extern const char *main_menu_title;
 extern const char *pause_menu_title;
 
 extern const char *main_menu_options[];
-extern const size_t main_menu_option_cnt;
-extern const size_t main_menu_width;
+extern const len_t main_menu_option_cnt;
+extern const len_t main_menu_width;
 
 extern const char *pause_menu_options[];
-extern const size_t pause_menu_option_cnt;
-extern const size_t pause_menu_width;
+extern const len_t pause_menu_option_cnt;
+extern const len_t pause_menu_width;
 
 extern const char *dialog_bt_txt;
-extern const size_t dialog_bt_width;
+extern const len_t dialog_bt_width;
 
 extern const char *win_dialog_txt[];
-extern const size_t win_dialog_txt_len;
+extern const len_t win_dialog_txt_len;
 
 extern const char *lost_dialog_txt[];
-extern const size_t lost_dialog_txt_len;
+extern const len_t lost_dialog_txt_len;
 
-extern const size_t main_menu_handlers[];
-extern const size_t pause_menu_handlers[];
+extern const handler_t main_menu_handlers[];
+extern const handler_t pause_menu_handlers[];
 
 #endif
