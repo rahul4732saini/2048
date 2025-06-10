@@ -181,8 +181,8 @@ void init_game_win(WinContext *wctx, Dimension *scr_dim)
  * @param wctx Pointer to the WinContext struct comprising window data.
  * @param game Pointer to the Game struct comrising the game data.
  */
-void show_board(WinContext *wctx, Game *game)
+void show_board(WinContext *wctx, Game *game, Dimension *scr_dim)
 {
     populate_cells(wctx->window, game);
-    show_game_score(game->score);
+    show_game_score(game->score, scr_dim);
 }
