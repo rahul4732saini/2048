@@ -122,6 +122,7 @@ handler_t handle_pause_menu(Dimension *scr_dim)
 
     } while ((input = getch()) != ASCII_LF);
 
+    // The game session is terminated if the player selects to leave.
     if (pause_menu_handlers[select] != HDL_GAME_WIN)
         game.init = false;
 
@@ -153,6 +154,9 @@ handler_t handle_game_board(Dimension *scr_dim)
     if (!game.init)
         setup_game(&game);
 
+    // The 'iskey' stores whether the input is the up or left
+    // arrow key, to determine the direction of operation.
+
     input_t input = 0;
     bool iskey, isempty, operated;
 
@@ -181,14 +185,16 @@ handler_t handle_game_board(Dimension *scr_dim)
             return HDL_GAME_WIN;
         }
 
+        // Random value is only placed if any operations are performed.
         if (operated)
             isempty = place_random(&game);
 
         show_board(&wctx, &game);
 
+        // Terminates the game if either of the termintation conditions are met.
         if (is_game_over(&game, isempty) || game.max_val == TARGET)
         {
-            game.init = FALSE;
+            game.init = false;
             return HDL_END_GAME_DIALOG;
         }
 
@@ -221,6 +227,7 @@ handler_t handle_end_game_dialog(Dimension *scr_dim)
 
     // Displays the dialog until the RETURN key is pressed
     // signifying the OK button press.
+
     while ((input = getch()) != ASCII_LF)
         if (input == KEY_RESIZE)
             return HDL_END_GAME_DIALOG;
