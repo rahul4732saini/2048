@@ -133,16 +133,17 @@ static void populate_cells(WINDOW *win, Game *game)
 
 /**
  * @brief Displays the game score at the bottom of the screen.
+ *
  * @param score The score to be displayed.
+ * @param scr_dim Pointer to the Dimension struct comprising the
+ * screen dimensions.
  */
-static void show_game_score(score_t score)
+static void show_game_score(score_t score, Dimension *scr_dim)
 {
     char string[20];
     snprintf(string, sizeof(string), "Score: %u", score);
 
-    len_t height = getmaxy(stdscr), width = getmaxx(stdscr);
-
-    move(height - 2, (width - strlen(string)) / 2);
+    move(scr_dim->height - 2, (scr_dim->width - strlen(string)) / 2);
     printw("%s", string);
 
     refresh();
