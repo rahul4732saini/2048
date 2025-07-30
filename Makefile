@@ -5,6 +5,7 @@ LIBS = -lncurses -lm
 INCLUDE = -Isrc/include
 
 OS := $(shell uname)
+TARGET = 2048
 
 OBJ_DIR = obj
 INTERFACE_OBJ_DIR = $(OBJ_DIR)/interface
@@ -23,9 +24,9 @@ endif
 
 .PHONY: all clean
 
-all: 2048
+all: $(TARGET)
 
-2048: $(OBJS) $(INTERFACE_OBJS)
+$(TARGET): $(OBJS) $(INTERFACE_OBJS)
 	$(CC) -o $@ $^ $(LIBS)
 
 $(OBJ_DIR):
