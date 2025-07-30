@@ -23,10 +23,7 @@ endif
 
 .PHONY: all clean
 
-# Ensure the obj directories exist for storing the object files.
-$(shell mkdir -p objs/interface)
-
-all: create_dir 2048
+all: 2048
 
 2048: $(OBJS) $(INTERFACE_OBJS)
 	$(CC) -o $@ $^ $(LIBS)
