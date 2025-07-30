@@ -35,5 +35,5 @@ objs/interface/%.o: src/interface/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 clean:
-	rm -r objs/
+	rm -rf objs/
 	rm 2048
