@@ -6,11 +6,14 @@ INCLUDE = -Isrc/include
 
 OS := $(shell uname)
 
+OBJ_DIR = obj
+INTERFACE_OBJ_DIR = $(OBJ_DIR)/interface
+
 SRCS = $(wildcard src/*.c)
-OBJS = $(SRCS:src/%.c=objs/%.o)
+OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 INTERFACE_SRCS = $(wildcard src/interface/*.c)
-INTERFACE_OBJS = $(INTERFACE_SRCS:src/interface/%.c=objs/interface/%.o)
+INTERFACE_OBJS = $(INTERFACE_SRCS:src/interface/%.c=$(INTERFACE_OBJ_DIR)/%.o)
 
 # Adds the tinfo library to the libraries if the OS is Linux.
 ifeq ($(OS), Linux)
@@ -35,5 +38,5 @@ objs/interface/%.o: src/interface/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 clean:
-	rm -rf objs/
+	rm -rf $(OBJ_DIR)
 	rm 2048
