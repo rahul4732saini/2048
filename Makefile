@@ -28,10 +28,16 @@ all: 2048
 2048: $(OBJS) $(INTERFACE_OBJS)
 	$(CC) -o $@ $^ $(LIBS)
 
-objs/%.o: src/%.c
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(INTERFACE_OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
-objs/interface/%.o: src/interface/%.c
+$(INTERFACE_OBJ_DIR)/%.o: src/interface/%.c | $(INTERFACE_OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 clean:
