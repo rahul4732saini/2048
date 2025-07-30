@@ -6,10 +6,11 @@ INCLUDE = -Isrc/include
 
 OS := $(shell uname)
 
-INTERFACE_OBJS = objs/interface/core.o objs/interface/shared.o\
-				 objs/interface/menu.o objs/interface/board.o
+SRCS = $(wildcard src/*.c)
+OBJS = $(SRCS:src/%.c=objs/%.o)
 
-OBJS = objs/main.o objs/handlers.o objs/logic.o objs/consts.o
+INTERFACE_SRCS = $(wildcard src/interface/*.c)
+INTERFACE_OBJS = $(INTERFACE_SRCS:src/interface/%.c=objs/interface/%.o)
 
 # Adds the tinfo library to the libraries if the OS is Linux.
 ifeq ($(OS), Linux)
