@@ -46,4 +46,4 @@ $(INTERFACE_OBJ_DIR)/%.o: $(INTERFACE_SRC_DIR)/%.c | $(INTERFACE_OBJ_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	rm 2048
+	rm -f $(TARGET)
