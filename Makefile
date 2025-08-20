@@ -14,10 +14,10 @@ INTERFACE_SRC_DIR := $(SRC_DIR)/interface
 INTERFACE_SRCS := $(wildcard $(INTERFACE_SRC_DIR)/*.c)
 
 OBJ_DIR := obj
-OBJS := $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
+OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 INTERFACE_OBJ_DIR := $(OBJ_DIR)/interface
-INTERFACE_OBJS := $(INTERFACE_SRCS:src/interface/%.c=$(INTERFACE_OBJ_DIR)/%.o)
+INTERFACE_OBJS := $(INTERFACE_SRCS:$(INTERFACE_SRC_DIR)/%.c=$(INTERFACE_OBJ_DIR)/%.o)
 
 # Adds the tinfo library to the libraries if the OS is Linux.
 ifeq ($(OS), Linux)
